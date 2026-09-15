@@ -647,7 +647,7 @@ function Included() {
       id="included"
       eyebrow="What's included"
       title="A full operating system, not just a book."
-      lead="One ZIP, about 270 KB. Everything downloads the moment you check out."
+      lead="One ZIP, about 550 KB. Everything downloads the moment you check out."
     >
       <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
         <div data-fx="left" className="card p-6 md:p-8">
@@ -936,7 +936,7 @@ function Pricing() {
                   {CTA_LABEL}
                   <IconArrowRight className="arrow-dash h-4 w-4" />
                 </span>
-                <span className="text-xs font-semibold text-white/85">Instant download · 270 KB ZIP</span>
+                <span className="text-xs font-semibold text-white/85">Instant download · 550 KB ZIP</span>
               </span>
             </BuyButton>
           </div>
@@ -1029,7 +1029,7 @@ function Faq() {
   const faqs = [
     {
       q: "What exactly do I get after purchase?",
-      a: "One ZIP (about 270 KB): playbook in PDF + Word (100 pages, 32 chapters, 7 parts + 6 appendices), three CSV databases (26-task roadmap, content tracker, 29-point audit), import guide, and START-HERE file. Instant download.",
+      a: "One ZIP (about 550 KB): playbook in PDF + Word (100 pages, 32 chapters, 7 parts + 6 appendices), three CSV databases (26-task roadmap, content tracker, 29-point audit), import guide, and START-HERE file. Instant download.",
     },
     {
       q: "Do I need any SEO or technical background?",
