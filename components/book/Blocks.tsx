@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 
 export function Kicker({ children }: { children: ReactNode }) {
   return (
-    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#c00e62]">{children}</p>
+    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2563eb]">{children}</p>
   );
 }
 
@@ -15,7 +15,7 @@ export function H1({ children, id }: { children: ReactNode; id?: string }) {
   return (
     <h1
       id={id}
-      className="mt-2 text-balance font-display text-3xl font-semibold tracking-tight text-[#2d0a1f] sm:text-4xl"
+      className="mt-2 text-balance font-display text-3xl font-semibold tracking-tight text-[#2f5d73] sm:text-4xl"
     >
       {children}
     </h1>
@@ -24,7 +24,7 @@ export function H1({ children, id }: { children: ReactNode; id?: string }) {
 
 export function H2({ children }: { children: ReactNode }) {
   return (
-    <h2 className="mt-9 text-balance font-display text-2xl font-semibold tracking-tight text-[#2d0a1f] sm:text-[26px]">
+    <h2 className="mt-9 text-balance font-display text-2xl font-semibold tracking-tight text-[#2f5d73] sm:text-[26px]">
       {children}
     </h2>
   );
@@ -32,13 +32,13 @@ export function H2({ children }: { children: ReactNode }) {
 
 export function H3({ children }: { children: ReactNode }) {
   return (
-    <h3 className="mt-6 text-[17px] font-bold text-[#2d0a1f]">{children}</h3>
+    <h3 className="mt-6 text-[17px] font-bold text-[#2f5d73]">{children}</h3>
   );
 }
 
 export function P({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-3 max-w-[62ch] text-[15px] leading-[1.75] text-[#6d4059]">{children}</p>
+    <p className="mt-3 max-w-[62ch] text-[15px] leading-[1.75] text-[#4b5563]">{children}</p>
   );
 }
 
@@ -48,10 +48,10 @@ export function UL({ children }: { children: ReactNode }) {
 
 export function LI({ children, check = true }: { children: ReactNode; check?: boolean }) {
   return (
-    <li className="flex gap-2.5 text-[15px] leading-relaxed text-[#6d4059]">
+    <li className="flex gap-2.5 text-[15px] leading-relaxed text-[#4b5563]">
       <span
         className={`mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
-          check ? "bg-[#ffe3ef] text-[#c00e62]" : "bg-[#fff1f6] text-[#967184]"
+          check ? "bg-[#eaf0f6] text-[#2563eb]" : "bg-[#f5f7f9] text-[#9ca3af]"
         }`}
         aria-hidden
       >
@@ -71,11 +71,11 @@ export function LI({ children, check = true }: { children: ReactNode; check?: bo
 /* ---------- Key takeaway box ---------- */
 export function Takeaway({ children }: { children: ReactNode }) {
   return (
-    <aside className="book-avoid-break mt-6 rounded-2xl border-l-4 border-[#ec1478] bg-[#ffe3ef] px-5 py-4">
-      <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#c00e62]">
+    <aside className="book-avoid-break mt-6 rounded-2xl border-l-4 border-[#3b82f6] bg-[#eaf0f6] px-5 py-4">
+      <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#2563eb]">
         Key takeaway
       </p>
-      <p className="mt-1.5 text-[15px] font-semibold leading-relaxed text-[#2d0a1f]">{children}</p>
+      <p className="mt-1.5 text-[15px] font-semibold leading-relaxed text-[#2f5d73]">{children}</p>
     </aside>
   );
 }
@@ -93,18 +93,18 @@ export function Quote({
   return (
     <blockquote
       className={`book-avoid-break mt-6 rounded-2xl px-6 py-5 ${
-        dark ? "bg-[#2d0a1f] text-[#ffe3ef]" : "border border-[#f5c2d8] bg-white text-[#2d0a1f]"
+        dark ? "bg-[#2f5d73] text-[#eaf0f6]" : "border border-[#d1d5db] bg-white text-[#2f5d73]"
       } shadow-[0_14px_36px_-22px_rgba(45,10,31,0.4)]`}
     >
-      <span className={`text-3xl leading-none ${dark ? "text-[#ec1478]" : "text-[#ff3d8d]"}`} aria-hidden>
+      <span className={`text-3xl leading-none ${dark ? "text-[#3b82f6]" : "text-[#3b82f6]"}`} aria-hidden>
         &ldquo;
       </span>
       <p
-        className={`mt-1 text-[15.5px] font-semibold leading-relaxed ${dark ? "text-[#ffd6e7]" : "text-[#2d0a1f]"}`}
+        className={`mt-1 text-[15.5px] font-semibold leading-relaxed ${dark ? "text-[#dbeafe]" : "text-[#2f5d73]"}`}
       >
         {children}
       </p>
-      {by && <cite className={`mt-3 block text-[12.5px] font-medium not-italic ${dark ? "text-[#f087b6]" : "text-[#967184]"}`}>— {by}</cite>}
+      {by && <cite className={`mt-3 block text-[12.5px] font-medium not-italic ${dark ? "text-[#93c5fd]" : "text-[#9ca3af]"}`}>— {by}</cite>}
     </blockquote>
   );
 }
@@ -174,19 +174,19 @@ export function Step({
 }) {
   return (
     <div className="book-avoid-break mt-5 flex gap-4">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#ff3d8d] to-[#df0e6b] text-[15px] font-bold text-white shadow-[0_6px_16px_-6px_rgba(236,20,120,0.7)]">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#3b82f6] to-[#2563eb] text-[15px] font-bold text-white shadow-[0_6px_16px_-6px_rgba(59, 130, 246, 0.7)]">
         {n}
       </span>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <p className="text-[15.5px] font-bold text-[#2d0a1f]">{title}</p>
+          <p className="text-[15.5px] font-bold text-[#2f5d73]">{title}</p>
           {metric && (
-            <span className="rounded-full bg-[#ffe3ef] px-2.5 py-0.5 text-[11px] font-bold text-[#c00e62]">
+            <span className="rounded-full bg-[#eaf0f6] px-2.5 py-0.5 text-[11px] font-bold text-[#2563eb]">
               {metric}
             </span>
           )}
         </div>
-        <div className="mt-1 text-[14.5px] leading-relaxed text-[#6d4059]">{children}</div>
+        <div className="mt-1 text-[14.5px] leading-relaxed text-[#4b5563]">{children}</div>
       </div>
     </div>
   );
@@ -203,13 +203,13 @@ export function IconCards({
       {items.map((it) => (
         <div
           key={it.title}
-          className="rounded-2xl border border-[#f5c2d8] bg-white p-4 shadow-[0_8px_24px_-18px_rgba(189,24,97,0.35)]"
+          className="rounded-2xl border border-[#d1d5db] bg-white p-4 shadow-[0_8px_24px_-18px_rgba(47, 93, 115, 0.35)]"
         >
-          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#ffe3ef] text-[#d40e63]">
+          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#eaf0f6] text-[#2563eb]">
             <BookIcon name={it.icon} className="h-5 w-5" />
           </span>
-          <p className="mt-2.5 text-[14px] font-bold text-[#2d0a1f]">{it.title}</p>
-          <p className="mt-1 text-[13px] leading-relaxed text-[#6d4059]">{it.desc}</p>
+          <p className="mt-2.5 text-[14px] font-bold text-[#2f5d73]">{it.title}</p>
+          <p className="mt-1 text-[13px] leading-relaxed text-[#4b5563]">{it.desc}</p>
         </div>
       ))}
     </div>
@@ -225,10 +225,10 @@ export function DataTable({
   rows: (string | ReactNode)[][];
 }) {
   return (
-    <div className="data-table mt-5 overflow-x-auto rounded-2xl border border-[#f5c2d8] bg-white shadow-[0_10px_30px_-22px_rgba(189,24,97,0.3)]">
+    <div className="data-table mt-5 overflow-x-auto rounded-2xl border border-[#d1d5db] bg-white shadow-[0_10px_30px_-22px_rgba(47, 93, 115, 0.3)]">
       <table className="w-full min-w-[480px] border-collapse text-left">
         <thead>
-          <tr className="bg-gradient-to-r from-[#ff3d8d] to-[#df0e6b]">
+          <tr className="bg-gradient-to-r from-[#3b82f6] to-[#2563eb]">
             {headers.map((h) => (
               <th key={h} className="px-4 py-3 text-[12.5px] font-bold uppercase tracking-wide text-white">
                 {h}
@@ -238,9 +238,9 @@ export function DataTable({
         </thead>
         <tbody>
           {rows.map((r, i) => (
-            <tr key={i} className={i % 2 ? "bg-[#fffafc]" : "bg-white"}>
+            <tr key={i} className={i % 2 ? "bg-[#f8fafc]" : "bg-white"}>
               {r.map((c, j) => (
-                <td key={j} className="px-4 py-2.5 align-top text-[13.5px] text-[#3a1a2e]">
+                <td key={j} className="px-4 py-2.5 align-top text-[13.5px] text-[#2f5d73]">
                   {c}
                 </td>
               ))}
@@ -257,10 +257,10 @@ export function Stats({ items }: { items: { value: string; label: string; sub?: 
   return (
     <div className="stats mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((s) => (
-        <div key={s.label} className="rounded-2xl border border-[#f5c2d8] bg-[#fff1f6] px-4 py-5 text-center">
-          <p className="font-display text-3xl font-bold text-[#ec1478]">{s.value}</p>
-          <p className="mt-1 text-[12px] font-bold uppercase tracking-[0.1em] text-[#2d0a1f]">{s.label}</p>
-          {s.sub && <p className="mt-0.5 text-[11.5px] text-[#967184]">{s.sub}</p>}
+        <div key={s.label} className="rounded-2xl border border-[#d1d5db] bg-[#f5f7f9] px-4 py-5 text-center">
+          <p className="font-display text-3xl font-bold text-[#3b82f6]">{s.value}</p>
+          <p className="mt-1 text-[12px] font-bold uppercase tracking-[0.1em] text-[#2f5d73]">{s.label}</p>
+          {s.sub && <p className="mt-0.5 text-[11.5px] text-[#9ca3af]">{s.sub}</p>}
         </div>
       ))}
     </div>
@@ -270,10 +270,10 @@ export function Stats({ items }: { items: { value: string; label: string; sub?: 
 /* ---------- Checklist ---------- */
 export function Checklist({ items }: { items: string[] }) {
   return (
-    <ul className="book-avoid-break mt-5 space-y-2 rounded-2xl border border-[#f5c2d8] bg-white px-5 py-4 shadow-[0_8px_24px_-18px_rgba(189,24,97,0.3)]">
+    <ul className="book-avoid-break mt-5 space-y-2 rounded-2xl border border-[#d1d5db] bg-white px-5 py-4 shadow-[0_8px_24px_-18px_rgba(47, 93, 115, 0.3)]">
       {items.map((it) => (
-        <li key={it} className="flex gap-2.5 text-[14px] text-[#2d0a1f]">
-          <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-md border-2 border-[#ec1478] text-[#ec1478]">
+        <li key={it} className="flex gap-2.5 text-[14px] text-[#2f5d73]">
+          <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-md border-2 border-[#3b82f6] text-[#3b82f6]">
             <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M4 11l4 4 8-9" />
             </svg>
@@ -289,9 +289,9 @@ export function Checklist({ items }: { items: string[] }) {
 export function Divider({ children }: { children?: ReactNode }) {
   return (
     <div className="my-10 flex items-center gap-3">
-      <span className="h-px flex-1 bg-[#f6c9dc]" />
-      {children && <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#c00e62]">{children}</span>}
-      <span className="h-px flex-1 bg-[#f6c9dc]" />
+      <span className="h-px flex-1 bg-[#d1d5db]" />
+      {children && <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2563eb]">{children}</span>}
+      <span className="h-px flex-1 bg-[#d1d5db]" />
     </div>
   );
 }
@@ -299,9 +299,9 @@ export function Divider({ children }: { children?: ReactNode }) {
 /* ---------- Labeled chip ---------- */
 export function Tag({ children, tone = "rose" }: { children: ReactNode; tone?: "rose" | "ink" | "soft" }) {
   const map = {
-    rose: "bg-[#ffe3ef] text-[#c00e62]",
-    ink: "bg-[#2d0a1f] text-[#ffe3ef]",
-    soft: "bg-[#fff1f6] text-[#967184] border border-[#f5c2d8]",
+    rose: "bg-[#eaf0f6] text-[#2563eb]",
+    ink: "bg-[#2f5d73] text-[#eaf0f6]",
+    soft: "bg-[#f5f7f9] text-[#9ca3af] border border-[#d1d5db]",
   };
   return (
     <span className={`inline-flex items-center rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] ${map[tone]}`}>
@@ -313,22 +313,22 @@ export function Tag({ children, tone = "rose" }: { children: ReactNode; tone?: "
 /* ---------- Chapter end-card: slim in print, fuller on screen ---------- */
 export function BookEndCard({ chapterNum, total, partName }: { chapterNum: number; total: number; partName: string }) {
   return (
-    <div className="book-endcard mt-10 flex flex-col items-center gap-4 rounded-2xl border border-[#f5c2d8] bg-[#fffafc] px-8 py-8 text-center print:mt-4 print:border-x-0 print:border-t print:border-b-0 print:bg-transparent print:py-3">
+    <div className="book-endcard mt-10 flex flex-col items-center gap-4 rounded-2xl border border-[#d1d5db] bg-[#f8fafc] px-8 py-8 text-center print:mt-4 print:border-x-0 print:border-t print:border-b-0 print:bg-transparent print:py-3">
       <div className="flex items-center gap-2">
-        <span className="h-px w-8 bg-[#f5c9dc] print:hidden" />
-        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#967184]">Chapter complete</span>
-        <span className="h-px w-8 bg-[#f5c9dc] print:hidden" />
+        <span className="h-px w-8 bg-[#d1d5db] print:hidden" />
+        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#9ca3af]">Chapter complete</span>
+        <span className="h-px w-8 bg-[#d1d5db] print:hidden" />
       </div>
-      <p className="text-[13px] font-semibold text-[#2d0a1f] print:hidden">
+      <p className="text-[13px] font-semibold text-[#2f5d73] print:hidden">
         {chapterNum} / {total}
       </p>
-      <p className="max-w-[48ch] text-[12.5px] leading-relaxed text-[#6d4059] print:hidden">
+      <p className="max-w-[48ch] text-[12.5px] leading-relaxed text-[#4b5563] print:hidden">
         The full playbook includes <strong>32 chapters</strong>, <strong>6 appendices</strong>, and a <strong>30-task roadmap</strong> across seven parts.
       </p>
-      <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-[#8f0a4a] print:hidden">
-        <span className="rounded-full border border-[#f5c2d8] bg-white px-3 py-1">56 pages</span>
-        <span className="rounded-full border border-[#f5c2d8] bg-white px-3 py-1">{partName}</span>
-        <span className="rounded-full border border-[#f5c2d8] bg-white px-3 py-1">PDF + DOCX</span>
+      <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-[#3f6f86] print:hidden">
+        <span className="rounded-full border border-[#d1d5db] bg-white px-3 py-1">56 pages</span>
+        <span className="rounded-full border border-[#d1d5db] bg-white px-3 py-1">{partName}</span>
+        <span className="rounded-full border border-[#d1d5db] bg-white px-3 py-1">PDF + DOCX</span>
       </div>
     </div>
   );
@@ -338,17 +338,17 @@ export function BookEndCard({ chapterNum, total, partName }: { chapterNum: numbe
 export function PartSep({ partIndex, title, subtitle }: { partIndex: number; title: string; subtitle: string }) {
   const numerals = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"];
   return (
-    <div className="book-partsep relative mb-8 overflow-hidden rounded-3xl border border-[#ffd6e7] bg-gradient-to-br from-[#fff1f6] via-[#ffe3ef] to-[#ffd6e7] px-6 py-7 text-center print:mb-5 print:rounded-none print:border-x-0 print:border-t-0 print:py-6 sm:px-8">
-      <span className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[#ff3d8d] to-[#df0e6b] text-[13px] font-bold text-white shadow-[0_8px_24px_-8px_rgba(236,20,120,0.6)] sm:h-11 sm:w-11">
+    <div className="book-partsep relative mb-8 overflow-hidden rounded-3xl border border-[#dbeafe] bg-gradient-to-br from-[#f5f7f9] via-[#eaf0f6] to-[#dbeafe] px-6 py-7 text-center print:mb-5 print:rounded-none print:border-x-0 print:border-t-0 print:py-6 sm:px-8">
+      <span className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[#3b82f6] to-[#2563eb] text-[13px] font-bold text-white shadow-[0_8px_24px_-8px_rgba(59, 130, 246, 0.6)] sm:h-11 sm:w-11">
         {numerals[partIndex] ?? partIndex}
       </span>
-      <p className="mt-3 text-[10.5px] font-bold uppercase tracking-[0.24em] text-[#c00e62]">
+      <p className="mt-3 text-[10.5px] font-bold uppercase tracking-[0.24em] text-[#2563eb]">
         Part {numerals[partIndex] ?? partIndex}
       </p>
-      <h2 className="mx-auto mt-1 max-w-[520px] text-balance font-display text-[26px] font-semibold leading-tight tracking-tight text-[#2d0a1f] sm:text-[32px]">
+      <h2 className="mx-auto mt-1 max-w-[520px] text-balance font-display text-[26px] font-semibold leading-tight tracking-tight text-[#2f5d73] sm:text-[32px]">
         {title}
       </h2>
-      <p className="mx-auto mt-1.5 max-w-[44ch] text-[13px] leading-relaxed text-[#6d4059] sm:text-[14px]">
+      <p className="mx-auto mt-1.5 max-w-[44ch] text-[13px] leading-relaxed text-[#4b5563] sm:text-[14px]">
         {subtitle}
       </p>
     </div>

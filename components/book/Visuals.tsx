@@ -6,13 +6,13 @@ import type { ReactNode } from "react";
    self-contained, responsive, and print-safe.
 ------------------------------------------------------------------- */
 
-export const PINK = "#ec1478";
-export const PINK_DEEP = "#c00e62";
-export const PINK_SOFT = "#ffe3ef";
-export const PANEL = "#fff1f6";
-export const LINE = "#f6c9dc";
-export const INK = "#2d0a1f";
-export const BODY = "#6d4059";
+export const PINK = "#3b82f6";
+export const PINK_DEEP = "#2563eb";
+export const PINK_SOFT = "#eaf0f6";
+export const PANEL = "#f5f7f9";
+export const LINE = "#d1d5db";
+export const INK = "#2f5d73";
+export const BODY = "#4b5563";
 
 function grad(id: string, from: string, to: string) {
   return (
@@ -34,17 +34,17 @@ export function Figure({
   children: ReactNode;
 }) {
   return (
-    <figure className="book-fig rounded-3xl border border-[#f5c2d8] bg-white p-4 shadow-[0_14px_40px_-22px_rgba(189,24,97,0.3)] sm:p-6">
+    <figure className="book-fig rounded-3xl border border-[#d1d5db] bg-white p-4 shadow-[0_14px_40px_-22px_rgba(47, 93, 115, 0.3)] sm:p-6">
       {label && (
         <figcaption className="mb-3 flex items-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-[#ec1478] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white">
+          <span className="inline-flex items-center rounded-full bg-[#3b82f6] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white">
             {label}
           </span>
         </figcaption>
       )}
       <div className="book-fx">{children}</div>
       {caption && (
-        <p className="mt-3 text-center text-[13px] leading-snug text-[#967184]">{caption}</p>
+        <p className="mt-3 text-center text-[13px] leading-snug text-[#9ca3af]">{caption}</p>
       )}
     </figure>
   );
@@ -62,16 +62,16 @@ export function PipelineFlow({
     <div className="pipeline-deck flex flex-col items-center gap-3 sm:flex-row sm:items-stretch">
       {stages.map((s, i) => (
         <div key={s.name} className="flex w-full flex-col items-center gap-3 sm:w-1/3">
-          <div className="w-full rounded-2xl border border-[#f5c2d8] bg-[#fff1f6] px-4 py-5 text-center">
-            <span className="mx-auto mb-2 grid h-8 w-8 place-items-center rounded-full bg-[#ec1478] text-sm font-bold text-white shadow-[0_6px_16px_-6px_rgba(236,20,120,0.7)]">
+          <div className="w-full rounded-2xl border border-[#d1d5db] bg-[#f5f7f9] px-4 py-5 text-center">
+            <span className="mx-auto mb-2 grid h-8 w-8 place-items-center rounded-full bg-[#3b82f6] text-sm font-bold text-white shadow-[0_6px_16px_-6px_rgba(59, 130, 246, 0.7)]">
               {i + 1}
             </span>
-            <p className="text-sm font-bold text-[#2d0a1f]">{s.name}</p>
-            <p className="mt-1 text-[13px] leading-snug text-[#6d4059]">{s.desc}</p>
+            <p className="text-sm font-bold text-[#2f5d73]">{s.name}</p>
+            <p className="mt-1 text-[13px] leading-snug text-[#4b5563]">{s.desc}</p>
           </div>
           {i < stages.length - 1 && (
             <svg
-              className="h-5 w-5 shrink-0 rotate-90 text-[#ec1478] sm:rotate-0"
+              className="h-5 w-5 shrink-0 rotate-90 text-[#3b82f6] sm:rotate-0"
               viewBox="0 0 24 24"
               fill="none"
             >
@@ -96,7 +96,7 @@ export type Slice = { label: string; value: number; color?: string };
 
 export function DonutChart({ data }: { data: Slice[] }) {
   // Standardize colors if not given
-  const palette = [PINK, "#ff5a9d", "#ff8bb8", "#ffb6d1", "#ffd6e7", "#f6c9dc"];
+  const palette = [PINK, "#60a5fa", "#93c5fd", "#93c5fd", "#dbeafe", "#d1d5db"];
   const slices = data.map((d, i) => ({ ...d, color: d.color || palette[i % palette.length] }));
   const total = slices.reduce((a, s) => a + s.value, 0);
   const R = 80;
@@ -106,7 +106,7 @@ export function DonutChart({ data }: { data: Slice[] }) {
   return (
     <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center">
       <svg viewBox="0 0 220 220" className="w-52 max-w-full shrink-0" role="img">
-        <circle cx="110" cy="110" r={R} fill="none" stroke="#fff1f6" strokeWidth="34" />
+        <circle cx="110" cy="110" r={R} fill="none" stroke="#f5f7f9" strokeWidth="34" />
         {slices.map((s) => {
           const len = (s.value / total) * C;
           const el = (
@@ -127,19 +127,19 @@ export function DonutChart({ data }: { data: Slice[] }) {
           acc += len;
           return el;
         })}
-        <text x="110" y="104" textAnchor="middle" dominantBaseline="middle" className="fill-[#2d0a1f]" fontSize="26" fontWeight="700">
+        <text x="110" y="104" textAnchor="middle" dominantBaseline="middle" className="fill-[#2f5d73]" fontSize="26" fontWeight="700">
           100%
         </text>
-        <text x="110" y="123" textAnchor="middle" dominantBaseline="middle" className="fill-[#967184]" fontSize="11">
+        <text x="110" y="123" textAnchor="middle" dominantBaseline="middle" className="fill-[#9ca3af]" fontSize="11">
           of ranking influence*
         </text>
       </svg>
       <ul className="w-full space-y-2">
         {slices.map((s) => (
-          <li key={s.label} className="flex items-center gap-2 text-[13px] text-[#2d0a1f]">
+          <li key={s.label} className="flex items-center gap-2 text-[13px] text-[#2f5d73]">
             <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: s.color }} />
             <span className="flex-1 font-medium">{s.label}</span>
-            <span className="font-bold text-[#ec1478]">{s.value}%</span>
+            <span className="font-bold text-[#3b82f6]">{s.value}%</span>
           </li>
         ))}
       </ul>
@@ -154,16 +154,16 @@ export function BarChart({ data }: { data: { label: string; value: number; note?
       {data.map((b) => (
         <div key={b.label}>
           <div className="mb-1 flex items-baseline justify-between gap-3 text-[13px]">
-            <span className="font-semibold text-[#2d0a1f]">{b.label}</span>
-            <span className="font-bold text-[#ec1478]">{b.value}</span>
+            <span className="font-semibold text-[#2f5d73]">{b.label}</span>
+            <span className="font-bold text-[#3b82f6]">{b.value}</span>
           </div>
-          <div className="h-3.5 overflow-hidden rounded-full bg-[#fff1f6]">
+          <div className="h-3.5 overflow-hidden rounded-full bg-[#f5f7f9]">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-[#ff3d8d] to-[#df0e6b]"
+              className="h-full rounded-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb]"
               style={{ width: `${Math.min(100, Math.max(6, b.value))}%` }}
             />
           </div>
-          {b.note && <p className="mt-0.5 text-[12px] text-[#967184]">{b.note}</p>}
+          {b.note && <p className="mt-0.5 text-[12px] text-[#9ca3af]">{b.note}</p>}
         </div>
       ))}
     </div>
@@ -211,8 +211,8 @@ export function HubSpoke({
               width={nodeW}
               height={nodeH}
               rx={nodeH / 2}
-              fill="#fff1f6"
-              stroke="#f5c2d8"
+              fill="#f5f7f9"
+              stroke="#d1d5db"
               strokeWidth="1.5"
             />
             <text
@@ -279,15 +279,15 @@ export function FeedbackLoop({
         })}
         <defs>
           <linearGradient id="fl0" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#ff3d8d" />
-            <stop offset="100%" stopColor="#df0e6b" />
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#2563eb" />
           </linearGradient>
         </defs>
       </svg>
       <ul className="w-full space-y-2.5">
         {steps.map((s) => (
-          <li key={s.label} className="flex gap-3 rounded-xl border border-[#f5c2d8] bg-[#fffafc] px-3 py-2.5">
-            <span className="mt-0.5 text-[15px] font-bold text-[#ec1478]">{s.desc}</span>
+          <li key={s.label} className="flex gap-3 rounded-xl border border-[#d1d5db] bg-[#f8fafc] px-3 py-2.5">
+            <span className="mt-0.5 text-[15px] font-bold text-[#3b82f6]">{s.desc}</span>
           </li>
         ))}
       </ul>
@@ -306,26 +306,26 @@ export function Timeline({
       {phases.map((p, i) => (
         <div
           key={p.quarter}
-          className="flex flex-col rounded-2xl border border-[#f5c2d8] bg-white p-4 shadow-[0_10px_30px_-20px_rgba(189,24,97,0.3)]"
+          className="flex flex-col rounded-2xl border border-[#d1d5db] bg-white p-4 shadow-[0_10px_30px_-20px_rgba(47, 93, 115, 0.3)]"
         >
           <div className="flex items-center gap-2">
-            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#ff3d8d] to-[#df0e6b] text-[12px] font-bold text-white shadow-[0_6px_16px_-6px_rgba(236,20,120,0.7)]">
+            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#3b82f6] to-[#2563eb] text-[12px] font-bold text-white shadow-[0_6px_16px_-6px_rgba(59, 130, 246, 0.7)]">
               {i + 1}
             </span>
-            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#c00e62]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#2563eb]">
               {p.quarter}
             </p>
           </div>
-          <p className="mt-1.5 text-[15px] font-bold text-[#2d0a1f]">{p.title}</p>
+          <p className="mt-1.5 text-[15px] font-bold text-[#2f5d73]">{p.title}</p>
           <ul className="mt-1.5 space-y-1">
             {p.tasks.slice(0, 4).map((t) => (
-              <li key={t} className="flex gap-2 text-[13px] leading-snug text-[#6d4059]">
-                <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ec1478]" />
+              <li key={t} className="flex gap-2 text-[13px] leading-snug text-[#4b5563]">
+                <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
                 {t}
               </li>
             ))}
             {p.tasks.length > 4 && (
-              <li className="pl-3.5 text-[12px] font-semibold text-[#967184]">
+              <li className="pl-3.5 text-[12px] font-semibold text-[#9ca3af]">
                 +{p.tasks.length - 4} more tasks
               </li>
             )}
@@ -349,19 +349,19 @@ export function Compare({
 }) {
   const tone = (t?: string) =>
     t === "good"
-      ? "border-[#ffd6e7] bg-[#fffafc]"
+      ? "border-[#dbeafe] bg-[#f8fafc]"
       : t === "bad"
-        ? "border-[#ffe1e1] bg-[#fff7f7]"
-        : "border-[#f5c2d8] bg-white";
+        ? "border-[#ffe1e1] bg-[#f8fafc]"
+        : "border-[#d1d5db] bg-white";
   return (
     <div className="compare-deck grid gap-4 sm:grid-cols-2">
       {[a, b].map((c) => (
         <div key={c.title} className={`rounded-2xl border p-4 ${tone(c.tone)}`}>
-          <p className="text-[13px] font-bold text-[#2d0a1f]">{c.title}</p>
+          <p className="text-[13px] font-bold text-[#2f5d73]">{c.title}</p>
           <ul className="mt-2 space-y-1.5">
             {c.items.map((it) => (
-              <li key={it} className="flex gap-2 text-[13px] leading-snug text-[#6d4059]">
-                <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${c.tone === "bad" ? "bg-[#e5484d]" : "bg-[#ec1478]"}`} />
+              <li key={it} className="flex gap-2 text-[13px] leading-snug text-[#4b5563]">
+                <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${c.tone === "bad" ? "bg-[#e5484d]" : "bg-[#3b82f6]"}`} />
                 {it}
               </li>
             ))}
@@ -385,15 +385,15 @@ export function FlowChart({
           <div
             className={`w-full rounded-2xl px-4 py-3 text-center ${
               b.accent
-                ? "bg-gradient-to-r from-[#ff3d8d] to-[#df0e6b] text-white"
-                : "border border-[#f5c2d8] bg-[#fff1f6] text-[#2d0a1f]"
+                ? "bg-gradient-to-r from-[#3b82f6] to-[#2563eb] text-white"
+                : "border border-[#d1d5db] bg-[#f5f7f9] text-[#2f5d73]"
             }`}
           >
             <p className="text-[14px] font-bold">{b.label}</p>
-            {b.desc && <p className={`text-[12px] ${b.accent ? "text-white/90" : "text-[#6d4059]"}`}>{b.desc}</p>}
+            {b.desc && <p className={`text-[12px] ${b.accent ? "text-white/90" : "text-[#4b5563]"}`}>{b.desc}</p>}
           </div>
           {i < boxes.length - 1 && (
-            <svg className="h-4 w-4 text-[#ec1478]" viewBox="0 0 24 24" fill="none">
+            <svg className="h-4 w-4 text-[#3b82f6]" viewBox="0 0 24 24" fill="none">
               <path d="M4 12h14m-5-5 5 5-5 5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           )}
@@ -406,10 +406,10 @@ export function FlowChart({
 /* ---------- 9) Gauge type stat ---------- */
 export function GaugeStat({ value, label, sub }: { value: string; label: string; sub?: string }) {
   return (
-    <div className="gauge-grid rounded-2xl border border-[#f5c2d8] bg-[#fff1f6] px-5 py-6 text-center">
-      <p className="font-display text-4xl font-bold text-[#ec1478]">{value}</p>
-      <p className="mt-1 text-[13px] font-bold uppercase tracking-[0.1em] text-[#2d0a1f]">{label}</p>
-      {sub && <p className="mt-1 text-[12px] text-[#967184]">{sub}</p>}
+    <div className="gauge-grid rounded-2xl border border-[#d1d5db] bg-[#f5f7f9] px-5 py-6 text-center">
+      <p className="font-display text-4xl font-bold text-[#3b82f6]">{value}</p>
+      <p className="mt-1 text-[13px] font-bold uppercase tracking-[0.1em] text-[#2f5d73]">{label}</p>
+      {sub && <p className="mt-1 text-[12px] text-[#9ca3af]">{sub}</p>}
     </div>
   );
 }
@@ -417,7 +417,7 @@ export function GaugeStat({ value, label, sub }: { value: string; label: string;
 /* ---------- 10) Source tag (illustrative data labeller) ---------- */
 export function Illustrative() {
   return (
-    <p className="mt-3 rounded-lg bg-[#fff1f6] px-3 py-2 text-center text-[11.5px] font-medium text-[#967184]">
+    <p className="mt-3 rounded-lg bg-[#f5f7f9] px-3 py-2 text-center text-[11.5px] font-medium text-[#9ca3af]">
       * Illustrative estimates from trial testimony & public research — Google publishes no official signal weights.
     </p>
   );

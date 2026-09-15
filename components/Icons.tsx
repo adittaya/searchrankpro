@@ -26,8 +26,8 @@ export function LogoMark({ className = "" }: IconProps) {
     <svg viewBox="0 0 32 32" className={className} aria-hidden="true" fill="none">
       <defs>
         <linearGradient id="sr-lg" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#ff5ea3" />
-          <stop offset="1" stopColor="#cf0b64" />
+          <stop offset="0" stopColor="#3b82f6" />
+          <stop offset="1" stopColor="#2563eb" />
         </linearGradient>
         <linearGradient id="sr-sheen" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#ffffff" stopOpacity="0.32" />

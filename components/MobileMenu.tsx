@@ -34,7 +34,7 @@ export default function MobileMenu() {
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="grid h-11 w-11 place-items-center rounded-full bg-white text-[#2d0a1f] shadow-[inset_0_0_0_1.5px_#f6c9dc] transition hover:bg-[#fff1f6]"
+        className="grid h-11 w-11 place-items-center rounded-full bg-white text-[#2f5d73] shadow-[inset_0_0_0_1.5px_#d1d5db] transition hover:bg-[#f5f7f9]"
       >
         {open ? (
           <span aria-hidden="true" className="text-xl font-bold leading-none">×</span>
@@ -47,11 +47,11 @@ export default function MobileMenu() {
       <div
         aria-hidden="true"
         onClick={() => setOpen(false)}
-        className={`menu-backdrop fixed inset-0 z-40 bg-[#2d0a1f]/30 backdrop-blur-[2px] ${open ? "is-open" : ""}`}
+        className={`menu-backdrop fixed inset-0 z-40 bg-[#2f5d73]/30 backdrop-blur-[2px] ${open ? "is-open" : ""}`}
       />
 
       <div
-        className={`menu-panel fixed inset-x-4 top-[4.5rem] z-50 rounded-3xl border border-[#f6c9dc] bg-white/98 p-3 shadow-[0_24px_60px_-20px_rgba(189,24,97,0.4)] backdrop-blur-xl ${open ? "is-open" : ""}`}
+        className={`menu-panel fixed inset-x-4 top-[4.5rem] z-50 rounded-3xl border border-[#d1d5db] bg-white/98 p-3 shadow-[0_24px_60px_-20px_rgba(47, 93, 115, 0.4)] backdrop-blur-xl ${open ? "is-open" : ""}`}
         aria-hidden={!open}
         inert={!open}
       >
@@ -62,10 +62,10 @@ export default function MobileMenu() {
               href={href}
               onClick={() => setOpen(false)}
               tabIndex={open ? 0 : -1}
-              className="flex min-h-12 items-center justify-between rounded-2xl px-4 py-3 text-[15px] font-semibold text-[#2d0a1f] transition hover:bg-[#fff1f6]"
+              className="flex min-h-12 items-center justify-between rounded-2xl px-4 py-3 text-[15px] font-semibold text-[#2f5d73] transition hover:bg-[#f5f7f9]"
             >
               {label}
-              <IconArrowRight className="h-4 w-4 text-[#ec1478]" />
+              <IconArrowRight className="h-4 w-4 text-[#3b82f6]" />
             </a>
           ))}
         </nav>
@@ -76,7 +76,7 @@ export default function MobileMenu() {
         >
           Get instant access — ${PRODUCT.launchPrice}
         </a>
-        <p className="mt-2 pb-1 text-center text-xs text-[#967184]">
+        <p className="mt-2 pb-1 text-center text-xs text-[#9ca3af]">
           Lifetime updates · instant download
         </p>
       </div>

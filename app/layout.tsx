@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import { PRODUCT, SITE_NAME, SITE_URL } from "@/lib/site";
 import { GA4_ID } from "@/lib/analytics";
 import ViewTracker from "@/components/ViewTracker";
 import "./globals.css";
 
-const display = Fraunces({
+const display = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   style: ["normal", "italic"],
 });
 
-const body = Plus_Jakarta_Sans({
+const body = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#fffbfd",
+  themeColor: "#ffffff",
 };
 
 // Structured data: powers the site NAME + LOGO Google shows in search results.
@@ -124,7 +124,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${display.variable} ${body.variable} bg-[#fffbfd] text-[#2d0a1f] antialiased`}
+        className={`${display.variable} ${body.variable} bg-[#ffffff] text-[#1f2933] antialiased`}
       >
         <script
           type="application/ld+json"

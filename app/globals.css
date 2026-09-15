@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #fffbfd;
-  --color-blush: #fff1f6;
-  --color-blush-2: #fde4ee;
-  --color-line: #f6c9dc;
-  --color-berry: #2d0a1f;
-  --color-plum: #6d4059;
-  --color-plum-soft: #967184;
-  --color-pink: #ec1478;
-  --color-pink-deep: #c00e62;
-  --color-pink-ink: #8f0a4a;
-  --color-rose-soft: #ffe3ef;
-  --font-display: var(--font-display), "Fraunces", Georgia, serif;
+  --color-cream: #ffffff;
+  --color-blush: #f5f7f9;
+  --color-blush-2: #edf1f5;
+  --color-line: #d1d5db;
+  --color-berry: #2f5d73;
+  --color-plum: #4b5563;
+  --color-plum-soft: #9ca3af;
+  --color-pink: #3b82f6;
+  --color-pink-deep: #2563eb;
+  --color-pink-ink: #3f6f86;
+  --color-rose-soft: #eaf0f6;
+  --font-display: var(--font-display), "Playfair Display", Georgia, serif;
 }
 
 html {
@@ -26,7 +26,7 @@ body {
 }
 
 body {
-  font-family: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-family: var(--font-body), "Inter", system-ui, sans-serif;
   background: var(--color-cream);
   color: var(--color-berry);
   -webkit-tap-highlight-color: transparent;
@@ -35,7 +35,7 @@ body {
 }
 
 ::selection {
-  background: #ec1478;
+  background: #3b82f6;
   color: #fff;
 }
 
@@ -56,9 +56,9 @@ body {
    (faded/ghost content that looks like a rendering bug). */
 .glow-pink {
   background:
-    radial-gradient(ellipse 60% 42% at 50% 0%, rgba(236, 20, 120, 0.1), transparent 70%),
-    radial-gradient(ellipse 40% 32% at 88% 12%, rgba(255, 122, 170, 0.12), transparent 70%),
-    radial-gradient(ellipse 36% 30% at 8% 18%, rgba(255, 214, 231, 0.9), transparent 70%);
+    radial-gradient(ellipse 60% 42% at 50% 0%, rgba(59, 130, 246, 0.1), transparent 70%),
+    radial-gradient(ellipse 40% 32% at 88% 12%, rgba(96, 165, 250, 0.12), transparent 70%),
+    radial-gradient(ellipse 36% 30% at 8% 18%, rgba(214, 230, 240, 0.9), transparent 70%);
 }
 
 .grid-faint {
@@ -72,8 +72,8 @@ body {
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(189, 24, 97, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(189, 24, 97, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(47, 93, 115, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 93, 115, 0.055) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: radial-gradient(ellipse 78% 64% at 50% 0%, #000 52%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 78% 64% at 50% 0%, #000 52%, transparent 100%);
@@ -92,8 +92,8 @@ body {
   z-index: -1;
   background: radial-gradient(
     46% 48% at 50% 42%,
-    rgba(236, 20, 120, 0.28),
-    rgba(255, 122, 170, 0.14) 48%,
+    rgba(59, 130, 246, 0.28),
+    rgba(96, 165, 250, 0.14) 48%,
     transparent 74%
   );
   filter: blur(32px);
@@ -107,7 +107,7 @@ body {
   gap: 0.55rem;
   border-radius: 999px;
   font-weight: 700;
-  font-family: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-family: var(--font-body), "Inter", system-ui, sans-serif;
   letter-spacing: -0.01em;
   line-height: 1.15;
   min-height: 52px;
@@ -131,9 +131,9 @@ body {
 
 .btn-primary {
   color: #fff;
-  background-image: linear-gradient(180deg, #ff3d8d, #df0e6b);
+  background-image: linear-gradient(180deg, #3b82f6, #2563eb);
   box-shadow:
-    0 14px 34px -12px rgba(236, 20, 120, 0.55),
+    0 14px 34px -12px rgba(59, 130, 246, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
@@ -141,7 +141,7 @@ body {
   filter: brightness(1.04);
   transform: translateY(-2px);
   box-shadow:
-    0 20px 44px -12px rgba(236, 20, 120, 0.62),
+    0 20px 44px -12px rgba(59, 130, 246, 0.62),
     inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
@@ -223,10 +223,10 @@ html.js-on [data-fx] {
 }
 
 .card {
-  border: 1px solid #f5c2d8;
+  border: 1px solid var(--color-line);
   background: #fff;
   border-radius: 1.25rem;
-  box-shadow: 0 10px 30px -18px rgba(189, 24, 97, 0.25);
+  box-shadow: 0 10px 30px -18px rgba(47, 93, 115, 0.25);
   transition:
     border-color 0.3s var(--ease-out),
     transform 0.3s var(--ease-out),
@@ -234,8 +234,8 @@ html.js-on [data-fx] {
 }
 
 .card:hover {
-  border-color: #f087b6;
-  box-shadow: 0 18px 44px -18px rgba(236, 20, 120, 0.35);
+  border-color: #93c5fd;
+  box-shadow: 0 18px 44px -18px rgba(59, 130, 246, 0.35);
   transform: translateY(-3px);
 }
 
@@ -244,12 +244,12 @@ html.js-on [data-fx] {
   align-items: center;
   gap: 0.4rem;
   border-radius: 999px;
-  border: 1px solid #f5c2d8;
+  border: 1px solid var(--color-line);
   background: #fff;
   padding: 0.42rem 0.85rem;
   font-size: 0.76rem;
   font-weight: 600;
-  color: #7c4a61;
+  color: #4b5563;
   max-width: 100%;
 }
 
@@ -259,16 +259,16 @@ html.js-on [data-fx] {
   flex-shrink: 0;
   border-radius: 999px;
   background: var(--color-pink);
-  box-shadow: 0 0 0 0 rgba(236, 20, 120, 0.5);
+  box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
   animation: dot-pulse 2s infinite;
 }
 
 @keyframes dot-pulse {
   70% {
-    box-shadow: 0 0 0 8px rgba(236, 20, 120, 0);
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(236, 20, 120, 0);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
   }
 }
 
@@ -316,7 +316,7 @@ details.card summary::-webkit-details-marker {
   display: none;
 }
 details.card[open] {
-  border-color: #f087b6;
+  border-color: #93c5fd;
 }
 
 /* sticky buy bar */
@@ -341,27 +341,27 @@ details.card[open] {
     margin: 13mm 14mm 15mm 14mm;
     @top-left {
       content: "THE GOOGLE SEARCH RANKING SYSTEM";
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-family: "Inter", system-ui, sans-serif;
       font-size: 6.5pt;
       font-weight: 700;
       letter-spacing: 0.1em;
-      color: #8f0a4a;
+      color: #3f6f86;
     }
     @top-right {
       content: none;
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-family: "Inter", system-ui, sans-serif;
       font-size: 6.5pt;
       font-weight: 600;
       letter-spacing: 0.03em;
-      color: #967184;
+      color: #9ca3af;
       white-space: nowrap;
     }
     @bottom-center {
       content: counter(page);
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-family: "Inter", system-ui, sans-serif;
       font-size: 8.5pt;
       font-weight: 700;
-      color: #c00e62;
+      color: #2563eb;
     }
   }
 
@@ -419,7 +419,7 @@ details.card[open] {
     page-break-after: always;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    background: #fff1f6 !important;
+    background: #f5f7f9 !important;
     border-radius: 0;
     box-shadow: none;
   }
@@ -429,7 +429,7 @@ details.card[open] {
     page-break-before: always;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    background: #2d0a1f !important;
+    background: #2f5d73 !important;
     min-height: 92vh;
     display: flex !important;
     flex-direction: column;
@@ -462,7 +462,7 @@ details.card[open] {
     border-radius: 0 !important;
   }
   .book-toc .toc-dots {
-    border-bottom: 1px dotted #d9a7bd;
+    border-bottom: 1px dotted #9ca3af;
   }
 
   .book-chapter:first-of-type,

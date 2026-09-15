@@ -26,7 +26,7 @@ const meta: BookMeta = {
     "How Google actually ranks pages — the systems, the signals, and the 12-month strategy to earn your place. Read in 40 minutes, understand for years.",
   author: "SearchRank Pro · H. Aditya",
   priceLine: (
-    <p className="text-[13px] font-bold text-[#8f0a4a]">
+    <p className="text-[13px] font-bold text-[#3f6f86]">
       Visual chapters · full 32-chapter PDF + tools included with the playbook — ${PRODUCT.launchPrice}
     </p>
   ),

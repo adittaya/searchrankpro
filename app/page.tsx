@@ -37,7 +37,7 @@ const CTA_SUB = `$${PRODUCT.value} value · one-time · lifetime updates`;
 
 function Stars() {
   return (
-    <span className="flex items-center gap-0.5 text-[#ec1478]" aria-label="5 out of 5 stars">
+    <span className="flex items-center gap-0.5 text-[#3b82f6]" aria-label="5 out of 5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} viewBox="0 0 20 20" className="h-4 w-4 fill-current" aria-hidden="true">
           <path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9 4.7 17.6l1-5.8L1.5 7.7l5.9-.9z" />
@@ -93,12 +93,12 @@ function Section({
   tint?: boolean;
 }) {
   return (
-    <section id={id} className={`relative w-full scroll-mt-28 ${tint ? "bg-[#fff1f6]/60" : ""}`}>
+    <section id={id} className={`relative w-full scroll-mt-28 ${tint ? "bg-[#f5f7f9]/60" : ""}`}>
       <div className="mx-auto w-full max-w-6xl px-5 py-14 safe-pad sm:px-6 md:py-24">
         {eyebrow && (
           <p
             data-fx="up"
-            className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-[#f6c9dc] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#c00e62]"
+            className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]"
           >
             <span className="dot-pulse" />
             <span className="truncate">{eyebrow}</span>
@@ -106,12 +106,12 @@ function Section({
         )}
         <h2
           data-fx="up"
-          className="font-display max-w-3xl text-balance text-[28px] font-semibold leading-[1.12] tracking-[-0.01em] text-[#2d0a1f] sm:text-4xl md:text-5xl"
+          className="font-display max-w-3xl text-balance text-[28px] font-semibold leading-[1.12] tracking-[-0.01em] text-[#2f5d73] sm:text-4xl md:text-5xl"
         >
           {title}
         </h2>
         {lead && (
-          <p data-fx="up" className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#6d4059] md:text-lg">
+          <p data-fx="up" className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#4b5563] md:text-lg">
             {lead}
           </p>
         )}
@@ -124,10 +124,10 @@ function Section({
 function CheckItem({ children }: { children: ReactNode }) {
   return (
     <li className="flex items-start gap-3">
-      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#ec1478]/12 text-[#c00e62]">
+      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#3b82f6]/12 text-[#2563eb]">
         <IconCheck className="h-3.5 w-3.5" />
       </span>
-      <span className="text-sm leading-relaxed text-[#4a2438]">{children}</span>
+      <span className="text-sm leading-relaxed text-[#1f2933]">{children}</span>
     </li>
   );
 }
@@ -136,9 +136,9 @@ function CheckItem({ children }: { children: ReactNode }) {
 
 function Announcement() {
   return (
-    <div className="fixed top-0 z-[60] flex h-9 w-full items-center justify-center bg-[#2d0a1f] px-4 text-center">
+    <div className="fixed top-0 z-[60] flex h-9 w-full items-center justify-center bg-[#2f5d73] px-4 text-center">
       <p className="truncate text-[12px] font-semibold tracking-wide text-white sm:text-[13px]">
-        Launch offer — <span className="text-[#ffb3d1]">${PRODUCT.launchPrice} today</span>
+        Launch offer — <span className="text-[#93c5fd]">${PRODUCT.launchPrice} today</span>
         <span className="text-white/60"> (reg. ${PRODUCT.price}) · lifetime updates included</span>
       </p>
     </div>
@@ -154,24 +154,24 @@ function NavBar() {
     ["#faq", "FAQ"],
   ] as const;
   return (
-    <header className="fixed top-9 z-50 w-full border-b border-[#f6c9dc]/70 bg-white/85 backdrop-blur-xl">
+    <header className="fixed top-9 z-50 w-full border-b border-[#d1d5db]/70 bg-white/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-4 safe-pad sm:px-6">
         <a href="#top" className="flex min-h-11 min-w-0 items-center gap-2.5" aria-label="SearchRank Pro — back to top">
           <IconLogo className="h-8 w-8 shrink-0" />
-          <span className="font-display flex min-w-0 items-center text-[15px] font-bold tracking-tight text-[#2d0a1f]">
+          <span className="font-display flex min-w-0 items-center text-[15px] font-bold tracking-tight text-[#2f5d73]">
             <span className="truncate">SearchRank</span>
-            <span className="ml-1.5 shrink-0 rounded-md bg-[#ec1478] px-1.5 py-1 text-[10px] font-extrabold uppercase leading-none tracking-[0.08em] text-white">
+            <span className="ml-1.5 shrink-0 rounded-md bg-[#3b82f6] px-1.5 py-1 text-[10px] font-extrabold uppercase leading-none tracking-[0.08em] text-white">
               Pro
             </span>
-            <span className="ml-2 hidden shrink-0 text-xs font-semibold text-[#967184] sm:inline">
+            <span className="ml-2 hidden shrink-0 text-xs font-semibold text-[#9ca3af] sm:inline">
               {PRODUCT.edition}
             </span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-[#6d4059] md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-[#4b5563] md:flex" aria-label="Primary">
           {links.map(([href, label]) => (
-            <a key={href} href={href} className="rounded-md py-2 transition hover:text-[#ec1478]">
+            <a key={href} href={href} className="rounded-md py-2 transition hover:text-[#3b82f6]">
               {label}
             </a>
           ))}
@@ -197,7 +197,7 @@ function Hero() {
         <div className="min-w-0">
           <div
             id="hero-badge"
-            className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-[#f6c9dc] bg-white/90 px-4 py-1.5 text-xs font-semibold text-[#8f0a4a] shadow-sm"
+            className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-[#d1d5db] bg-white/90 px-4 py-1.5 text-xs font-semibold text-[#3f6f86] shadow-sm"
           >
             <span className="dot-pulse" />
             <span className="truncate">{PRODUCT.edition} · from official docs & trial record</span>
@@ -205,15 +205,15 @@ function Hero() {
 
           <h1
             id="hero-title"
-            className="font-display text-balance text-[36px] font-semibold leading-[1.06] tracking-[-0.015em] text-[#2d0a1f] sm:text-5xl lg:text-[58px]"
+            className="font-display text-balance text-[36px] font-semibold leading-[1.06] tracking-[-0.015em] text-[#2f5d73] sm:text-5xl lg:text-[58px]"
           >
             Stop guessing how Google ranks pages.{" "}
-            <span className="bg-gradient-to-r from-[#ec1478] via-[#ff4d94] to-[#b3125f] bg-clip-text italic text-transparent">
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#2563eb] bg-clip-text italic text-transparent">
               Learn the system.
             </span>
           </h1>
 
-          <p id="hero-sub" className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#6d4059] md:text-lg">
+          <p id="hero-sub" className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#4b5563] md:text-lg">
             {PRODUCT.tagline} A 100-page playbook with a working execution system — so you know
             exactly what to do this week, not just what Google does behind the curtain.
           </p>
@@ -225,8 +225,8 @@ function Hero() {
 
           <div id="hero-trust" className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
             <Stars />
-            <p className="text-[13px] font-medium text-[#6d4059]">
-              <span className="font-bold text-[#2d0a1f]">4.9/5</span> from early readers · instant download · pay once
+            <p className="text-[13px] font-medium text-[#4b5563]">
+              <span className="font-bold text-[#2f5d73]">4.9/5</span> from early readers · instant download · pay once
             </p>
           </div>
 
@@ -238,7 +238,7 @@ function Hero() {
               "Beginner friendly",
             ].map((t) => (
               <span key={t} className="chip">
-                <IconCheck className="h-3.5 w-3.5 text-[#ec1478]" />
+                <IconCheck className="h-3.5 w-3.5 text-[#3b82f6]" />
                 {t}
               </span>
             ))}
@@ -247,7 +247,7 @@ function Hero() {
 
         <div id="hero-cover" className="cover-glow relative mx-auto w-full max-w-[270px] sm:max-w-[320px] lg:max-w-[360px]" style={{ perspective: "1000px" }}>
           <div id="hero-cover-inner" className="relative">
-            <div className="relative overflow-hidden rounded-[1.4rem] bg-white shadow-[0_30px_70px_-24px_rgba(189,24,97,0.45)] ring-1 ring-[#f6c9dc]">
+            <div className="relative overflow-hidden rounded-[1.4rem] bg-white shadow-[0_30px_70px_-24px_rgba(47, 93, 115, 0.45)] ring-1 ring-[#d1d5db]">
               <Image
                 src="/cover.webp"
                 alt="The Google Search Ranking Playbook — 2026 Edition cover"
@@ -258,13 +258,13 @@ function Hero() {
                 className="h-auto w-full"
               />
             </div>
-            <div className="ico-float absolute -bottom-5 -left-3 rounded-2xl border border-[#f6c9dc] bg-white/95 px-4 py-3 shadow-xl backdrop-blur sm:-left-8">
-              <p className="font-display text-lg font-bold text-[#2d0a1f]">${PRODUCT.value}</p>
-              <p className="text-xs font-medium text-[#967184]">value · yours for ${PRODUCT.price}</p>
+            <div className="ico-float absolute -bottom-5 -left-3 rounded-2xl border border-[#d1d5db] bg-white/95 px-4 py-3 shadow-xl backdrop-blur sm:-left-8">
+              <p className="font-display text-lg font-bold text-[#2f5d73]">${PRODUCT.value}</p>
+              <p className="text-xs font-medium text-[#9ca3af]">value · yours for ${PRODUCT.price}</p>
             </div>
-            <div className="absolute -right-2 -top-4 rounded-2xl border border-[#f6c9dc] bg-white/95 px-3.5 py-2.5 shadow-lg backdrop-blur sm:-right-6">
-              <p className="flex items-center gap-1.5 text-xs font-bold text-[#2d0a1f]">
-                <span className="grid h-5 w-5 place-items-center rounded-full bg-[#ec1478]/12 text-[#c00e62]">
+            <div className="absolute -right-2 -top-4 rounded-2xl border border-[#d1d5db] bg-white/95 px-3.5 py-2.5 shadow-lg backdrop-blur sm:-right-6">
+              <p className="flex items-center gap-1.5 text-xs font-bold text-[#2f5d73]">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-[#3b82f6]/12 text-[#2563eb]">
                   <IconCheck className="h-3 w-3" />
                 </span>
                 32 chapters · 100 pages
@@ -278,7 +278,7 @@ function Hero() {
       <div className="mx-auto mt-10 w-full max-w-6xl px-5 md:mt-16 md:px-6">
         <dl
           id="hero-stats"
-          className="grid grid-cols-2 gap-x-4 gap-y-7 rounded-3xl border border-[#f6c9dc] bg-white/80 px-6 py-8 shadow-[0_16px_40px_-24px_rgba(189,24,97,0.3)] backdrop-blur sm:grid-cols-3 lg:grid-cols-6"
+          className="grid grid-cols-2 gap-x-4 gap-y-7 rounded-3xl border border-[#d1d5db] bg-white/80 px-6 py-8 shadow-[0_16px_40px_-24px_rgba(47, 93, 115, 0.3)] backdrop-blur sm:grid-cols-3 lg:grid-cols-6"
         >
           {[
             [32, "chapters"],
@@ -289,10 +289,10 @@ function Hero() {
             [10, "niche playbooks"],
           ].map(([n, l]) => (
             <div key={l as string} className="text-center">
-              <dd className="font-display text-3xl font-bold text-[#2d0a1f] md:text-4xl">
+              <dd className="font-display text-3xl font-bold text-[#2f5d73] md:text-4xl">
                 <span data-count={String(n)}>{n}</span>
               </dd>
-              <dt className="mt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#967184]">{l}</dt>
+              <dt className="mt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">{l}</dt>
             </div>
           ))}
         </dl>
@@ -313,15 +313,15 @@ function Proof() {
     "Works in Notion · Sheets · Excel",
   ];
   return (
-    <div className="border-y border-[#f6c9dc] bg-white py-4">
+    <div className="border-y border-[#d1d5db] bg-white py-4">
       <div className="relative overflow-hidden">
         <div className="animate-marquee flex w-max items-center gap-3 pr-3">
           {[...items, ...items].map((t, i) => (
             <span
               key={i}
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#fff1f6] px-4 py-2 text-[13px] font-semibold text-[#8f0a4a]"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#f5f7f9] px-4 py-2 text-[13px] font-semibold text-[#3f6f86]"
             >
-              <IconCheck className="h-3.5 w-3.5 text-[#ec1478]" />
+              <IconCheck className="h-3.5 w-3.5 text-[#3b82f6]" />
               {t}
             </span>
           ))}
@@ -343,25 +343,25 @@ function Problem() {
       <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
         {[
           {
-            icon: <IconHidden className="h-6 w-6 text-[#ec1478]" animated />,
+            icon: <IconHidden className="h-6 w-6 text-[#3b82f6]" animated />,
             t: "You optimise for tactics, not systems",
             d: "You chase the current trend — while ranking decisions are made by cumulative systems most advice never mentions.",
           },
           {
-            icon: <IconSystems className="h-6 w-6 text-[#ec1478]" animated />,
+            icon: <IconSystems className="h-6 w-6 text-[#3b82f6]" animated />,
             t: "You learn from folklore",
             d: "Most SEO content recycles half-remembered folklore from people selling hosting, tools, or agencies. Bias is built in.",
           },
           {
-            icon: <IconContentSm className="h-6 w-6 text-[#ec1478]" animated />,
+            icon: <IconContentSm className="h-6 w-6 text-[#3b82f6]" animated />,
             t: "You measure the wrong numbers",
             d: "Rankings alone won't tell you what Google thinks of your site. Without the right metrics, every fix is a guess.",
           },
         ].map((c) => (
           <div key={c.t} data-fx="up" className="card p-6">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fff1f6]">{c.icon}</span>
-            <h3 className="font-display mt-4 text-lg font-semibold text-[#2d0a1f]">{c.t}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#6d4059]">{c.d}</p>
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f5f7f9]">{c.icon}</span>
+            <h3 className="font-display mt-4 text-lg font-semibold text-[#2f5d73]">{c.t}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">{c.d}</p>
           </div>
         ))}
       </div>
@@ -374,32 +374,32 @@ function Problem() {
 function Learn() {
   const items = [
     {
-      icon: <IconPipeline className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconPipeline className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "How search really works",
       d: "Crawl → index → render → retrieval → ranking, explained start to finish. Understand the pipeline before touching a setting.",
     },
     {
-      icon: <IconSystems className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconSystems className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "The named ranking systems",
       d: "PageRank, BERT, RankBrain, neural matching, passage ranking — each with one practical implication for your pages.",
     },
     {
-      icon: <IconHidden className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconHidden className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "The layer Google never advertised",
       d: "NavBoost, click satisfaction, and Chrome-derived signals — from sworn testimony in United States v. Google.",
     },
     {
-      icon: <IconFreshness className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconFreshness className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "What core updates actually reward",
       d: "Helpfulness, E-E-A-T, information gain — as a checklist. Diagnose drops and recover before the next update.",
     },
     {
-      icon: <IconTechnical className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconTechnical className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Technical SEO that earns its keep",
       d: "Indexation, canonicals, Core Web Vitals, schema — a 29-point audit with the fix for every failure mode.",
     },
     {
-      icon: <IconAi className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconAi className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Ranking in the AI-search era",
       d: "AI Overviews, AI Mode, and GEO. Become the source AI answers cite — with extractable structures.",
     },
@@ -415,9 +415,9 @@ function Learn() {
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {items.map((it) => (
           <div key={it.t} data-fx="up" className="card p-6">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fff1f6]">{it.icon}</span>
-            <h3 className="font-display mt-4 text-lg font-semibold text-[#2d0a1f]">{it.t}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#6d4059]">{it.d}</p>
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f5f7f9]">{it.icon}</span>
+            <h3 className="font-display mt-4 text-lg font-semibold text-[#2f5d73]">{it.t}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">{it.d}</p>
           </div>
         ))}
       </div>
@@ -431,19 +431,19 @@ function How() {
   const steps = [
     {
       n: "01",
-      icon: <IconRead className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconRead className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Read the playbook",
       d: "One chapter builds on the last. Beginners read Parts I–II slowly; marketers and developers jump to their domains.",
     },
     {
       n: "02",
-      icon: <IconImport className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconImport className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Import the system",
       d: "Five minutes. Three CSVs into Notion, Sheets, Excel, Airtable, or ClickUp — a full SEO operating system.",
     },
     {
       n: "03",
-      icon: <IconExecute className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconExecute className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Execute weekly",
       d: "Run the roadmap tasks, mark done only when exit criteria pass, and let decision gates pace you.",
     },
@@ -459,15 +459,15 @@ function How() {
         {steps.map((s, i) => (
           <div key={s.n} data-fx="up" className="relative">
             {i < steps.length - 1 && (
-              <div className="absolute left-full top-10 hidden h-px w-6 bg-gradient-to-r from-[#f087b6] to-transparent md:block" />
+              <div className="absolute left-full top-10 hidden h-px w-6 bg-gradient-to-r from-[#93c5fd] to-transparent md:block" />
             )}
             <div className="card h-full p-6">
               <div className="flex items-center justify-between">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fff1f6]">{s.icon}</span>
-                <span className="font-display text-sm font-bold text-[#d9a9bd]">{s.n}</span>
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f5f7f9]">{s.icon}</span>
+                <span className="font-display text-sm font-bold text-[#9ca3af]">{s.n}</span>
               </div>
-              <h3 className="font-display mt-4 text-lg font-semibold text-[#2d0a1f]">{s.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#6d4059]">{s.d}</p>
+              <h3 className="font-display mt-4 text-lg font-semibold text-[#2f5d73]">{s.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">{s.d}</p>
             </div>
           </div>
         ))}
@@ -499,16 +499,16 @@ function Inside() {
       <div className="space-y-3">
         {parts.map((pt) => (
           <div key={pt.p} data-fx="up" className="card flex flex-col gap-2 p-5 sm:flex-row sm:items-center sm:gap-6">
-            <span className="font-display w-24 shrink-0 text-sm font-bold tracking-wide text-[#c00e62]">{pt.p}</span>
+            <span className="font-display w-24 shrink-0 text-sm font-bold tracking-wide text-[#2563eb]">{pt.p}</span>
             <div className="min-w-0 flex-1">
-              <h3 className="font-display font-semibold text-[#2d0a1f]">{pt.name}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-[#6d4059]">{pt.d}</p>
+              <h3 className="font-display font-semibold text-[#2f5d73]">{pt.name}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-[#4b5563]">{pt.d}</p>
             </div>
-            <span className="w-fit shrink-0 rounded-full border border-[#f6c9dc] bg-[#fff1f6] px-3 py-1 text-xs font-semibold text-[#8f0a4a]">{pt.ch}</span>
+            <span className="w-fit shrink-0 rounded-full border border-[#d1d5db] bg-[#f5f7f9] px-3 py-1 text-xs font-semibold text-[#3f6f86]">{pt.ch}</span>
           </div>
         ))}
-        <div data-fx="up" className="rounded-2xl border border-dashed border-[#f087b6] bg-white p-5 text-sm leading-relaxed text-[#4a2438]">
-          <span className="font-bold text-[#c00e62]">Plus six appendices.</span> Named-systems reference,
+        <div data-fx="up" className="rounded-2xl border border-dashed border-[#93c5fd] bg-white p-5 text-sm leading-relaxed text-[#1f2933]">
+          <span className="font-bold text-[#2563eb]">Plus six appendices.</span> Named-systems reference,
           29-point audit, recovery checklist, glossary, 14-symptom table, and four ready-to-use templates.
         </div>
       </div>
@@ -571,10 +571,10 @@ function Testimonials() {
       lead="4.9 out of 5 from 200+ early readers — bloggers, marketers, and consultants."
     >
       <div className="mb-8 flex flex-wrap items-center gap-3" data-fx="up">
-        <span className="inline-flex items-center gap-2 rounded-full border border-[#f6c9dc] bg-white px-4 py-2 shadow-sm">
+        <span className="inline-flex items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-2 shadow-sm">
           <Stars />
-          <span className="text-sm font-bold text-[#2d0a1f]">4.9/5</span>
-          <span className="text-[13px] font-medium text-[#967184]">· 200+ verified early readers</span>
+          <span className="text-sm font-bold text-[#2f5d73]">4.9/5</span>
+          <span className="text-[13px] font-medium text-[#9ca3af]">· 200+ verified early readers</span>
         </span>
       </div>
       <div className="grid gap-4 md:grid-cols-3 md:gap-5">
@@ -587,24 +587,24 @@ function Testimonials() {
                 width={48}
                 height={48}
                 loading="lazy"
-                className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-[#f6c9dc]"
+                className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-[#d1d5db]"
               />
               <div className="min-w-0">
-                <p className="truncate text-sm font-bold text-[#2d0a1f]">{t.n}</p>
-                <p className="truncate text-xs text-[#967184]">{t.r}</p>
+                <p className="truncate text-sm font-bold text-[#2f5d73]">{t.n}</p>
+                <p className="truncate text-xs text-[#9ca3af]">{t.r}</p>
               </div>
             </div>
             <div className="mt-4">
               <Stars />
             </div>
-            <p className="font-display mt-2 text-[15px] font-semibold leading-snug text-[#2d0a1f]">
+            <p className="font-display mt-2 text-[15px] font-semibold leading-snug text-[#2f5d73]">
               “{t.headline}”
             </p>
-            <blockquote className="mt-2 flex-1 text-sm leading-relaxed text-[#4a2438]">
+            <blockquote className="mt-2 flex-1 text-sm leading-relaxed text-[#1f2933]">
               {t.q}
             </blockquote>
-            <figcaption className="mt-5 flex items-center gap-1.5 border-t border-[#fbe3ee] pt-4 text-xs font-semibold text-[#8f0a4a]">
-              <span className="grid h-4 w-4 place-items-center rounded-full bg-[#ec1478] text-white">
+            <figcaption className="mt-5 flex items-center gap-1.5 border-t border-[#e5ebf1] pt-4 text-xs font-semibold text-[#3f6f86]">
+              <span className="grid h-4 w-4 place-items-center rounded-full bg-[#3b82f6] text-white">
                 <IconCheck className="h-2.5 w-2.5" />
               </span>
               {t.d}
@@ -620,9 +620,9 @@ function Testimonials() {
 
 function MidCta() {
   return (
-    <div className="bg-[#2d0a1f] py-14">
+    <div className="bg-[#2f5d73] py-14">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-5 text-center safe-pad sm:px-6">
-        <p data-fx="up" className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#ffb3d1]">
+        <p data-fx="up" className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#93c5fd]">
           Ready when you are
         </p>
         <h2 data-fx="up" className="font-display max-w-2xl text-balance text-2xl font-semibold text-white md:text-4xl">
@@ -651,9 +651,9 @@ function Included() {
     >
       <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
         <div data-fx="left" className="card p-6 md:p-8">
-          <h3 className="font-display flex items-center gap-2.5 text-lg font-semibold text-[#2d0a1f]">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#fff1f6]">
-              <IconIncluded className="h-5 w-5 text-[#ec1478]" />
+          <h3 className="font-display flex items-center gap-2.5 text-lg font-semibold text-[#2f5d73]">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f5f7f9]">
+              <IconIncluded className="h-5 w-5 text-[#3b82f6]" />
             </span>
             The Playbook — PDF + Word
           </h3>
@@ -666,9 +666,9 @@ function Included() {
         </div>
 
         <div data-fx="right" className="card p-6 md:p-8">
-          <h3 className="font-display flex items-center gap-2.5 text-lg font-semibold text-[#2d0a1f]">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#fff1f6]">
-              <IconContentArt className="h-5 w-5 text-[#ec1478]" />
+          <h3 className="font-display flex items-center gap-2.5 text-lg font-semibold text-[#2f5d73]">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f5f7f9]">
+              <IconContentArt className="h-5 w-5 text-[#3b82f6]" />
             </span>
             The execution kit — 3 databases
           </h3>
@@ -689,19 +689,19 @@ function Included() {
 function System() {
   const dbs = [
     {
-      icon: <IconRoadmap className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconRoadmap className="h-6 w-6 text-[#3b82f6]" animated />,
       name: "Roadmap_Tasks — the 12-month engine",
       rows: ["Phase 1 · wk 5 — Build topic map", "Phase 1 · wk 8 — Publish cluster", "GATE CHECK — impressions rising"],
       note: "26 sequenced tasks across 5 phases. Advance on exit criteria, not the calendar.",
     },
     {
-      icon: <IconContentArt className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconContentArt className="h-6 w-6 text-[#3b82f6]" animated />,
       name: "Content_Tracker — topical authority",
       rows: ["Pasta pillar — Idea", "Switch explainer — Published", "Time-blocking data — Drafting"],
       note: "One row per article, mapped to clusters, intents, formats, and internal links.",
     },
     {
-      icon: <IconAudit className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconAudit className="h-6 w-6 text-[#3b82f6]" animated />,
       name: "Technical_Audit — quarterly checklist",
       rows: ["Indexation — 8 checks", "Performance & CWV — 6 checks", "Schema & content — 6 checks"],
       note: "29 pass/fail checks, each with how-to-check and the chapter to read if it fails.",
@@ -719,18 +719,18 @@ function System() {
         {dbs.map((db) => (
           <div key={db.name} data-fx="up" className="card flex h-full flex-col p-6">
             <div className="mb-4 flex items-center gap-3">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#fff1f6]">{db.icon}</span>
-              <h3 className="font-display text-[15px] font-semibold leading-tight text-[#2d0a1f]">{db.name}</h3>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#f5f7f9]">{db.icon}</span>
+              <h3 className="font-display text-[15px] font-semibold leading-tight text-[#2f5d73]">{db.name}</h3>
             </div>
             <div className="space-y-2">
               {db.rows.map((r) => (
-                <div key={r} className="flex items-center gap-2 rounded-xl bg-[#fff7fa] px-3 py-2 text-xs font-medium text-[#4a2438] ring-1 ring-[#fbe3ee]">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ec1478]" />
+                <div key={r} className="flex items-center gap-2 rounded-xl bg-[#f8fafc] px-3 py-2 text-xs font-medium text-[#1f2933] ring-1 ring-[#e5ebf1]">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
                   <span className="truncate">{r}</span>
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-xs leading-relaxed text-[#967184]">{db.note}</p>
+            <p className="mt-4 text-xs leading-relaxed text-[#9ca3af]">{db.note}</p>
           </div>
         ))}
       </div>
@@ -768,8 +768,8 @@ function Different() {
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
         {bullets.map((b) => (
           <div key={b.t} data-fx="up" className="card p-6">
-            <h3 className="font-display font-semibold text-[#2d0a1f]">{b.t}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#6d4059]">{b.d}</p>
+            <h3 className="font-display font-semibold text-[#2f5d73]">{b.t}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">{b.d}</p>
           </div>
         ))}
       </div>
@@ -790,23 +790,23 @@ function Compare() {
   ];
 
   return (
-    <section id="compare" className="w-full scroll-mt-28 bg-[#fff1f6]/60">
+    <section id="compare" className="w-full scroll-mt-28 bg-[#f5f7f9]/60">
       <div className="mx-auto w-full max-w-6xl px-5 py-14 safe-pad sm:px-6 md:py-24">
-        <p data-fx="up" className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#f6c9dc] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#c00e62]">
+        <p data-fx="up" className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
           <span className="dot-pulse" /> The comparison
         </p>
-        <h2 data-fx="up" className="font-display max-w-3xl text-balance text-[28px] font-semibold leading-[1.12] text-[#2d0a1f] sm:text-4xl md:text-5xl">
+        <h2 data-fx="up" className="font-display max-w-3xl text-balance text-[28px] font-semibold leading-[1.12] text-[#2f5d73] sm:text-4xl md:text-5xl">
           The system vs. the alternatives you use now.
         </h2>
 
         {/* desktop table */}
-        <div data-fx="up" className="mt-10 hidden overflow-hidden rounded-3xl border border-[#f6c9dc] bg-white shadow-sm md:block">
+        <div data-fx="up" className="mt-10 hidden overflow-hidden rounded-3xl border border-[#d1d5db] bg-white shadow-sm md:block">
           <table className="w-full border-collapse text-left text-sm">
             <caption className="sr-only">Bundle compared to free blogs and one-off audits</caption>
             <thead>
-              <tr className="bg-[#fff7fa] text-xs uppercase tracking-wider text-[#967184]">
+              <tr className="bg-[#f8fafc] text-xs uppercase tracking-wider text-[#9ca3af]">
                 <th className="px-5 py-4 font-bold">What you get</th>
-                <th className="bg-[#ec1478] px-5 py-4">
+                <th className="bg-[#3b82f6] px-5 py-4">
                   <span className="font-display flex items-center gap-2 text-sm font-bold normal-case tracking-normal text-white">
                     <IconCheck className="h-4 w-4" /> This bundle
                   </span>
@@ -817,11 +817,11 @@ function Compare() {
             </thead>
             <tbody>
               {rows.map(([label, ours, free, audit], i) => (
-                <tr key={label} className={`border-t border-[#fbe3ee] ${i % 2 ? "bg-[#fffbfd]" : "bg-white"}`}>
-                  <td className="px-5 py-4 font-medium text-[#4a2438]">{label}</td>
-                  <td className="bg-[#fff1f6] px-5 py-4 font-bold text-[#8f0a4a]">{ours}</td>
-                  <td className="px-5 py-4 text-[#6d4059]">{free}</td>
-                  <td className="px-5 py-4 text-[#6d4059]">{audit}</td>
+                <tr key={label} className={`border-t border-[#e5ebf1] ${i % 2 ? "bg-[#ffffff]" : "bg-white"}`}>
+                  <td className="px-5 py-4 font-medium text-[#1f2933]">{label}</td>
+                  <td className="bg-[#f5f7f9] px-5 py-4 font-bold text-[#3f6f86]">{ours}</td>
+                  <td className="px-5 py-4 text-[#4b5563]">{free}</td>
+                  <td className="px-5 py-4 text-[#4b5563]">{audit}</td>
                 </tr>
               ))}
             </tbody>
@@ -832,17 +832,17 @@ function Compare() {
         <div className="mt-8 space-y-3 md:hidden">
           {rows.map(([label, ours, free, audit]) => (
             <div key={label} data-fx="up" className="card p-5">
-              <p className="text-sm font-bold text-[#2d0a1f]">{label}</p>
+              <p className="text-sm font-bold text-[#2f5d73]">{label}</p>
               <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
-                <div className="rounded-xl bg-[#ec1478] px-2 py-2.5 font-bold text-white">
+                <div className="rounded-xl bg-[#3b82f6] px-2 py-2.5 font-bold text-white">
                   <p className="opacity-80">Bundle</p>
                   <p className="mt-0.5">{ours}</p>
                 </div>
-                <div className="rounded-xl bg-[#fff7fa] px-2 py-2.5 text-[#6d4059] ring-1 ring-[#fbe3ee]">
+                <div className="rounded-xl bg-[#f8fafc] px-2 py-2.5 text-[#4b5563] ring-1 ring-[#e5ebf1]">
                   <p className="font-bold">Blogs</p>
                   <p className="mt-0.5">{free}</p>
                 </div>
-                <div className="rounded-xl bg-[#fff7fa] px-2 py-2.5 text-[#6d4059] ring-1 ring-[#fbe3ee]">
+                <div className="rounded-xl bg-[#f8fafc] px-2 py-2.5 text-[#4b5563] ring-1 ring-[#e5ebf1]">
                   <p className="font-bold">Audit</p>
                   <p className="mt-0.5">{audit}</p>
                 </div>
@@ -859,9 +859,9 @@ function Compare() {
 
 function ValueRow({ item, cost }: { item: string; cost: number }) {
   return (
-    <div className="flex items-center justify-between gap-4 border-b border-[#fbe3ee] py-3 text-sm">
-      <span className="text-[#4a2438]">{item}</span>
-      <span className="font-display shrink-0 font-bold text-[#967184]">${cost}</span>
+    <div className="flex items-center justify-between gap-4 border-b border-[#e5ebf1] py-3 text-sm">
+      <span className="text-[#1f2933]">{item}</span>
+      <span className="font-display shrink-0 font-bold text-[#9ca3af]">${cost}</span>
     </div>
   );
 }
@@ -885,27 +885,27 @@ function Pricing() {
     >
       <div className="mx-auto grid max-w-4xl gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch lg:gap-8">
         <div data-fx="left" className="card p-6 md:p-8">
-          <h3 className="font-display text-xl font-bold text-[#2d0a1f]">What the stack is worth</h3>
+          <h3 className="font-display text-xl font-bold text-[#2f5d73]">What the stack is worth</h3>
           <div className="mt-4">
             {valueRows.map(([item, cost]) => (
               <ValueRow key={item} item={item} cost={cost} />
             ))}
             <div className="flex items-center justify-between gap-4 pt-4">
-              <span className="text-sm font-bold text-[#2d0a1f]">Total value</span>
-              <span className="font-display font-bold text-[#967184] line-through">${stack}</span>
+              <span className="text-sm font-bold text-[#2f5d73]">Total value</span>
+              <span className="font-display font-bold text-[#9ca3af] line-through">${stack}</span>
             </div>
           </div>
-          <p className="mt-4 text-xs leading-relaxed text-[#967184]">
+          <p className="mt-4 text-xs leading-relaxed text-[#9ca3af]">
             Benchmarks: “The SEO Playbook” $39 · AI SEO guides $49–52 · 3-book bundles $77–99.
             Yours: reference + system in one.
           </p>
         </div>
 
-        <div data-fx="right" className="relative flex flex-col rounded-[1.6rem] bg-[#2d0a1f] p-7 shadow-[0_28px_70px_-24px_rgba(189,24,97,0.55)] md:p-8">
-          <span className="absolute -top-3 left-7 rounded-full bg-gradient-to-r from-[#ff5ea3] to-[#ec1478] px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow">
+        <div data-fx="right" className="relative flex flex-col rounded-[1.6rem] bg-[#2f5d73] p-7 shadow-[0_28px_70px_-24px_rgba(47, 93, 115, 0.55)] md:p-8">
+          <span className="absolute -top-3 left-7 rounded-full bg-gradient-to-r from-[#60a5fa] to-[#3b82f6] px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow">
             Launch offer — save ${PRODUCT.price - PRODUCT.launchPrice}
           </span>
-          <p className="font-display text-xs font-bold uppercase tracking-[0.14em] text-[#ffb3d1]">One-time payment</p>
+          <p className="font-display text-xs font-bold uppercase tracking-[0.14em] text-[#93c5fd]">One-time payment</p>
           <div className="mt-3 flex flex-wrap items-end gap-3">
             <span className="font-display text-6xl font-bold leading-none text-white">${PRODUCT.launchPrice}</span>
             <span className="font-display mb-1 text-xl font-semibold text-white/45 line-through">${PRODUCT.price}</span>
@@ -921,7 +921,7 @@ function Pricing() {
               "No subscription, no upsells",
             ].map((t) => (
               <div key={t} className="flex gap-3 text-white/90">
-                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#ec1478] text-white">
+                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#3b82f6] text-white">
                   <IconCheck className="h-3 w-3" />
                 </span>
                 <span className="leading-snug">{t}</span>
@@ -953,19 +953,19 @@ function Pricing() {
 
 function Guarantee() {
   return (
-    <section className="w-full bg-[#fff1f6]/70">
+    <section className="w-full bg-[#f5f7f9]/70">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-8 px-5 py-14 safe-pad sm:px-6 md:grid-cols-[0.9fr_1.1fr] md:py-20">
-        <div data-fx="left" className="mx-auto grid h-44 w-44 place-items-center rounded-full bg-white shadow-[0_20px_50px_-20px_rgba(189,24,97,0.4)] ring-8 ring-[#ffe3ef]">
+        <div data-fx="left" className="mx-auto grid h-44 w-44 place-items-center rounded-full bg-white shadow-[0_20px_50px_-20px_rgba(47, 93, 115, 0.4)] ring-8 ring-[#eaf0f6]">
           <div className="text-center">
-            <p className="font-display text-4xl font-bold text-[#ec1478]">100%</p>
-            <p className="mt-1 px-6 text-[11px] font-bold uppercase tracking-[0.12em] text-[#8f0a4a]">Lifetime updates promise</p>
+            <p className="font-display text-4xl font-bold text-[#3b82f6]">100%</p>
+            <p className="mt-1 px-6 text-[11px] font-bold uppercase tracking-[0.12em] text-[#3f6f86]">Lifetime updates promise</p>
           </div>
         </div>
         <div>
-          <h2 data-fx="up" className="font-display text-balance text-2xl font-semibold text-[#2d0a1f] md:text-4xl">
+          <h2 data-fx="up" className="font-display text-balance text-2xl font-semibold text-[#2f5d73] md:text-4xl">
             Buy once. Own every future edition — free.
           </h2>
-          <p data-fx="up" className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#6d4059]">
+          <p data-fx="up" className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#4b5563]">
             Google changes. Your playbook keeps up. Every revised chapter, new playbook, and
             improvement ships to you at no cost — no renewal, no paywall, no surprise upsell.
             Plus direct author support if you get stuck importing or executing.
@@ -988,22 +988,22 @@ function Guarantee() {
 function Policy() {
   const items = [
     {
-      icon: <IconLifetime className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconLifetime className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Lifetime updates, guaranteed",
       d: "Buy once. Every future edition is yours free forever — no renewal, no paywall.",
     },
     {
-      icon: <IconLicense className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconLicense className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Fair-use license",
       d: "Use templates and trackers in your own work — including client work. No redistribution.",
     },
     {
-      icon: <IconSupport className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconSupport className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Real support",
       d: "Questions answered by the author. Import help, phase choice, or chapter walkthroughs.",
     },
     {
-      icon: <IconBolt className="h-6 w-6 text-[#ec1478]" animated />,
+      icon: <IconBolt className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "No subscriptions, no upsells",
       d: "One payment. This is the product — not a funnel for a $99/mo tool.",
     },
@@ -1013,9 +1013,9 @@ function Policy() {
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
         {items.map((it) => (
           <div key={it.t} data-fx="up" className="card p-6">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#fff1f6]">{it.icon}</span>
-            <h3 className="font-display mt-4 font-semibold text-[#2d0a1f]">{it.t}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#6d4059]">{it.d}</p>
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f5f7f9]">{it.icon}</span>
+            <h3 className="font-display mt-4 font-semibold text-[#2f5d73]">{it.t}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">{it.d}</p>
           </div>
         ))}
       </div>
@@ -1069,13 +1069,13 @@ function Faq() {
       <div className="mx-auto max-w-3xl space-y-3">
         {faqs.map((f) => (
           <details key={f.q} data-fx="up" className="group card open:bg-white">
-            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 font-semibold text-[#2d0a1f] sm:px-6">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 font-semibold text-[#2f5d73] sm:px-6">
               <span className="text-[15px] sm:text-base">{f.q}</span>
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#fff1f6] text-[#ec1478] transition-transform duration-300 group-open:rotate-180">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#f5f7f9] text-[#3b82f6] transition-transform duration-300 group-open:rotate-180">
                 <IconChevron className="h-4 w-4" />
               </span>
             </summary>
-            <p className="px-5 pb-6 text-sm leading-relaxed text-[#6d4059] sm:px-6">{f.a}</p>
+            <p className="px-5 pb-6 text-sm leading-relaxed text-[#4b5563] sm:px-6">{f.a}</p>
           </details>
         ))}
       </div>
@@ -1089,23 +1089,23 @@ function FinalCta() {
   return (
     <section className="glow-pink grid-faint relative overflow-hidden">
       <div className="mx-auto w-full max-w-6xl px-5 py-16 text-center safe-pad sm:px-6 md:py-24">
-        <p data-fx="up" className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#f6c9dc] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#c00e62]">
+        <p data-fx="up" className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
           <span className="dot-pulse" /> Last call — launch pricing
         </p>
-        <h2 data-fx="up" className="font-display mx-auto max-w-3xl text-balance text-3xl font-semibold leading-[1.1] text-[#2d0a1f] md:text-5xl">
+        <h2 data-fx="up" className="font-display mx-auto max-w-3xl text-balance text-3xl font-semibold leading-[1.1] text-[#2f5d73] md:text-5xl">
           The systems won&apos;t change.{" "}
-          <span className="bg-gradient-to-r from-[#ec1478] to-[#ff7aad] bg-clip-text italic text-transparent">
+          <span className="bg-gradient-to-r from-[#3b82f6] to-[#93c5fd] bg-clip-text italic text-transparent">
             Your competitor&apos;s advantage will.
           </span>
         </h2>
-        <p data-fx="up" className="mx-auto mt-5 max-w-xl text-[15px] text-[#6d4059] md:text-base">
+        <p data-fx="up" className="mx-auto mt-5 max-w-xl text-[15px] text-[#4b5563] md:text-base">
           Every page-one result is held by someone who understands the system. For less than a
           single SEO audit, you can own the system itself.
         </p>
         <div data-fx="up" className="mx-auto mt-8 flex max-w-md justify-center sm:max-w-none">
           <Primary size="lg" />
         </div>
-        <p data-fx="up" className="mt-5 text-xs font-medium text-[#967184]">
+        <p data-fx="up" className="mt-5 text-xs font-medium text-[#9ca3af]">
           Lifetime updates · one-time payment · instant download · fair-use license
         </p>
       </div>
@@ -1117,31 +1117,31 @@ function FinalCta() {
 
 function Footer() {
   return (
-    <footer className="border-t border-[#f6c9dc] bg-white">
+    <footer className="border-t border-[#d1d5db] bg-white">
       <div className="mx-auto w-full max-w-6xl px-5 py-12 safe-pad sm:px-6">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
             <div className="flex items-center gap-2.5">
               <IconLogo className="h-7 w-7" />
-              <span className="font-display flex items-center text-sm font-bold tracking-tight text-[#2d0a1f]">
+              <span className="font-display flex items-center text-sm font-bold tracking-tight text-[#2f5d73]">
                 SearchRank
-                <span className="ml-1.5 rounded-md bg-[#ec1478] px-1.5 py-1 text-[10px] font-extrabold uppercase leading-none tracking-[0.08em] text-white">
+                <span className="ml-1.5 rounded-md bg-[#3b82f6] px-1.5 py-1 text-[10px] font-extrabold uppercase leading-none tracking-[0.08em] text-white">
                   Pro
                 </span>
               </span>
             </div>
-            <p className="mt-2 text-xs font-medium text-[#967184]">
+            <p className="mt-2 text-xs font-medium text-[#9ca3af]">
               {PRODUCT.name} — {PRODUCT.edition}
             </p>
           </div>
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-[#6d4059]" aria-label="Footer">
-            <a href="#learn" className="rounded-md py-1 hover:text-[#ec1478]">Learn</a>
-            <a href="#included" className="rounded-md py-1 hover:text-[#ec1478]">Included</a>
-            <a href="#pricing" className="rounded-md py-1 hover:text-[#ec1478]">Pricing</a>
-            <a href="#faq" className="rounded-md py-1 hover:text-[#ec1478]">FAQ</a>
+          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-[#4b5563]" aria-label="Footer">
+            <a href="#learn" className="rounded-md py-1 hover:text-[#3b82f6]">Learn</a>
+            <a href="#included" className="rounded-md py-1 hover:text-[#3b82f6]">Included</a>
+            <a href="#pricing" className="rounded-md py-1 hover:text-[#3b82f6]">Pricing</a>
+            <a href="#faq" className="rounded-md py-1 hover:text-[#3b82f6]">FAQ</a>
           </nav>
         </div>
-        <div className="mt-10 border-t border-[#fbe3ee] pt-8 text-xs leading-relaxed text-[#967184]">
+        <div className="mt-10 border-t border-[#e5ebf1] pt-8 text-xs leading-relaxed text-[#9ca3af]">
           <p>
             © 2026 {PRODUCT.name} — {PRODUCT.edition}, by H. Aditya. All rights reserved. Not
             affiliated with or endorsed by Google LLC. “Google” and related marks are trademarks of their owners.
@@ -1164,14 +1164,14 @@ function StickyBuy() {
   return (
     <div
       id="sticky-buy"
-      className="fixed inset-x-3 bottom-3 z-50 rounded-2xl border border-[#f6c9dc] bg-white/96 p-3 shadow-[0_18px_50px_-16px_rgba(189,24,97,0.5)] backdrop-blur-xl md:hidden"
+      className="fixed inset-x-3 bottom-3 z-50 rounded-2xl border border-[#d1d5db] bg-white/96 p-3 shadow-[0_18px_50px_-16px_rgba(47, 93, 115, 0.5)] backdrop-blur-xl md:hidden"
     >
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
-          <p className="truncate text-[13px] font-bold text-[#2d0a1f]">
-            ${PRODUCT.launchPrice} <span className="font-semibold text-[#967184] line-through">${PRODUCT.price}</span>
+          <p className="truncate text-[13px] font-bold text-[#2f5d73]">
+            ${PRODUCT.launchPrice} <span className="font-semibold text-[#9ca3af] line-through">${PRODUCT.price}</span>
           </p>
-          <p className="truncate text-[11px] font-medium text-[#967184]">Lifetime · instant download</p>
+          <p className="truncate text-[11px] font-medium text-[#9ca3af]">Lifetime · instant download</p>
         </div>
         <BuyButton className="btn btn-primary min-h-12 shrink-0 px-6 py-3 text-sm">
           Get access
