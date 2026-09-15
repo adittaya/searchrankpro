@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# firebase
+.firebase/
+.firebaserc
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+
+# build artifacts
+tsconfig.tsbuildinfo
+
+# PDF exports (large product files, not source)
+The_Google_Search_Ranking_System_Playbook.pdf
+
+# misc
+.DS_Store
+*.log

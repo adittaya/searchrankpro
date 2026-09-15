@@ -1,0 +1,20 @@
+import type { MetadataRoute } from "next";
+import { SITE_NAME } from "@/lib/site";
+
+export const dynamic = "force-static";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: `${SITE_NAME} — The Google Search Ranking System`,
+    short_name: SITE_NAME,
+    description: "How Google actually ranks pages — the 2026 playbook + execution system.",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#fffbfd",
+    theme_color: "#ec1478",
+    icons: [
+      { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+  };
+}
