@@ -4,6 +4,7 @@ import { PRODUCT } from "@/lib/site";
 import Fx from "@/components/Fx";
 import MobileMenu from "@/components/MobileMenu";
 import BuyButton from "@/components/BuyButton";
+import PreviewCarousel from "@/components/PreviewCarousel";
 import {
   IconAi,
   IconArrowRight,
@@ -511,6 +512,22 @@ function Inside() {
           29-point audit, recovery checklist, glossary, 14-symptom table, and four ready-to-use templates.
         </div>
       </div>
+    </Section>
+  );
+}
+
+/* ---------- preview gallery ---------- */
+
+function Preview() {
+  return (
+    <Section
+      id="preview"
+      tint
+      eyebrow="Flip through"
+      title="Look inside before you buy."
+      lead="Every part opens with a clear map of the chapters ahead. No mystery, no sleight of hand — what you see here is what you get."
+    >
+      <PreviewCarousel />
     </Section>
   );
 }
@@ -1179,6 +1196,7 @@ export default function Page() {
         <Learn />
         <How />
         <Inside />
+        <Preview />
         <Testimonials />
         <MidCta />
         <Included />
