@@ -706,7 +706,7 @@ function FreeChecklist() {
           </div>
         </div>
         <div data-fx="right" className="w-full max-w-md">
-          <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+          <div className="rounded-2xl bg-white p-6 shadow-[0_24px_60px_-20px_rgba(15,40,55,0.55)] ring-1 ring-white/20 md:p-7">
             <EmailSignup
               variant="hero"
               headline="Enter your email — get the checklist free."
