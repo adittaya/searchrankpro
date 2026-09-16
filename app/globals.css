@@ -334,6 +334,52 @@ details.card[open] {
   page-break-inside: avoid;
 }
 
+/* ---------- pitch deck ---------- */
+.pitch-deck {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.pitch-deck::-webkit-scrollbar {
+  display: none;
+}
+
+.pitch-slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .pitch-deck {
+    scroll-behavior: auto;
+  }
+}
+
 /* ---------- book reader: print / PDF ---------- */
 @media print {
   @page {

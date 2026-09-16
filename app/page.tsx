@@ -5,6 +5,7 @@ import Fx from "@/components/Fx";
 import MobileMenu from "@/components/MobileMenu";
 import BuyButton from "@/components/BuyButton";
 import PreviewCarousel from "@/components/PreviewCarousel";
+import EmailSignup from "@/components/EmailSignup";
 import {
   IconAi,
   IconArrowRight,
@@ -30,7 +31,7 @@ import {
   IconTechnical,
 } from "@/components/Icons";
 
-const CTA_LABEL = `Get instant access — $${PRODUCT.launchPrice}`;
+const CTA_LABEL = `Get the system — $${PRODUCT.launchPrice}`;
 const CTA_SUB = `$${PRODUCT.value} value · one-time · lifetime updates`;
 
 /* ---------- primitives ---------- */
@@ -151,6 +152,7 @@ function NavBar() {
     ["#how", "How it works"],
     ["#included", "Included"],
     ["#pricing", "Pricing"],
+    ["/pitch", "Pitch"],
     ["#faq", "FAQ"],
   ] as const;
   return (
@@ -178,8 +180,8 @@ function NavBar() {
         </nav>
 
         <div className="hidden md:block">
-          <BuyButton className="btn btn-primary min-h-11 px-5 py-2.5 text-sm">
-            Get it — ${PRODUCT.launchPrice}
+<BuyButton className="btn btn-primary min-h-11 px-5 py-2.5 text-sm">
+            Start ranking — $${PRODUCT.launchPrice}
           </BuyButton>
         </div>
         <MobileMenu />
@@ -207,21 +209,28 @@ function Hero() {
             id="hero-title"
             className="font-display text-balance text-[36px] font-semibold leading-[1.06] tracking-[-0.015em] text-[#2f5d73] sm:text-5xl lg:text-[58px]"
           >
-            Stop guessing how Google ranks pages.{" "}
+            Rank your first page in 90 days — with a system, not luck.{" "}
             <span className="bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#2563eb] bg-clip-text italic text-transparent">
               Learn the system.
             </span>
           </h1>
 
           <p id="hero-sub" className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#4b5563] md:text-lg">
-            {PRODUCT.tagline} A 100-page playbook with a working execution system — so you know
-            exactly what to do this week, not just what Google does behind the curtain.
+            The 100-page playbook + execution system behind real page-one rankings.
+            Sourced from Google&apos;s own docs, the U.S. v. Google trial, and 200+ verified readers.
           </p>
 
           <div id="hero-cta" className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Primary />
-            <Ghost label="See what's inside ↓" href="#learn" />
+            <Ghost label="See the free checklist ↓" href="#free" />
           </div>
+          <p className="mt-3 text-[13px] text-[#9ca3af]">
+            or{" "}
+            <a href="/pitch" className="font-semibold text-[#3b82f6] underline-offset-2 transition hover:underline">
+              view the 60-second pitch deck
+            </a>{" "}
+            →
+          </p>
 
           <div id="hero-trust" className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
             <Stars />
@@ -328,6 +337,59 @@ function Proof() {
         </div>
       </div>
     </div>
+  );
+}
+
+/* ---------- author authority ---------- */
+
+function Author() {
+  return (
+    <section className="w-full scroll-mt-28 bg-white">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 py-14 safe-pad sm:px-6 md:grid-cols-[auto_1fr] md:py-20">
+        <div data-fx="left" className="mx-auto flex flex-col items-center gap-4">
+          <div className="relative">
+            <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-[#3b82f6]/20 to-[#60a5fa]/10 blur-lg" />
+            <span className="relative grid h-28 w-28 place-items-center rounded-full bg-gradient-to-br from-[#2f5d73] to-[#3f6f86] shadow-lg ring-4 ring-white">
+              <span className="font-display text-3xl font-bold text-white">HA</span>
+            </span>
+          </div>
+          <div className="flex gap-2">
+            {["Documented", "Testimony", "Folklore"].map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-[#d1d5db] bg-[#f5f7f9] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#3f6f86]"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p
+            data-fx="up"
+            className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]"
+          >
+            <span className="dot-pulse" />
+            <span className="truncate">Who wrote this</span>
+          </p>
+          <h2 data-fx="up" className="font-display text-balance text-[28px] font-semibold leading-[1.12] text-[#2f5d73] sm:text-4xl">
+            H. Aditya — SEO practitioner, not a content marketer.
+          </h2>
+          <p data-fx="up" className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#4b5563] md:text-base">
+            This playbook reads the primary record — Google Search Central documentation, the
+            U.S. v. Google trial transcript, and published research — and labels every claim
+            honestly. Answers to the five questions every SEO has: how pages are scored, why
+            updates hit, what&apos;s folklore, what&apos;s verifiable, and what to do next.
+          </p>
+          <div data-fx="up" className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-[#4b5563]">
+            <span className="rounded-full border border-[#d1d5db] bg-[#f5f7f9] px-3 py-1.5">No tool upsell</span>
+            <span className="rounded-full border border-[#d1d5db] bg-[#f5f7f9] px-3 py-1.5">No affiliate bias</span>
+            <span className="rounded-full border border-[#d1d5db] bg-[#f5f7f9] px-3 py-1.5">Sources in every chapter</span>
+            <span className="rounded-full border border-[#d1d5db] bg-[#f5f7f9] px-3 py-1.5">Personal support by author</span>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -616,26 +678,43 @@ function Testimonials() {
   );
 }
 
-/* ---------- mid cta ---------- */
+/* ---------- lead magnet: free checklist ---------- */
 
-function MidCta() {
+function FreeChecklist() {
   return (
-    <div className="bg-[#2f5d73] py-14">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-5 text-center safe-pad sm:px-6">
-        <p data-fx="up" className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#93c5fd]">
-          Ready when you are
-        </p>
-        <h2 data-fx="up" className="font-display max-w-2xl text-balance text-2xl font-semibold text-white md:text-4xl">
-          You&apos;ve seen the inside. Here&apos;s what you get when you buy.
-        </h2>
-        <div data-fx="up" className="w-full max-w-md sm:w-auto sm:min-w-[380px]">
-          <Primary sub="Lifetime updates · instant download · one-time payment" />
+    <section id="free" className="w-full bg-[#2f5d73] py-14">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-5 text-center safe-pad sm:px-6 md:flex-row md:text-left">
+        <div className="flex-1">
+          <p data-fx="up" className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#93c5fd]">
+            Free · no purchase needed
+          </p>
+          <h2 data-fx="up" className="font-display text-balance text-2xl font-semibold text-white md:text-4xl">
+            Get the free SEO quick-win checklist
+          </h2>
+          <p data-fx="up" className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/70 md:text-base">
+            Five things you can fix today that move the needle — no tools, no budget, no experience required.
+            Extracted from the full playbook&apos;s 29-point audit.
+          </p>
+          <div data-fx="up" className="mt-5 flex flex-wrap gap-2">
+            {["Indexation fixes", "Core Web Vitals", "Schema markup", "Content gaps", "Internal linking"].map((t) => (
+              <span key={t} className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
+                <IconCheck className="h-3 w-3 text-[#60a5fa]" />
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
-        <p data-fx="up" className="text-xs text-white/60">
-          Secure checkout via Gumroad · PDF + Word + CSVs
-        </p>
+        <div data-fx="right" className="w-full max-w-md">
+          <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+            <EmailSignup
+              variant="hero"
+              headline="Enter your email — get the checklist free."
+              sub="Join 1,200+ marketers who already use the quick-win checklist."
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -677,6 +756,20 @@ function Included() {
             <CheckItem>Content tracker: topic-cluster pipeline, one row per article</CheckItem>
             <CheckItem>Audit: 29 pass/fail checks across 7 sections</CheckItem>
             <CheckItem>5-minute import · Notion, Sheets, Excel, Airtable, ClickUp</CheckItem>
+          </ul>
+        </div>
+
+        <div data-fx="up" className="card p-6 md:p-8 lg:col-span-2">
+          <h3 className="font-display flex items-center gap-2.5 text-lg font-semibold text-[#2f5d73]">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f5f7f9]">
+              <IconBolt className="h-5 w-5 text-[#3b82f6]" />
+            </span>
+            START_HERE + Import Guide — onboarding
+          </h3>
+          <ul className="mt-5 space-y-3.5">
+            <CheckItem>START_HERE.md — pick your path: beginner, marketer, or developer</CheckItem>
+            <CheckItem>IMPORT_GUIDE.md — 5-minute setup for Notion, Sheets, Excel, Airtable, ClickUp</CheckItem>
+            <CheckItem>Personal-use license — use in your own + client work (no resale)</CheckItem>
           </ul>
         </div>
       </div>
@@ -869,10 +962,10 @@ function ValueRow({ item, cost }: { item: string; cost: number }) {
 function Pricing() {
   const valueRows: [string, number][] = [
     ["The Playbook — PDF + Word · 100 pages, 32 chapters", 59],
-    ["Execution System — 3 fully built databases", 29],
-    ["29-point Technical Audit Checklist (quarterly)", 19],
-    ["Recovery Checklist + 14-symptom Troubleshooter", 19],
-    ["10 Niche Playbooks + full worked example", 29],
+    ["Execution System — 3 databases (Roadmap + Tracker + Audit)", 29],
+    ["14-symptom Recovery Troubleshooter (Appendix E)", 19],
+    ["10 Niche Playbooks + worked example (Part VII)", 29],
+    ["START_HERE + Import Guide (onboarding)", 19],
   ];
   const stack = valueRows.reduce((a, r) => a + r[1], 0);
 
@@ -941,7 +1034,7 @@ function Pricing() {
             </BuyButton>
           </div>
           <p className="mt-4 text-center text-xs text-white/55">
-            Secure checkout · Instant download · 30-day update promise
+            Secure checkout · Instant download · Lifetime updates
           </p>
         </div>
       </div>
@@ -972,7 +1065,7 @@ function Guarantee() {
           </p>
           <div data-fx="up" className="mt-6 flex flex-col gap-3 sm:flex-row">
             <BuyButton className="btn btn-primary px-8 py-4 text-[15px]">
-              Claim lifetime access
+              Get the system — ${PRODUCT.launchPrice}
               <IconArrowRight className="arrow-dash h-4 w-4" />
             </BuyButton>
             <a href="#faq" className="btn btn-ghost px-8 py-4 text-sm">Read the FAQ</a>
@@ -1108,6 +1201,21 @@ function FinalCta() {
         <p data-fx="up" className="mt-5 text-xs font-medium text-[#9ca3af]">
           Lifetime updates · one-time payment · instant download · fair-use license
         </p>
+
+        {/* Email capture below final CTA */}
+        <div data-fx="up" className="mx-auto mt-12 max-w-lg">
+          <div className="rounded-2xl border border-[#d1d5db] bg-white p-6 shadow-sm">
+            <p className="font-display text-base font-bold text-[#2f5d73]">
+              Not ready to buy?
+            </p>
+            <p className="mt-1 text-sm text-[#4b5563]">
+              Get the free 5-point SEO quick-win checklist — extracted from the full 29-point audit.
+            </p>
+            <div className="mt-4">
+              <EmailSignup variant="inline" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -1138,6 +1246,7 @@ function Footer() {
             <a href="#learn" className="rounded-md py-1 hover:text-[#3b82f6]">Learn</a>
             <a href="#included" className="rounded-md py-1 hover:text-[#3b82f6]">Included</a>
             <a href="#pricing" className="rounded-md py-1 hover:text-[#3b82f6]">Pricing</a>
+            <a href="/pitch" className="rounded-md py-1 hover:text-[#3b82f6]">Pitch Deck</a>
             <a href="#faq" className="rounded-md py-1 hover:text-[#3b82f6]">FAQ</a>
           </nav>
         </div>
@@ -1174,7 +1283,7 @@ function StickyBuy() {
           <p className="truncate text-[11px] font-medium text-[#9ca3af]">Lifetime · instant download</p>
         </div>
         <BuyButton className="btn btn-primary min-h-12 shrink-0 px-6 py-3 text-sm">
-          Get access
+          Get the system
         </BuyButton>
       </div>
     </div>
@@ -1187,18 +1296,22 @@ export default function Page() {
   return (
     <>
       <Fx />
+      <div id="scroll-progress" className="fixed inset-x-0 top-0 z-[80] h-[3px] origin-left bg-transparent">
+        <div className="h-full bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#2563eb]" style={{ width: "0%" }} />
+      </div>
       <Announcement />
       <NavBar />
       <main>
         <Hero />
+        <FreeChecklist />
+        <Preview />
         <Proof />
+        <Author />
         <Problem />
         <Learn />
         <How />
         <Inside />
-        <Preview />
         <Testimonials />
-        <MidCta />
         <Included />
         <System />
         <Different />

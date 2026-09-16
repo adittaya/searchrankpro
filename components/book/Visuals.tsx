@@ -96,7 +96,7 @@ export type Slice = { label: string; value: number; color?: string };
 
 export function DonutChart({ data }: { data: Slice[] }) {
   // Standardize colors if not given
-  const palette = [PINK, "#60a5fa", "#93c5fd", "#93c5fd", "#dbeafe", "#d1d5db"];
+  const palette = [PINK, "#60a5fa", "#93c5fd", "#bfdbfe", "#dbeafe", "#d1d5db"];
   const slices = data.map((d, i) => ({ ...d, color: d.color || palette[i % palette.length] }));
   const total = slices.reduce((a, s) => a + s.value, 0);
   const R = 80;
@@ -330,7 +330,7 @@ export function Timeline({
               </li>
             )}
           </ul>
-          <p className="mt-auto pt-2 text-[12px] font-semibold text-[#2563c7]">
+          <p className="mt-auto pt-2 text-[12px] font-semibold text-[#2563eb]">
             {p.metric}
           </p>
         </div>

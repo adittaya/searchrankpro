@@ -13,9 +13,13 @@ export default function Fx() {
     const mm = gsap.matchMedia();
     let stickyObserver: IntersectionObserver | null = null;
 
+    // Collected for manual cleanup (magnetic button listeners)
+    const magneticHandlers: Array<{ el: HTMLElement; move: (e: MouseEvent) => void; leave: () => void }> = [];
+    let progressHandler: (() => void) | null = null;
+
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       const ctx = gsap.context(() => {
-        // Hero entrance — includes headline, runs once on load
+        // Hero entrance — staggered, layered reveal
         gsap
           .timeline({ defaults: { ease: "power3.out" } })
           .fromTo("#hero-badge", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.05)
@@ -37,27 +41,64 @@ export default function Fx() {
             0.55
           );
 
-        // Scroll reveals — play once, no reverse flicker
-        gsap.utils.toArray<HTMLElement>("[data-fx]").forEach((el) => {
-          const kind = el.dataset.fx || "up";
-          const from: gsap.TweenVars = { opacity: 0, duration: 0.75, ease: "power3.out" };
-          if (kind === "up") from.y = 28;
-          if (kind === "left") from.x = -36;
-          if (kind === "right") from.x = 36;
-          if (kind === "scale") from.scale = 0.95;
-          gsap.fromTo(
-            el,
-            from,
-            {
-              opacity: 1,
-              y: 0,
-              x: 0,
-              scale: 1,
-              duration: 0.75,
-              ease: "power3.out",
-              scrollTrigger: { trigger: el, start: "top 90%", once: true },
-            }
-          );
+        // Scroll reveals — group siblings for staggered playback
+        const fxEls = gsap.utils.toArray<HTMLElement>("[data-fx]");
+
+        // Group elements by their immediate parent so cards in the same grid stagger together
+        const groups = new Map<HTMLElement, HTMLElement[]>();
+        fxEls.forEach((el) => {
+          const parent = el.parentElement as HTMLElement;
+          if (!parent) return;
+          if (!groups.has(parent)) groups.set(parent, []);
+          groups.get(parent)!.push(el);
+        });
+
+        groups.forEach((siblings) => {
+          if (siblings.length > 1) {
+            // Stagger group
+            gsap.fromTo(
+              siblings,
+              siblings[0].dataset.fx === "left"
+                ? { x: -36, opacity: 0 }
+                : siblings[0].dataset.fx === "right"
+                  ? { x: 36, opacity: 0 }
+                  : siblings[0].dataset.fx === "scale"
+                    ? { scale: 0.95, opacity: 0 }
+                    : { y: 28, opacity: 0 },
+              {
+                x: 0,
+                y: 0,
+                scale: 1,
+                opacity: 1,
+                duration: 0.75,
+                ease: "power3.out",
+                stagger: 0.12,
+                scrollTrigger: { trigger: siblings[0], start: "top 90%", once: true },
+              }
+            );
+          } else {
+            // Single element — animate individually
+            const el = siblings[0];
+            const kind = el.dataset.fx || "up";
+            const from: gsap.TweenVars = { opacity: 0, duration: 0.75, ease: "power3.out" };
+            if (kind === "up") from.y = 28;
+            if (kind === "left") from.x = -36;
+            if (kind === "right") from.x = 36;
+            if (kind === "scale") from.scale = 0.95;
+            gsap.fromTo(
+              el,
+              from,
+              {
+                opacity: 1,
+                y: 0,
+                x: 0,
+                scale: 1,
+                duration: 0.75,
+                ease: "power3.out",
+                scrollTrigger: { trigger: el, start: "top 90%", once: true },
+              }
+            );
+          }
         });
 
         // Counters — run once
@@ -75,15 +116,62 @@ export default function Fx() {
           });
         });
 
-        // Gentle cover drift (desktop only, no scrub conflict)
+        // Parallax depth — hero cover and floating cards move at different rates
         if (window.innerWidth >= 1024) {
+          // Cover drift (existing, enhanced)
           gsap.to("#hero-cover-inner", {
-            y: -10,
+            y: -14,
             ease: "none",
             scrollTrigger: { trigger: "#top", start: "top top", end: "60% top", scrub: 1 },
           });
+          // Floating value card drifts faster (closer to viewer)
+          gsap.to("#hero-cover .cover-glow", {
+            y: 30,
+            ease: "none",
+            scrollTrigger: { trigger: "#top", start: "top top", end: "60% top", scrub: 1.5 },
+          });
+        }
+
+        // Magnetic CTA buttons — subtle cursor attraction (desktop, pointer:fine only)
+        if (window.matchMedia("(pointer: fine)").matches) {
+          const magnets = gsap.utils.toArray<HTMLElement>(".btn-primary");
+
+          magnets.forEach((el) => {
+            const move = (e: MouseEvent) => {
+              const rect = el.getBoundingClientRect();
+              const x = e.clientX - (rect.left + rect.width / 2);
+              const y = e.clientY - (rect.top + rect.height / 2);
+              const dist = Math.sqrt(x * x + y * y);
+              const maxDist = 90;
+              if (dist > maxDist) {
+                gsap.to(el, { x: 0, y: 0, duration: 0.4, ease: "power2.out" });
+                return;
+              }
+              const pull = 0.35;
+              gsap.to(el, { x: x * pull, y: y * pull, duration: 0.3, ease: "power2.out" });
+            };
+            const leave = () => {
+              gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.4)" });
+            };
+            el.addEventListener("mousemove", move);
+            el.addEventListener("mouseleave", leave);
+            magneticHandlers.push({ el, move, leave });
+          });
         }
       });
+
+      // Scroll progress bar — thin gradient bar at the very top
+      const progressEl = document.querySelector("#scroll-progress > div") as HTMLElement | null;
+      if (progressEl) {
+        progressHandler = () => {
+          const h = document.documentElement;
+          const max = h.scrollHeight - h.clientHeight;
+          const pct = max > 0 ? Math.min(100, (h.scrollTop / max) * 100) : 0;
+          progressEl.style.width = `${pct}%`;
+        };
+        progressHandler();
+        window.addEventListener("scroll", progressHandler, { passive: true });
+      }
 
       // Sticky mobile buy bar — show after hero
       const bar = document.getElementById("sticky-buy");
@@ -123,6 +211,17 @@ export default function Fx() {
         stickyObserver = null;
         window.removeEventListener("load", onLoad);
         window.clearTimeout(safety);
+        // Cleanup magnetic button listeners
+        magneticHandlers.forEach(({ el, move, leave }) => {
+          el.removeEventListener("mousemove", move);
+          el.removeEventListener("mouseleave", leave);
+        });
+        magneticHandlers.length = 0;
+        // Cleanup progress bar
+        if (progressHandler) {
+          window.removeEventListener("scroll", progressHandler);
+          progressHandler = null;
+        }
       };
     });
 

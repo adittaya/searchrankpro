@@ -7,7 +7,7 @@ export const SECTIONS_PART6: BookSection[] = [
     id: "p6-roadmap",
     part: "Part VI — The Action Plan",
     partIndex: 6,
-    title: "The 12-month roadmap: 30 tasks, 4 gates",
+    title: "The 12-month roadmap: 26 tasks, 4 gates",
     blurb: "A sequenced plan. Each task exists because the one before it made it possible.",
     minutes: 6,
     body: (
@@ -20,7 +20,7 @@ export const SECTIONS_PART6: BookSection[] = [
         <H3>Four gates, four seasons</H3>
         <Figure
           label="Fig. 5"
-          caption="The full 30-task schedule ships as a CSV tracker with the playbook. Here is the shape of the year."
+          caption="The full 26-task schedule ships as a CSV tracker with the playbook. Here is the shape of the year."
         >
           <Timeline
             phases={[

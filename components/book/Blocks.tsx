@@ -311,7 +311,7 @@ export function Tag({ children, tone = "rose" }: { children: ReactNode; tone?: "
 }
 
 /* ---------- Chapter end-card: slim in print, fuller on screen ---------- */
-export function BookEndCard({ chapterNum, total, partName }: { chapterNum: number; total: number; partName: string }) {
+export function BookEndCard({ chapterNum, total, partName, pages = "56 pages" }: { chapterNum: number; total: number; partName: string; pages?: string }) {
   return (
     <div className="book-endcard mt-10 flex flex-col items-center gap-4 rounded-2xl border border-[#d1d5db] bg-[#f8fafc] px-8 py-8 text-center print:mt-4 print:border-x-0 print:border-t print:border-b-0 print:bg-transparent print:py-3">
       <div className="flex items-center gap-2">
@@ -323,10 +323,10 @@ export function BookEndCard({ chapterNum, total, partName }: { chapterNum: numbe
         {chapterNum} / {total}
       </p>
       <p className="max-w-[48ch] text-[12.5px] leading-relaxed text-[#4b5563] print:hidden">
-        The full playbook includes <strong>32 chapters</strong>, <strong>6 appendices</strong>, and a <strong>30-task roadmap</strong> across seven parts.
+        The full playbook includes <strong>32 chapters</strong>, <strong>6 appendices</strong>, and a <strong>26-task roadmap</strong> across seven parts.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-[#3f6f86] print:hidden">
-        <span className="rounded-full border border-[#d1d5db] bg-white px-3 py-1">56 pages</span>
+        <span className="rounded-full border border-[#d1d5db] bg-white px-3 py-1">{pages}</span>
         <span className="rounded-full border border-[#d1d5db] bg-white px-3 py-1">{partName}</span>
         <span className="rounded-full border border-[#d1d5db] bg-white px-3 py-1">PDF + DOCX</span>
       </div>

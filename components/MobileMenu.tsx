@@ -5,6 +5,7 @@ import { CHECKOUT_URL, PRODUCT } from "@/lib/site";
 import { IconArrowRight, IconMenu } from "@/components/Icons";
 
 const links = [
+  ["/pitch", "Pitch Deck"],
   ["#learn", "What you learn"],
   ["#how", "How it works"],
   ["#included", "What's included"],
@@ -25,7 +26,7 @@ export default function MobileMenu() {
       document.documentElement.classList.remove("no-scroll");
       window.removeEventListener("keydown", onKey);
     };
-  }, [open ]);
+  }, [open]);
 
   return (
     <div className="md:hidden">

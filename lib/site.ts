@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------
 
 // Checkout URL. EVERY buy button on the site uses this — paste your
-// real Getvik checkout link here, e.g. "https://getvik.com/store/searchrank-pro/seo-rank-playbook"
+// real Getvik checkout link here, e.g. "https://getvik.com/store/your-shop/your-product"
 export const CHECKOUT_URL = "https://getvik.com/store/thedigitalshop/product/the-google-search-ranking-system-2026-edition";
 
 // IMPORTANT: replace with your real public URL before deploying.

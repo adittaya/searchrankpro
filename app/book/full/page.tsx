@@ -28,6 +28,7 @@ const meta: BookMeta = {
     </>
   ),
   railNote: "The complete 2026 edition — all 32 chapters.",
+  pages: "100 pages",
   chips: ["32 chapters", "7 parts", "6 appendices", "1 worked example", "10 niche playbooks", "2026 edition"],
   backQuote:
     "SEO is not a mirror you polish once. It is a compounding asset — every page you fix, every link you earn, every system you satisfy, accumulates.",

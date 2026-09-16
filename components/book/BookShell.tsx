@@ -19,6 +19,7 @@ export type BookMeta = {
   chips?: string[];
   backQuote?: string;
   backLine?: string;
+  pages?: string;
 };
 
 export type BookPart = { index: number; label: string; title: string; subtitle: string };
@@ -34,7 +35,7 @@ const DEFAULT_PARTS: BookPart[] = [
   { index: 7, label: "Part VII — Troubleshooting", title: "Troubleshooting", subtitle: "Triage every ranking symptom to its root door." },
 ];
 
-const DEFAULT_CHIPS = ["56 pages", "32 chapters", "7 parts", "6 appendices", "30 tasks", "4 gates", "2026 edition"];
+const DEFAULT_CHIPS = ["56 pages", "32 chapters", "7 parts", "6 appendices", "26 tasks", "4 gates", "2026 edition"];
 
 function TOCButton({ onClick }: { onClick: () => void }) {
   return (
@@ -254,7 +255,7 @@ export default function BookShell({
 
       <p className="mt-12 border-t border-[#d1d5db] pt-4 text-[11px] font-semibold text-[#9ca3af]">
         {meta.tocNote ??
-          `${sections.length} preview chapters · full 32-chapter playbook, 6 appendices & the 30-task roadmap are included in the paid edition.`}
+          `${sections.length} preview chapters · full 32-chapter playbook, 6 appendices & the 26-task roadmap are included in the paid edition.`}
       </p>
       <span id="toc-end" className="hidden text-[2px] leading-none text-white print:block" aria-hidden>
         TOC-END-MARKER
@@ -391,7 +392,7 @@ export default function BookShell({
                 <p className="mt-2 max-w-[60ch] text-[15px] text-[#9ca3af]">{s.blurb}</p>
                 <div className="book-body mt-6">
                   {s.body}
-                  <BookEndCard chapterNum={i + 1} total={sections.length} partName={s.part} />
+                  <BookEndCard chapterNum={i + 1} total={sections.length} partName={s.part} pages={meta.pages} />
                 </div>
 
                 <div className="book-nav mt-12 flex items-center justify-between gap-3 border-t border-[#d1d5db] pt-6">
