@@ -14,7 +14,6 @@ import {
   IconCheck,
   IconChevron,
   IconContent as IconContentArt,
-  IconContentSm,
   IconExecute,
   IconFreshness,
   IconHidden,
@@ -216,8 +215,16 @@ function Hero() {
           </h1>
 
           <p id="hero-sub" className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#4b5563] md:text-lg">
-            The 100-page playbook + execution system behind real page-one rankings.
-            Sourced from Google&apos;s own docs, the U.S. v. Google trial, and 200+ verified readers.
+            Stop jumping between YouTube videos, random blogs, and outdated SEO tricks.
+            This is a clear, structured system that tells you exactly{" "}
+            <span className="font-semibold text-[#2f5d73]">what to do</span>,{" "}
+            <span className="font-semibold text-[#2f5d73]">when to do it</span>, and{" "}
+            <span className="font-semibold text-[#2f5d73]">how to see results</span> —
+            sourced from Google&apos;s own docs and the U.S. v. Google trial.
+          </p>
+
+          <p id="hero-promise" className="mt-3 text-[13px] font-bold text-[#3f6f86]">
+            No guessing. No overwhelm. Just execution.
           </p>
 
           <div id="hero-cta" className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -396,36 +403,30 @@ function Author() {
 /* ---------- problem ---------- */
 
 function Problem() {
+  const spiral = [
+    { t: "Learn… but don't implement", d: "Another video, another tab saved. Knowledge with no next action." },
+    { t: "Try… but don't see results", d: "Random tactics, no sequence. Without order, effort doesn't compound." },
+    { t: "Quit… thinking SEO doesn't work", d: "It's not that SEO is broken. It's that the method was scattered." },
+  ];
   return (
     <Section
       eyebrow="The problem"
-      title="You're competing against people who know the system."
-      lead="Three mistakes cost more effort than this whole bundle — year after year."
+      title="You're not the problem. Lack of structure is."
+      lead="Most people fail at SEO for three reasons — none of them are intelligence, work ethic, or 'not getting it.'"
     >
       <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
-        {[
-          {
-            icon: <IconHidden className="h-6 w-6 text-[#3b82f6]" animated />,
-            t: "You optimise for tactics, not systems",
-            d: "You chase the current trend — while ranking decisions are made by cumulative systems most advice never mentions.",
-          },
-          {
-            icon: <IconSystems className="h-6 w-6 text-[#3b82f6]" animated />,
-            t: "You learn from folklore",
-            d: "Most SEO content recycles half-remembered folklore from people selling hosting, tools, or agencies. Bias is built in.",
-          },
-          {
-            icon: <IconContentSm className="h-6 w-6 text-[#3b82f6]" animated />,
-            t: "You measure the wrong numbers",
-            d: "Rankings alone won't tell you what Google thinks of your site. Without the right metrics, every fix is a guess.",
-          },
-        ].map((c) => (
+        {spiral.map((c) => (
           <div key={c.t} data-fx="up" className="card p-6">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f5f7f9]">{c.icon}</span>
-            <h3 className="font-display mt-4 text-lg font-semibold text-[#2f5d73]">{c.t}</h3>
+            <h3 className="font-display mt-2 text-lg font-semibold text-[#2f5d73]">{c.t}</h3>
             <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">{c.d}</p>
           </div>
         ))}
+      </div>
+
+      <div data-fx="up" className="mt-4 rounded-2xl border border-dashed border-[#93c5fd] bg-white p-5 text-sm leading-relaxed text-[#1f2933]">
+        <span className="font-bold text-[#2563eb]">The real causes:</span> no clear roadmap, too much
+        scattered information, and no execution system. A single guide&nbsp;— even a great one&nbsp;— doesn&apos;t
+        fix that. A system does.
       </div>
     </Section>
   );
@@ -870,6 +871,57 @@ function Different() {
   );
 }
 
+/* ---------- who this is for / not for ---------- */
+
+function ForWho() {
+  const yes = [
+    "You're starting SEO from zero and want one clear path",
+    "You feel overwhelmed by too much scattered information",
+    "You want to know exactly what to do every single week",
+    "You're tired of guessing which advice is actually correct",
+    "You're ready to execute — not just consume more content",
+  ];
+  const no = [
+    "You're looking for overnight 'quick hacks' that ignore Google's systems",
+    "You want results without doing any of the work",
+    "You expect page one in a week — no system works that fast",
+  ];
+  return (
+    <Section
+      id="forwho"
+      eyebrow="Is this for you?"
+      title="Built for people who execute. Not for people who procrastinate."
+      lead="One honest filter — so you know exactly whether this is a fit before checkout."
+    >
+      <div className="grid gap-4 md:grid-cols-2 md:gap-5">
+        <div data-fx="left" className="card p-6 md:p-8">
+          <p className="font-display flex items-center gap-2 text-lg font-semibold text-[#2f5d73]">
+            <IconCheck className="h-5 w-5 text-[#2563eb]" /> This is for you if…
+          </p>
+          <ul className="mt-5 space-y-3.5">
+            {yes.map((t) => (
+              <CheckItem key={t}>{t}</CheckItem>
+            ))}
+          </ul>
+        </div>
+        <div data-fx="right" className="card border-[#e5ebf1] p-6 md:p-8">
+          <p className="font-display flex items-center gap-2 text-lg font-semibold text-[#9ca3af]">
+            <span className="text-[#e5484d]">✕</span> This is NOT for you if…
+          </p>
+          <ul className="mt-5 space-y-3.5">
+            {no.map((t) => (
+              <li key={t} className="flex items-start gap-3 text-sm leading-relaxed text-[#9ca3af]">
+                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#f5f7f9] text-[#9ca3af]">✕</span>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 /* ---------- compare: table on desktop, cards on mobile ---------- */
 
 function Compare() {
@@ -1186,14 +1238,14 @@ function FinalCta() {
           <span className="dot-pulse" /> Last call — launch pricing
         </p>
         <h2 data-fx="up" className="font-display mx-auto max-w-3xl text-balance text-3xl font-semibold leading-[1.1] text-[#2f5d73] md:text-5xl">
-          The systems won&apos;t change.{" "}
+          SEO isn&apos;t hard.{" "}
           <span className="bg-gradient-to-r from-[#3b82f6] to-[#93c5fd] bg-clip-text italic text-transparent">
-            Your competitor&apos;s advantage will.
+            Lack of structure makes it hard.
           </span>
         </h2>
         <p data-fx="up" className="mx-auto mt-5 max-w-xl text-[15px] text-[#4b5563] md:text-base">
-          Every page-one result is held by someone who understands the system. For less than a
-          single SEO audit, you can own the system itself.
+          Stop consuming. Start executing. How long have you been learning without progressing?
+          A system changes everything — for less than a single SEO audit.
         </p>
         <div data-fx="up" className="mx-auto mt-8 flex max-w-md justify-center sm:max-w-none">
           <Primary size="lg" />
@@ -1315,6 +1367,7 @@ export default function Page() {
         <Included />
         <System />
         <Different />
+        <ForWho />
         <Compare />
         <Pricing />
         <Guarantee />
