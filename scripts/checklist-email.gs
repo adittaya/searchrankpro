@@ -123,31 +123,44 @@ function doGet(e) {
 
 /**
  * Sends the 5-point quick-win checklist to the subscriber using your
- * own Gmail account. The PDF (public/free-checklist.pdf) is fetched
- * from the site and attached, so the subscriber gets the file directly.
- * Edit SUBJECT / BODY freely, but keep the attachment.
+ * own Gmail account. Delivered cold-email style: plain-text + HTML
+ * pair (HTML-only is a major spam trigger), a calm subject line, a
+ * human signature, and the PDF attached. Edit freely, keep the
+ * attachment and the plain-text body.
  */
 function sendChecklist_(email) {
-  var body =
-    "<div style=\"font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#1f2933;line-height:1.6\">" +
-    "<p style=\"font-size:18px;font-weight:bold;color:#2f5d73\">Your SEO Quick-Win Checklist</p>" +
-    "<p>Here is your free PDF — <strong>The SEO Quick-Win Checklist</strong> — with five fixes you can run today. Each takes about 10 minutes, needs only free tools, and together they take about an hour.</p>" +
-    "<ol style=\"padding-left:20px\">" +
-    "<li><strong>Indexation</strong> — confirm Google can actually see every important page.</li>" +
-    "<li><strong>Image weight</strong> — compress your three biggest images for Core Web Vitals.</li>" +
-    "<li><strong>Schema</strong> — structured data on your top 3 pages.</li>" +
-    "<li><strong>Content gaps</strong> — mine Search Console queries where you sit at positions 8&ndash;30.</li>" +
-    "<li><strong>Internal links</strong> — point your strongest pages at your weakest important ones.</li>" +
-    "</ol>" +
-    "<p>It&rsquo;s attached to this email — save it, print it, run it this week.</p>" +
-    "<p>When you finish these, the full system is waiting: <a href=\"https://searchrankpro.web.app/\" style=\"color:#2563eb\">The Google Search Ranking System — 2026 Edition</a> — 100 pages, 32 chapters, and the 12-month roadmap.</p>" +
-    "<p style=\"color:#9ca3af;font-size:12px\">You're receiving this because you asked for the free checklist. Unsubscribe anytime by replying \"stop\".</p>" +
+  var subject = "Your SEO Quick-Win Checklist";
+  var siteUrl = "https://searchrankpro.web.app";
+
+  // Plain-text version — always include one. Recipients who open this
+  // in plain text (or filter mail) see it; spam filters reward it.
+  var text =
+    "Hi,\n\n" +
+    "Thanks for signing up. Attached is The SEO Quick-Win Checklist — the five fixes from my playbook that use only free tools and take about an hour in total.\n\n" +
+    "If you run them this week, start with fix one (indexation): pages Google can't see cannot rank, and it unblocks everything after it.\n\n" +
+    "When you're ready for the full system — how Google actually ranks pages, built from Google's own documentation and the U.S. v. Google trial record — it's here: " + siteUrl + "\n\n" +
+    "If anything on the list needs a hand, just reply to this email.\n\n" +
+    "Best,\n" +
+    "H. Aditya\n" +
+    "The Google Search Ranking Playbook\n\n" +
+    "You're receiving this because you asked for the checklist. Reply \"stop\" to unsubscribe.";
+
+  var html =
+    "<div style=\"font-family:Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1f2933;line-height:1.6;font-size:15px\">" +
+    "<p style=\"margin:16px 0\">Hi,</p>" +
+    "<p style=\"margin:16px 0\">Thanks for signing up. Attached is <strong>The SEO Quick-Win Checklist</strong> — the five fixes from my playbook that use only free tools and take about an hour in total.</p>" +
+    "<p style=\"margin:16px 0\">If you run them this week, start with fix one (indexation): pages Google can&rsquo;t see cannot rank, and it unblocks everything after it.</p>" +
+    "<p style=\"margin:16px 0\">When you&rsquo;re ready for the full system — how Google actually ranks pages, built from Google&rsquo;s own documentation and the U.S. v. Google trial record — it&rsquo;s <a href=\"" + siteUrl + "\" style=\"color:#2563eb\">here</a>.</p>" +
+    "<p style=\"margin:16px 0\">If anything on the list needs a hand, just reply to this email.</p>" +
+    "<p style=\"margin:16px 0\">Best,<br/>H. Aditya<br/>The Google Search Ranking Playbook</p>" +
+    "<p style=\"margin:16px 0;color:#9ca3af;font-size:12px\">You&rsquo;re receiving this because you asked for the checklist. Reply &ldquo;stop&rdquo; to unsubscribe.</p>" +
     "</div>";
 
   MailApp.sendEmail({
     to: email,
-    subject: "Your SEO Quick-Win Checklist is inside",
-    htmlBody: body,
-    attachments: [UrlFetchApp.fetch("https://searchrankpro.web.app/free-checklist.pdf").getBlob()],
+    subject: subject,
+    body: text,
+    htmlBody: html,
+    attachments: [UrlFetchApp.fetch(siteUrl + "/free-checklist.pdf").getBlob()],
   });
 }
