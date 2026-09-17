@@ -18,6 +18,10 @@ export default function Fx() {
     let progressHandler: (() => void) | null = null;
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
+      // On small screens, keep reveals vertical-only. Horizontal offsets
+      // (data-fx="left"/"right") nudge cards sideways past the viewport edge
+      // mid-animation, making rounded cards look clipped/off-center.
+      const isMobile = window.innerWidth < 768;
       const ctx = gsap.context(() => {
         // Hero entrance — staggered, layered reveal
         gsap
@@ -54,17 +58,19 @@ export default function Fx() {
         });
 
         groups.forEach((siblings) => {
+          const kind = siblings[0]?.dataset?.fx || "up";
+          const horizontal = !isMobile && (kind === "left" || kind === "right");
           if (siblings.length > 1) {
             // Stagger group
             gsap.fromTo(
               siblings,
-              siblings[0].dataset.fx === "left"
-                ? { x: -36, opacity: 0 }
-                : siblings[0].dataset.fx === "right"
-                  ? { x: 36, opacity: 0 }
-                  : siblings[0].dataset.fx === "scale"
-                    ? { scale: 0.95, opacity: 0 }
-                    : { y: 28, opacity: 0 },
+              horizontal
+                ? kind === "left"
+                  ? { x: -36, opacity: 0 }
+                  : { x: 36, opacity: 0 }
+                : kind === "scale" && !isMobile
+                  ? { scale: 0.95, opacity: 0 }
+                  : { y: 28, opacity: 0 },
               {
                 x: 0,
                 y: 0,
@@ -79,8 +85,11 @@ export default function Fx() {
           } else {
             // Single element — animate individually
             const el = siblings[0];
-            const kind = el.dataset.fx || "up";
+            let kind = el.dataset.fx || "up";
             const from: gsap.TweenVars = { opacity: 0, duration: 0.75, ease: "power3.out" };
+            // Mobile: horizontal/scale reveals become vertical-only so
+            // rounded cards never slide sideways out of the container.
+            if (isMobile && (kind === "left" || kind === "right" || kind === "scale")) kind = "up";
             if (kind === "up") from.y = 28;
             if (kind === "left") from.x = -36;
             if (kind === "right") from.x = 36;

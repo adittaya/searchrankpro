@@ -1376,6 +1376,7 @@ export default function Page() {
         <FinalCta />
       </main>
       <Footer />
+      <div aria-hidden className="h-28 md:hidden" />
       <StickyBuy />
     </>
   );
