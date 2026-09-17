@@ -63,10 +63,10 @@ export default function PreviewCarousel() {
       onBlurCapture={() => setPaused(false)}
     >
       <div className="relative">
-        <div className="overflow-hidden rounded-[1.6rem] bg-white shadow-[0_30px_70px_-24px_rgba(47,93,115,0.35)] ring-1 ring-[#d1d5db]">
+        <div className="overflow-hidden rounded-[1.6rem] bg-white shadow-[0_30px_70px_-24px_rgba(47,93,115,0.35)] ring-1 ring-[#d1d5db] sm:w-[min(60vh,560px)]">
           <div ref={track} className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
             {SLIDES.map((s, i) => (
-              <div key={s.src} className="relative aspect-[3/4] w-full shrink-0 sm:aspect-auto sm:h-[min(70vh,680px)]">
+              <div key={s.src} className="relative aspect-[900/1165] w-full shrink-0">
                 <Image
                   src={s.src}
                   alt={s.alt}
