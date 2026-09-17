@@ -14,7 +14,7 @@ import { IconCheck } from "@/components/Icons";
 
 const ENDPOINT = process.env.NEXT_PUBLIC_EMAIL_FORM_URL || "";
 
-type Lead = { time: string; email: string; source: string; valid: string };
+type Lead = { time: string; email: string; source: string; valid: string; step?: number };
 
 function csvCell(v: string) {
   const s = String(v ?? "");
@@ -44,6 +44,7 @@ export default function AdminPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [leads, setLeads] = useState<Lead[]>([]);
+  const [totalSteps, setTotalSteps] = useState(6);
   const [query, setQuery] = useState("");
   const [copied, setCopied] = useState("");
 
@@ -66,6 +67,7 @@ export default function AdminPanel() {
         return false;
       }
       setLeads(Array.isArray(data.leads) ? data.leads : []);
+      if (Number(data.total) > 0) setTotalSteps(Number(data.total));
       return true;
     } catch {
       setError("Network error. Try again.");
@@ -300,6 +302,7 @@ export default function AdminPanel() {
                     <th className="px-4 py-3 font-semibold">Time</th>
                     <th className="px-4 py-3 font-semibold">Email</th>
                     <th className="px-4 py-3 font-semibold">Source</th>
+                    <th className="px-4 py-3 font-semibold">Sequence</th>
                     <th className="px-4 py-3 font-semibold">Valid</th>
                     <th className="px-4 py-3" />
                   </tr>
@@ -313,6 +316,17 @@ export default function AdminPanel() {
                       <td className="whitespace-nowrap px-4 py-3 text-plum-soft">{l.time}</td>
                       <td className="px-4 py-3 font-medium text-[#1f2933]">{l.email}</td>
                       <td className="px-4 py-3 text-plum">{l.source}</td>
+                      <td className="px-4 py-3">
+                        <span
+                          className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                            (l.step ?? 0) >= totalSteps
+                              ? "bg-[#3b82f6]/10 text-[#2563eb]"
+                              : "bg-blush-2 text-plum"
+                          }`}
+                        >
+                          {l.step ?? 0}/{totalSteps}
+                        </span>
+                      </td>
                       <td className="px-4 py-3">
                         {l.valid === "yes" ? (
                           <span className="inline-flex items-center gap-1 text-[#3b82f6]">

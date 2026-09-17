@@ -13,7 +13,10 @@ Deploy the bundled script (`scripts/checklist-email.gs`) as a Google Apps Script
 
 1. Go to <https://script.google.com> → **New project** → name it "SearchRank Checklist".
 2. Copy the contents of `scripts/checklist-email.gs` into `Code.gs`.
-3. Run the **setup** function once from the editor (authorizes Gmail + Sheets, creates the lead spreadsheet).
+3. Run the **setup** function once from the editor. It authorizes Gmail + Sheets + triggers,
+   creates the lead spreadsheet, adds the `Sequence` column, and installs the daily
+   `checkSequence` trigger. (Re-running `setup` is safe — it reopens the existing sheet and
+   won't create a second one.)
 4. **Deploy → New deployment → Web app**:
    - Execute as: **Me**
    - Who has access: **Anyone**
@@ -26,16 +29,22 @@ Deploy the bundled script (`scripts/checklist-email.gs`) as a Google Apps Script
    ```
 
 What the script does automatically, with no other service:
-- Stores every lead (time, email, source form) in a Google Sheet you own.
-- Emails the 5-point checklist **straight from your own Gmail** (`MailApp`).
-- Dedupes (resends checklist on repeat opt-in without a duplicate row).
+- Stores every lead (time, email, source form, sequence progress) in a Google Sheet you own.
+- Sends **email 1 (welcome + PDF)** immediately, straight from your own Gmail (`MailApp`).
+- Runs a **daily trigger** (`checkSequence`) that sends the next due email of the 6-email
+  drip sequence (day 2, 4, 6, 9, 12) and records progress in the sheet's `Sequence` column.
+- Dedupes (resends the welcome on repeat opt-in without a duplicate row).
 - Rate-limits per address (abuse guard) and silently drops honeypot submissions.
+
+The email copy lives in one place: the `SEQUENCE` array at the top of
+`scripts/checklist-email.gs`. Edit it there, save, and redeploy — no other file changes.
 
 Limits: free Gmail ≈ 100 sends/day, Google Workspace ≈ 1500/day. Fine for landing pages.
 When you outgrow it, point the same form at a transactional provider — nothing else changes.
 
 The checklist walkthrough page lives at `/free-checklist` and is already linked in the
-success state and in the script's email.
+success state and in the script's welcome email. The admin dashboard lives at `/admin`
+(passcode-gated inside the script via `ADMIN_KEY`).
 
 ---
 
@@ -117,133 +126,41 @@ Each fix: < 30 minutes, zero tools, works for any niche site.
 
 ---
 
-## 5. Sequence: 6 emails (copy-paste ready)
+## 5. Sequence: the 6 emails (built into the Apps Script)
 
-Sequence name in ConvertKit: **SEO Quick-Win**
-Tag: `quick-win-checklist`
+This is the authoritative copy — it lives in the `SEQUENCE` array in
+`scripts/checklist-email.gs` and is sent automatically. Day 0 fires on signup; the rest fire
+from the daily trigger.
 
-### Email 1 — Deliver (immediately, 0h)
-Subject: `Your SEO quick-win checklist (5 fixes, 30 min)`
-```
-Hi {{ first_name }},
+| # | Day | Subject | Job |
+|---|---|---|---|
+| 1 | 0 | Your SEO Quick-Win Checklist (fix #1 takes 5 minutes) | Deliver the PDF (attached) |
+| 2 | 2 | Did 5 minutes of work fix your traffic? | Follow up on fix #1 |
+| 3 | 4 | The 5 stages every Google query passes through | Teach one idea (crawl→ranking) |
+| 4 | 6 | The system behind the checklist | The pitch |
+| 5 | 9 | Is this different from free SEO advice? | Objection handling |
+| 6 | 12 | One honest question before you go | The close |
 
-Here's your free checklist — exactly what I promised:
+To change any of them, edit the corresponding `text`/`subject` in `SEQUENCE`, set `day` as
+needed, save, and redeploy. Each email is authored as plain text (blank line = paragraph);
+`toHtml_` builds the HTML version and auto-links URLs, so you only maintain one copy.
 
-1. Indexation scan
-2. One clear keyword per page
-3. Internal links from strong pages
-4. Article schema on your template
-5. 48px tap targets
+**Metrics to watch** (weekly, 5 min):
 
-Do 1 and 2 this week. They take 30 minutes total and are the highest-leverage of the five.
+| Metric | Healthy | If low, fix |
+|---|---|---|
+| Open rate | 40%+ | Test 2 subject lines per email |
+| Click rate | 3–8% | One link per email; clearer CTA |
+| Reach email 4 | 85%+ | Avoid spam words; keep plain-text style |
+| Leads who buy | 2–5% | Sequence is working; improve the page if lower |
 
-Why these five? They're pulled from the 29-point technical audit in my playbook — the
-12 checks that move rankings fastest when fixed.
+**After the sequence:** anyone who finishes all 6 without buying stays on your list. Send a
+genuinely useful email every 1–2 weeks (one lesson, one observation, one answer to a reader
+question) and pitch only occasionally. When the book updates, that email is your best sales
+email: *"The March 2026 core update is covered — edition 2 shipped free to every buyer."*
 
-If a friend just forwarded this, [subscribe here](link).
-
-— H. Aditya
-```
-
-### Email 2 — Quick win (day 2)
-Subject: `The #2 fix people skip (and it's free)`
-```
-Hi {{ first_name }},
-
-Yesterday's checklist had 5 fixes. Today: one 15-minute fix that outranks most blog advice.
-
-**One keyword per page.**
-
-Open your top 10 posts. For each, write the ONE search you want to win. If you can't
-answer in 5 seconds, the page is targeting too many things — and Google can't decide
-what it's about.
-
-Fix the title + H1 to that one search. That's it.
-
-Next email: why your best pages still don't rank, and the Layer Google never advertised.
-```
-
-### Email 3 — The shift (day 5)
-Subject: `Google stopped rewarding content`
-```
-Hi {{ first_name }},
-
-You wrote the content. It didn't rank. It's not laziness — the rules changed.
-
-Google's 2026 algorithm ranks based on *systems*, not individual pages:
-- topical coverage across clusters, not isolated posts
-- technical health across 200+ factors, not just page speed
-- expertise that search engines can *verify*, not just claim
-
-That's why a single "great article" won't save you. The system decides.
-
-In the full playbook, this is the 12-month roadmap + 3 databases that make it runnable.
-More on that in email #6 — first, let me show you the audit that finds what's broken.
-```
-
-### Email 4 — The audit (day 8)
-Subject: `The 29-point audit nobody does`
-```
-Hi {{ first_name }},
-
-Most sites have one silent killer: an indexation bug, broken schema, or orphan pages
-eating authority. Nobody notices because rankings drift slowly.
-
-My playbook ships a 29-point technical audit — every check with the exact how-to and the
-chapter to read if it fails. Run it quarterly.
-
-PDF + Word + 3 CSV databases (26-task roadmap, content tracker, audit) import into
-Notion/Sheets/Excel in 5 minutes.
-
-Before the big reveal on day 12, answer me this: what's your #1 ranking frustration?
-(Just hit reply.)
-```
-
-### Email 5 — Objection handling (day 10)
-Subject: `Notion? No problem`
-```
-Hi {{ first_name }},
-
-Two questions buyers ask most:
-
-Q: Do I need Notion? → No. CSVs import into Sheets, Excel, Airtable, ClickUp. Notion is
-just the nicest 5-minute option.
-
-Q: Do I need SEO experience? → No. Parts I–II build the mental model from zero. Part VII
-gives you 10 niche playbooks so you can skip ahead.
-
-And it's a *source*, not a listicle: labeled documented / testimony / folklore. Including
-the U.S. v. Google trial testimony about NavBoost. That's the part content marketers
-can't quote — because they've never read the record.
-```
-
-### Email 6 — The offer (day 12)
-Subject: `The system (and why $39 is short-term)`
-```
-Hi {{ first_name }},
-
-Five emails in. You've used the checklist, seen the audit, and watched content stop
-ranking. Here's the offer:
-
-**The Google Search Ranking System — 2026 Edition**
-- 100-page playbook: 32 chapters, 7 parts, 6 appendices
-- 26-task 12-month roadmap + 3 databases (Notion/Sheets/Excel-ready)
-- 29-point technical audit + 14-symptom recovery table
-- 10 niche playbooks + full worked example
-- Lifetime updates — every future edition free
-
-$155 stack value, yours for $39 one-time. Instant download. 30-day "prove-it" guarantee:
-
-> Rank one page using this system's audit + roadmap in 30 days, or email me and I'll
-> refund you. Simple.
-
-[Get instant access →](LINK)
-
-You're on this list because you wanted quick wins. The system is what turns them into
-permanent rankings. I'll be here if you need help importing or choosing a phase.
-
-— H. Aditya
-```
+*(Option B providers: paste this same copy into ConvertKit / Buttondown and use their
+sequence engine instead — the copy is provider-agnostic.)*
 
 ---
 
