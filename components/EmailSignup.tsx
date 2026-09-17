@@ -8,11 +8,15 @@ import { track, trackMetaCustom } from "@/lib/analytics";
 // Email capture component.
 //
 // Works with any form backend:
-//   ConvertKit  — set FORM action to your ConvertKit form URL
-//   Formspree   — set FORM action to https://formspree.io/f/XXXX
-//   Mailchimp   — set FORM action to your MC embed URL
-//   Custom API  — set FORM action to /api/subscribe
+//   Self-hosted        — set FORM action to your Apps Script web app URL
+//                        (scripts/checklist-email.gs — stores leads in a
+//                        Sheet and emails the checklist from your Gmail)
+//   ConvertKit         — set FORM action to your ConvertKit form URL
+//   Formspree          — set FORM action to https://formspree.io/f/XXXX
+//   Custom API         — set FORM action to /api/subscribe
 //
+// Sends form-encoded data (no CORS preflight) so a script.google.com web
+// app, classic forms, Formspree, and ConvertKit all accept it directly.
 // For now, the form POSTs to FORM_ACTION and shows a success state.
 // ------------------------------------------------------------------
 
@@ -50,8 +54,10 @@ export default function EmailSignup({
       try {
         const res = await fetch(FORM_ACTION, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
+          // Form-encoded keeps the request "simple" (no CORS preflight), which
+          // Google Apps Script web apps and classic form backends both accept.
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ email, form: variant }).toString(),
         });
 
         if (res.ok) {
@@ -81,6 +87,12 @@ export default function EmailSignup({
         <p className="mt-1 text-sm text-[#4b5563]">
           The free SEO quick-win checklist is on its way. Check spam if you don&apos;t see it within 2 minutes.
         </p>
+        <a
+          href="/free-checklist"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#2563eb] underline-offset-2 hover:underline"
+        >
+          Or open the checklist right now
+        </a>
       </div>
     );
   }

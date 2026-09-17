@@ -1,22 +1,52 @@
 # Email funnel — setup + ready-to-send sequences
 
 The landing page already has the lead-capture form built (`components/EmailSignup.tsx`).
-It is **inert until you connect a form backend**. This guide tells you exactly what to do,
-then gives you 6 copy-paste emails.
+It is **inert until you connect a backend**. You can run it entirely on your own
+(Google Apps Script → your Gmail → a spreadsheet you own), or use a provider. This guide
+covers both, then gives you 6 copy-paste emails.
 
 ---
 
-## 1. Pick a provider (15 minutes, free)
+## 1. Option A (recommended, no third party): your own Apps Script backend
 
-The site POSTs the email to `NEXT_PUBLIC_EMAIL_FORM_URL`. Any provider that accepts a
-JSON POST works. All three below have free tiers that work for launch.
+Deploy the bundled script (`scripts/checklist-email.gs`) as a Google Apps Script web app:
+
+1. Go to <https://script.google.com> → **New project** → name it "SearchRank Checklist".
+2. Copy the contents of `scripts/checklist-email.gs` into `Code.gs`.
+3. Run the **setup** function once from the editor (authorizes Gmail + Sheets, creates the lead spreadsheet).
+4. **Deploy → New deployment → Web app**:
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. Copy the `/exec` URL.
+6. Wire it in and rebuild:
+   ```bash
+   NEXT_PUBLIC_EMAIL_FORM_URL="https://script.google.com/macros/s/XXXX/exec" NEXT_PUBLIC_GA4_ID="G-XXXX" NEXT_PUBLIC_META_PIXEL_ID="123456..."
+   npm run build
+   firebase deploy --only hosting
+   ```
+
+What the script does automatically, with no other service:
+- Stores every lead (time, email, source form) in a Google Sheet you own.
+- Emails the 5-point checklist **straight from your own Gmail** (`MailApp`).
+- Dedupes (resends checklist on repeat opt-in without a duplicate row).
+- Rate-limits per address (abuse guard) and silently drops honeypot submissions.
+
+Limits: free Gmail ≈ 100 sends/day, Google Workspace ≈ 1500/day. Fine for landing pages.
+When you outgrow it, point the same form at a transactional provider — nothing else changes.
+
+The checklist walkthrough page lives at `/free-checklist` and is already linked in the
+success state and in the script's email.
+
+---
+
+## 1b. Option B: a provider instead
 
 | Provider | Free plan | Why |
 |---|---|---|
 | **ConvertKit** | 300 subscribers | Best for creators + tags + sequences. Built-in form endpoints. |
 | **Buttondown** | 100 subscribers | Simplest. One email address per newsletter. Has a subscribe API. |
 | **Formspree** | 50 submissions/mo | Fastest to wire up. Just a form endpoint, no sequence engine. |
-| **Custom** (your own) | — | Point `NEXT_PUBLIC_EMAIL_FORM_URL` at your own endpoint. |
+| **Custom API** | — | Point `NEXT_PUBLIC_EMAIL_FORM_URL` at your own endpoint. |
 
 ---
 
@@ -50,16 +80,19 @@ JSON POST works. All three below have free tiers that work for launch.
 
 ## 3. The lead magnet itself
 
-`NEXT_PUBLIC_EMAIL_REDIRECT` defaults to `/thank-you`. Create that page when you have a
-real backend so the checklist download is delivered after opt-in.
+`NEXT_PUBLIC_EMAIL_REDIRECT` defaults to `/thank-you`. The walkthrough is already built —
+with the Apps Script backend (Option A above), the checklist page is at `/free-checklist`,
+linked in the success state and delivered in the script's email. No `/thank-you` needed.
+
+If you use a provider instead, create `/thank-you` once the email flow is live and point
+`NEXT_PUBLIC_EMAIL_REDIRECT` at it.
 
 Suggested welcome delivery (copy into email #1):
-> Here's your checklist — [link to /free-checklist or a hosted PDF]
+> Here's your checklist — [link to /free-checklist]
 > Save it. Print it. Run the 5 fixes this week.
 
-If you want a hosted download, add a small static page `app/free-checklist/page.tsx`
-rendering the 5-point checklist, protected by a cookie set after opt-in (or just link it —
-the email gate is the protection).
+The `/free-checklist` page (built) renders the 5-point checklist; it's public, so the email
+gate is the value — anyone can read it, but the email puts it in front of you on purpose.
 
 ---
 
