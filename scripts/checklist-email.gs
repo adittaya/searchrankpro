@@ -123,22 +123,24 @@ function doGet(e) {
 
 /**
  * Sends the 5-point quick-win checklist to the subscriber using your
- * own Gmail account. Edit SUBJECT / BODY freely.
+ * own Gmail account. The PDF (public/free-checklist.pdf) is fetched
+ * from the site and attached, so the subscriber gets the file directly.
+ * Edit SUBJECT / BODY freely, but keep the attachment.
  */
 function sendChecklist_(email) {
   var body =
     "<div style=\"font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#1f2933;line-height:1.6\">" +
     "<p style=\"font-size:18px;font-weight:bold;color:#2f5d73\">Your SEO Quick-Win Checklist</p>" +
-    "<p>Here is the 5-point checklist to get moving this week — each fix takes under an hour.</p>" +
+    "<p>Here is your free PDF — <strong>The SEO Quick-Win Checklist</strong> — with five fixes you can run today. Each takes about 10 minutes, needs only free tools, and together they take about an hour.</p>" +
     "<ol style=\"padding-left:20px\">" +
-    "<li><strong>Indexation scan</strong> — search <code>site:yoursite.com</code>; pages missing aren't indexable. Fix: submit sitemap in Search Console, check robots.txt.</li>" +
-    "<li><strong>One primary keyword per page</strong> — two intents, no rank. Rewrite the H1 + title to one.</li>" +
-    "<li><strong>Internal links from your strongest pages</strong> — 3 links from pages that already get traffic to your orphan pages.</li>" +
-    "<li><strong>Schema on your main template</strong> — one Article JSON-LD snippet with headline + publish date covers every post.</li>" +
-    "<li><strong>Mobile tap targets ≥48px</strong> — small buttons fail Core Web Vitals. Bump min-height to 48px, body font ≥16px.</li>" +
+    "<li><strong>Indexation</strong> — confirm Google can actually see every important page.</li>" +
+    "<li><strong>Image weight</strong> — compress your three biggest images for Core Web Vitals.</li>" +
+    "<li><strong>Schema</strong> — structured data on your top 3 pages.</li>" +
+    "<li><strong>Content gaps</strong> — mine Search Console queries where you sit at positions 8&ndash;30.</li>" +
+    "<li><strong>Internal links</strong> — point your strongest pages at your weakest important ones.</li>" +
     "</ol>" +
-    "<p>Open the full walkthrough here: <a href=\"https://searchrankpro.web.app/free-checklist\" style=\"color:#2563eb\">Free checklist walkthrough</a></p>" +
-    "<p>Want the deep version? <a href=\"https://searchrankpro.web.app/\" style=\"color:#2563eb\">The Google Search Ranking System — 2026 Edition</a> walks through every step of ranking, sourced from Google's own docs.</p>" +
+    "<p>It&rsquo;s attached to this email — save it, print it, run it this week.</p>" +
+    "<p>When you finish these, the full system is waiting: <a href=\"https://searchrankpro.web.app/\" style=\"color:#2563eb\">The Google Search Ranking System — 2026 Edition</a> — 100 pages, 32 chapters, and the 12-month roadmap.</p>" +
     "<p style=\"color:#9ca3af;font-size:12px\">You're receiving this because you asked for the free checklist. Unsubscribe anytime by replying \"stop\".</p>" +
     "</div>";
 
@@ -146,5 +148,6 @@ function sendChecklist_(email) {
     to: email,
     subject: "Your SEO Quick-Win Checklist is inside",
     htmlBody: body,
+    attachments: [UrlFetchApp.fetch("https://searchrankpro.web.app/free-checklist.pdf").getBlob()],
   });
 }

@@ -85,13 +85,13 @@ export default function EmailSignup({
           Check your inbox.
         </p>
         <p className="mt-1 text-sm text-[#4b5563]">
-          The free SEO quick-win checklist is on its way. Check spam if you don&apos;t see it within 2 minutes.
+          The free SEO quick-win checklist (PDF) is on its way. Check spam if you don&apos;t see it within 2 minutes.
         </p>
         <a
-          href="/free-checklist"
+          href="/free-checklist.pdf"
           className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#2563eb] underline-offset-2 hover:underline"
         >
-          Or open the checklist right now
+          Or download the checklist right now
         </a>
       </div>
     );

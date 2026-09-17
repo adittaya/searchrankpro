@@ -81,8 +81,10 @@ success state and in the script's email.
 ## 3. The lead magnet itself
 
 `NEXT_PUBLIC_EMAIL_REDIRECT` defaults to `/thank-you`. The walkthrough is already built —
-with the Apps Script backend (Option A above), the checklist page is at `/free-checklist`,
-linked in the success state and delivered in the script's email. No `/thank-you` needed.
+with the Apps Script backend (Option A above), the checklist PDF lives at
+`/free-checklist.pdf` (and the readable walkthrough at `/free-checklist`). The script
+fetches the PDF and **attaches it directly** to the welcome email, so the subscriber gets
+the file, not just a link. No `/thank-you` needed.
 
 If you use a provider instead, create `/thank-you` once the email flow is live and point
 `NEXT_PUBLIC_EMAIL_REDIRECT` at it.

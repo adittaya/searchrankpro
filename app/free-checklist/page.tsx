@@ -20,43 +20,43 @@ export const metadata: Metadata = {
 const items = [
   {
     n: "01",
-    title: "Indexation scan",
-    time: "~10 minutes",
-    what: "Search site:yoursite.com in Google. If pages are missing, they aren't in the index at all — no amount of on-page work will rank them.",
-    fix: "Submit your sitemap in Google Search Console, confirm robots.txt isn't blocking anything, and make sure the sitemap is referenced in robots.txt.",
-    win: "Every page that can be crawled can be ranked. This unblocks everything else.",
+    title: "Check that Google can actually see you",
+    time: "5 minutes",
+    what: "If an important page says 'Crawled — currently not indexed' or 'Excluded by noindex tag', that page is invisible to search. No tactic will fix rankings until this does.",
+    fix: "Open Search Console's Pages report, submit (or re-submit) your sitemap under Sitemaps, and request indexing for any fixed money page via URL Inspection.",
+    win: "Indexation problems silently block everything else — this unblocks the rest.",
   },
   {
     n: "02",
-    title: "One clear primary keyword per page",
-    time: "~10 minutes/page",
-    what: "A page that targets two intents targets none. Google can't tell which query the page should own.",
-    fix: "Rewrite the H1 and title tag to match a single search intent. One page, one job. Fastest single-page ranking bump there is.",
-    win: "A sharper defined page gets returned — and clicked — for the query you actually care about.",
+    title: "Compress your three biggest images",
+    time: "10 minutes",
+    what: "Image weight is the most common cause of a failed Largest Contentful Paint — and fast pages are measurably more likely to be cited by AI Overviews.",
+    fix: "Open your homepage and top pages on a phone, note the three largest images (usually heroes and banners), export them as WebP or quality-70 JPEG at real display size, and re-upload. Add loading='lazy' to every image below the first screen.",
+    win: "A Core Web Vitals win from the biggest lever on the page.",
   },
   {
     n: "03",
-    title: "Internal links from your strongest pages",
-    time: "~20 minutes",
-    what: "Orphan pages get no link equity and Google treats them as an afterthought.",
-    fix: "Add 3 links from pages that already get traffic, pointing to your orphan pages with descriptive anchor text.",
-    win: "Cheapest authority transfer in SEO. Spreads equity to pages you need to rank.",
+    title: "Add basic structured data to your top 3 pages",
+    time: "10 minutes",
+    what: "Schema makes your page unambiguous to machines — including the AI features that quote and cite content.",
+    fix: "Paste an Article JSON-LD snippet (headline + datePublished + dateModified + author) into the head of each key article, validate with Google's Rich Results Test, then submit for re-indexing.",
+    win: "One small snippet per page turns machine ambiguity into a clear signal.",
   },
   {
     n: "04",
-    title: "Schema on your main template",
-    time: "~15 minutes",
-    what: "Rich results — and clearer understanding — need structured data.",
-    fix: "Add one Article JSON-LD snippet with headline + publish date to your blog template. Applied once, it covers every post.",
-    win: "No plugin needed. A single snippet upgrades the whole site's appearance in SERPs.",
+    title: "Mine your Search Console queries for content gaps",
+    time: "15 minutes",
+    what: "You're visible for these searches but not winning them — the cheapest rankings you will ever win are the ones Google already shows you for.",
+    fix: "In Performance, filter queries where your average position is 8–30. For each: does your page genuinely answer that query, in the format the searcher wants? Where it does not, add a section that does — one page per gap, not a new thin page per keyword.",
+    win: "Answers you already nearly have, finished off and ranked.",
   },
   {
     n: "05",
-    title: "Mobile tap targets ≥48px",
-    time: "~15 minutes",
-    what: "Buttons smaller than 48px fail Core Web Vitals' interaction tests and tank mobile rankings.",
-    fix: "Bump button min-height to 48px and set body font-size to at least 16px.",
-    win: "Passes the interaction threshold Google measures — a small tweak, a real signal.",
+    title: "Point your strongest pages at your weakest important ones",
+    time: "10 minutes",
+    what: "Internal links are the one link source you fully control, and they tell Google which pages you consider important.",
+    fix: "Note your 3 highest-traffic pages. From each, add one contextual link — descriptive anchor text, not 'click here' — to a page you want to rank that currently gets little traffic. Three to five such links, built naturally into sentences, is enough.",
+    win: "Authority you already earned, redirected to the pages that need it.",
   },
 ];
 
@@ -66,18 +66,27 @@ export default function FreeChecklistPage() {
       <header className="bg-[#2f5d73] px-5 py-10 text-center text-white sm:py-14">
         <div className="mx-auto w-full max-w-3xl">
           <span className="inline-block rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#93c5fd]">
-            Free checklist
+            Free checklist — PDF included
           </span>
           <h1 className="font-display mt-4 text-3xl font-bold leading-tight sm:text-4xl">
             The SEO Quick-Win Checklist
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-[15px] leading-relaxed text-[#d1d5db]">
-            Five fixes you can run this week. Each takes under an hour, none require a
-            plugin, and together they nudge any stale site toward page one.
+            Five fixes you can run today. Each takes about 10 minutes, needs only free tools,
+            and together they take about an hour.
           </p>
-          <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-[#93c5fd]">
-            <IconCheck className="h-3.5 w-3.5" /> From {SITE_NAME} — no paywall, no opt-in required to read
-          </p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="/free-checklist.pdf"
+              download="The_SEO_Quick_Win_Checklist.pdf"
+              className="inline-flex items-center gap-2 rounded-full bg-[#3b82f6] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#2563eb]"
+            >
+              Download the PDF
+            </a>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-[#93c5fd]">
+              <IconCheck className="h-3.5 w-3.5" /> From {SITE_NAME} — no paywall, no opt-in required to read
+            </span>
+          </div>
         </div>
       </header>
 
