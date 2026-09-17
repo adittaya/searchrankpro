@@ -22,6 +22,11 @@
 var SS_PROPERTY = "LEAD_SHEET_ID"; // stores the active spreadsheet id
 var MASTER_SHEET = "Leads";
 
+// Admin panel passcode. CHANGE THIS to your own value, then redeploy.
+// The admin page (/admin) never stores it — it types it in and this script
+// is the only place that checks it, so it is never exposed in the website.
+var ADMIN_KEY = "7047571829";
+
 /**
  * Run this once from the editor to create the tracking spreadsheet
  * and set the stored id. Authorize when prompted.
@@ -69,6 +74,15 @@ function doPost(e) {
     // Parse body: form-encoded (fetch default) or JSON fallback.
     var raw = e && e.postData && e.postData.contents ? e.postData.contents : "";
     var params = e && e.parameter ? e.parameter : {};
+
+    // Admin analytics — returns the lead list to the /admin panel.
+    if (params.route === "admin") {
+      if (params.key !== ADMIN_KEY) {
+        return jsonOut_({ ok: false, error: "unauthorized" });
+      }
+      return adminLeads_();
+    }
+
     var email = params.email || "";
     if (!email && raw.indexOf("{") === 0) {
       try {
@@ -116,9 +130,42 @@ function doPost(e) {
   }
 }
 
-/** GET /webhook for an easy health check. */
+/** GET /webhook for an easy health check. Also serves admin via ?route=admin&key=. */
 function doGet(e) {
+  var params = (e && e.parameter) || {};
+  if (params.route === "admin") {
+    if (params.key !== ADMIN_KEY) {
+      return jsonOut_({ ok: false, error: "unauthorized" });
+    }
+    return adminLeads_();
+  }
   return jsonOut_({ ok: true, service: "searchrank-checklist", time: now_() });
+}
+
+/**
+ * Returns every stored lead, newest first, for the /admin dashboard.
+ * Columns: Time (UTC) | Email | Source | Valid.
+ */
+function adminLeads_() {
+  try {
+    var sheet = getSheet_();
+    var leads = [];
+    if (sheet.getLastRow() > 1) {
+      var vals = sheet.getRange(2, 1, sheet.getLastRow() - 1, 4).getValues();
+      for (var i = 0; i < vals.length; i++) {
+        leads.push({
+          time: String(vals[i][0] || ""),
+          email: String(vals[i][1] || ""),
+          source: String(vals[i][2] || ""),
+          valid: String(vals[i][3] || ""),
+        });
+      }
+    }
+    leads.reverse(); // newest first
+    return jsonOut_({ ok: true, count: leads.length, leads: leads });
+  } catch (err) {
+    return jsonOut_({ ok: false, error: "server", detail: String(err) });
+  }
 }
 
 /**
