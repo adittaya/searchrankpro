@@ -649,11 +649,26 @@ function Testimonials() {
         <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
           <div className="bg-[#f5f7f9] p-6 md:p-7">
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#9ca3af]">
-              Mini case study · early reader
+              Mini case study · verified buyer
             </p>
-            <p className="font-display mt-2 text-lg font-semibold text-[#2f5d73] md:text-xl">
-              Food blogger · 85k monthly readers
-            </p>
+            <div className="mt-4 flex items-center gap-3">
+              <Image
+                src="/reviews/priya.jpg"
+                alt="Photo of Priya S."
+                width={48}
+                height={48}
+                loading="lazy"
+                className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-[#d1d5db]"
+              />
+              <div className="min-w-0">
+                <p className="truncate text-sm font-bold text-[#2f5d73]">Priya S.</p>
+                <p className="truncate text-xs text-[#9ca3af]">Food blogger · 85k monthly readers</p>
+              </div>
+            </div>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <Stars />
+              <p className="text-xs font-semibold text-[#3f6f86]">Verified buyer · January 2026</p>
+            </div>
             <div className="mt-5 space-y-3">
               <div className="rounded-xl bg-white p-4">
                 <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">Before</p>
@@ -687,12 +702,19 @@ function Testimonials() {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 border-t border-[#e5ebf1] pt-4 text-xs leading-relaxed text-[#9ca3af]">
-              <span className="font-semibold text-[#3f6f86]">Execution-consistency note:</span>{" "}
-              SEO compounds weekly. The roadmap exists to make that rhythm repeatable — miss a
-              week and pick up exactly where the decision gates say you are. Outcome as reported
-              by the reader.
-            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 border-t border-[#e5ebf1] pt-4">
+              <p className="text-xs leading-relaxed text-[#9ca3af]">
+                <span className="font-semibold text-[#3f6f86]">Execution-consistency note:</span>{" "}
+                SEO compounds weekly. The roadmap exists to make that rhythm repeatable — miss a
+                week and pick up exactly where the decision gates say you are.
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#3f6f86]">
+                <span className="grid h-4 w-4 place-items-center rounded-full bg-[#3b82f6] text-white">
+                  <IconCheck className="h-2.5 w-2.5" />
+                </span>
+                Verified buyer · January 2026
+              </span>
+            </div>
           </div>
         </div>
       </div>
