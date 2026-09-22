@@ -6,6 +6,7 @@ import MobileMenu from "@/components/MobileMenu";
 import BuyButton from "@/components/BuyButton";
 import PreviewCarousel from "@/components/PreviewCarousel";
 import EmailSignup from "@/components/EmailSignup";
+import ProductDemo from "@/components/ProductDemo";
 import {
   IconAi,
   IconArrowRight,
@@ -1369,6 +1370,7 @@ export default function Page() {
       <NavBar />
       <main>
         <Hero />
+        <ProductDemo />
         <FreeChecklist />
         <Preview />
         <Proof />
