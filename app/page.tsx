@@ -64,7 +64,7 @@ function Primary({ sub = CTA_SUB, size = "default" }: { sub?: string; size?: "de
           <IconArrowRight className="arrow-dash h-4 w-4 shrink-0" />
         </span>
         {sub && (
-          <span className="text-[11px] font-semibold tracking-wide text-white/85 sm:text-xs">
+          <span className="text-xs font-semibold tracking-wide text-white/85">
             {sub}
           </span>
         )}
@@ -227,26 +227,14 @@ function Hero() {
             sourced from Google&apos;s own docs and the U.S. v. Google trial.
           </p>
 
-          <p id="hero-promise" className="mt-3 text-[13px] font-bold text-[#3f6f86]">
-            No guessing. No overwhelm. Just execution.
-          </p>
-
           <div id="hero-cta" className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Primary />
             <Ghost label="See the free checklist ↓" href="#free" />
           </div>
-          <p className="mt-3 text-[13px] text-[#9ca3af]">
-            or{" "}
-            <a href="/pitch" className="font-semibold text-[#3b82f6] underline-offset-2 transition hover:underline">
-              view the 60-second pitch deck
-            </a>{" "}
-            →
-          </p>
-
           <div id="hero-trust" className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
             <Stars />
             <p className="text-[13px] font-medium text-[#4b5563]">
-              <span className="font-bold text-[#2f5d73]">4.9/5</span> from early readers · instant download · pay once
+              <span className="font-bold text-[#2f5d73]">4.9/5</span> from early readers · verified buyers
             </p>
           </div>
 
@@ -281,14 +269,6 @@ function Hero() {
             <div className="ico-float absolute -bottom-5 -left-3 rounded-2xl border border-[#d1d5db] bg-white/95 px-4 py-3 shadow-xl backdrop-blur sm:-left-8">
               <p className="font-display text-lg font-bold text-[#2f5d73]">Playbook + system</p>
               <p className="text-xs font-medium text-[#9ca3af]">5 trackers · bonus kit · lifetime updates</p>
-            </div>
-            <div className="absolute -right-2 -top-4 rounded-2xl border border-[#d1d5db] bg-white/95 px-3.5 py-2.5 shadow-lg backdrop-blur sm:-right-6">
-              <p className="flex items-center gap-1.5 text-xs font-bold text-[#2f5d73]">
-                <span className="grid h-5 w-5 place-items-center rounded-full bg-[#3b82f6]/12 text-[#2563eb]">
-                  <IconCheck className="h-3 w-3" />
-                </span>
-                32 chapters · 100 pages
-              </p>
             </div>
           </div>
         </div>
@@ -506,7 +486,7 @@ function How() {
       n: "02",
       icon: <IconImport className="h-6 w-6 text-[#3b82f6]" animated />,
       t: "Import the system",
-      d: "Five minutes. Three CSVs into Notion, Sheets, Excel, Airtable, or ClickUp — a full SEO operating system.",
+      d: "Five minutes. All five CSVs import into Notion, Sheets, Excel, Airtable, or ClickUp — a full SEO operating system.",
     },
     {
       n: "03",
@@ -924,7 +904,7 @@ function ForWho() {
         </div>
         <div data-fx="right" className="card border-[#e5ebf1] p-6 md:p-8">
           <p className="font-display flex items-center gap-2 text-lg font-semibold text-[#9ca3af]">
-            <span className="text-[#e5484d]">✕</span> This is NOT for you if…
+            <span aria-hidden="true">✕</span> This is NOT for you if…
           </p>
           <ul className="mt-5 space-y-3.5">
             {no.map((t) => (

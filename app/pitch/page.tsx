@@ -159,7 +159,7 @@ function SlideProblem() {
         <div data-reveal className="mt-6 grid gap-3 sm:grid-cols-2">
           {pains.map((t) => (
             <div key={t} className="flex items-start gap-3 rounded-xl border border-[#d1d5db] bg-white p-4">
-              <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e5484d]" />
+              <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
               <span className="text-[14px] leading-snug text-[#4b5563]">{t}</span>
             </div>
           ))}
