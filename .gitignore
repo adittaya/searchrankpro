@@ -22,4 +22,7 @@ The_Google_Search_Ranking_System_Playbook.pdf
 
 # misc
 .DS_Store
-*.logfinal_version_a.mp4
+*.log
+
+# raw demo source (optimized copies live in public/demo*)
+final_version_a.mp4
