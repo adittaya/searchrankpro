@@ -7,6 +7,7 @@ import BuyButton from "@/components/BuyButton";
 import PreviewCarousel from "@/components/PreviewCarousel";
 import EmailSignup from "@/components/EmailSignup";
 import ProductDemo from "@/components/ProductDemo";
+import Countdown from "@/components/Countdown";
 import {
   IconArrowRight,
   IconAudit,
@@ -50,7 +51,15 @@ function Stars() {
   );
 }
 
-function Primary({ sub = CTA_SUB, size = "default" }: { sub?: string; size?: "default" | "lg" }) {
+function Primary({
+  label = CTA_LABEL,
+  sub = CTA_SUB,
+  size = "default",
+}: {
+  label?: string;
+  sub?: string;
+  size?: "default" | "lg";
+}) {
   return (
     <BuyButton
       className={`btn btn-primary w-full sm:w-auto ${
@@ -59,7 +68,7 @@ function Primary({ sub = CTA_SUB, size = "default" }: { sub?: string; size?: "de
     >
       <span className="flex flex-col items-center gap-1">
         <span className="flex items-center gap-2">
-          {CTA_LABEL}
+          {label}
           <IconArrowRight className="arrow-dash h-4 w-4 shrink-0" />
         </span>
         {sub && (
@@ -217,7 +226,12 @@ function Hero() {
             </span>
           </h1>
 
-          <p id="hero-sub" className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#4b5563] md:text-lg">
+          <p className="mt-4 text-sm font-semibold text-[#4b5563] sm:text-base">
+            Most SEO fails because there&apos;s no system. This gives you one — and{" "}
+            <span className="text-[#2563eb]">tells you exactly what to do every week.</span>
+          </p>
+
+          <p id="hero-sub" className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#4b5563] md:text-lg">
             A step-by-step SEO operating system — playbook + trackers — that tells you{" "}
             <span className="font-semibold text-[#2f5d73]">what to do</span>,{" "}
             <span className="font-semibold text-[#2f5d73]">when to do it</span>, and{" "}
@@ -233,7 +247,7 @@ function Hero() {
           <div id="hero-trust" className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
             <Stars />
             <p className="text-[13px] font-medium text-[#4b5563]">
-              <span className="font-bold text-[#2f5d73]">4.9/5</span> from 200+ early readers · verified buyers
+              <span className="font-bold text-[#2f5d73]">4.9/5</span> from 200+ early readers · 1,200+ marketers use the free checklist
             </p>
           </div>
 
@@ -627,6 +641,60 @@ function Testimonials() {
           <span className="text-[13px] font-medium text-[#9ca3af]">· 200+ verified early readers</span>
         </span>
       </div>
+
+      {/* mini case study — visual before/after anchor */}
+      <div data-fx="up" className="mb-6 overflow-hidden rounded-2xl border border-[#d1d5db] bg-white shadow-sm">
+        <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="bg-[#f5f7f9] p-6 md:p-7">
+            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#9ca3af]">
+              Mini case study · early reader
+            </p>
+            <p className="font-display mt-2 text-lg font-semibold text-[#2f5d73] md:text-xl">
+              Food blogger · 85k monthly readers
+            </p>
+            <div className="mt-5 space-y-3">
+              <div className="rounded-xl bg-white p-4">
+                <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">Before</p>
+                <p className="mt-1.5 text-sm font-medium text-[#4b5563]">Recipes weren&apos;t ranking</p>
+              </div>
+              <div className="rounded-xl bg-white p-4 ring-2 ring-[#93c5fd]/50">
+                <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#3f6f86]">
+                  After · time taken: 2 months
+                </p>
+                <p className="mt-1.5 text-sm font-bold text-[#2f5d73]">
+                  3 pillar pages reached page one
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 md:p-7">
+            <p className="font-display text-lg font-semibold leading-snug text-[#2f5d73] md:text-xl">
+              &ldquo;I finally understand why our recipes weren&apos;t ranking.&rdquo;
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {[
+                "Diagnosed the real cause of flat rankings",
+                "Restructured intros + post structure per the click-satisfaction chapter",
+                "Applied the fix across existing and new pillar posts",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-2.5 text-sm leading-relaxed text-[#1f2933]">
+                  <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[#3b82f6] text-white">
+                    <IconCheck className="h-2.5 w-2.5" />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 border-t border-[#e5ebf1] pt-4 text-xs leading-relaxed text-[#9ca3af]">
+              <span className="font-semibold text-[#3f6f86]">Execution-consistency note:</span>{" "}
+              SEO compounds weekly. The roadmap exists to make that rhythm repeatable — miss a
+              week and pick up exactly where the decision gates say you are. Outcome as reported
+              by the reader.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="grid gap-4 md:grid-cols-3 md:gap-5">
         {quotes.map((t) => (
           <figure key={t.n} data-fx="up" className="card flex h-full flex-col p-6">
@@ -1213,7 +1281,7 @@ function Pricing() {
             <BuyButton className="btn btn-primary w-full px-8 py-5 text-base">
               <span className="flex flex-col items-center gap-1">
                 <span className="flex items-center gap-2">
-                  {CTA_LABEL}
+                  Start now — your Week 1 begins tonight
                   <IconArrowRight className="arrow-dash h-4 w-4" />
                 </span>
                 <span className="text-xs font-semibold text-white/85">Instant download · ~3.5 MB ZIP</span>
@@ -1252,11 +1320,11 @@ function Guarantee() {
           </p>
           <p data-fx="up" className="mt-4 text-sm font-semibold text-[#3f6f86]">
             <IconCheck className="mr-1 inline h-4 w-4 text-[#3b82f6]" />
-            7-day money-back guarantee — not the right fit, every dollar back, no questions asked.
+            Try it risk-free for 7 days — not the right fit, every dollar back, no questions asked.
           </p>
           <div data-fx="up" className="mt-6 flex flex-col gap-3 sm:flex-row">
             <BuyButton className="btn btn-primary px-8 py-4 text-[15px]">
-              Start your 90-day plan
+              Start now — your Week 1 begins tonight
               <IconArrowRight className="arrow-dash h-4 w-4" />
             </BuyButton>
             <a href="#faq" className="btn btn-ghost px-8 py-4 text-sm">Read the FAQ</a>
@@ -1393,19 +1461,24 @@ function FinalCta() {
         <div data-fx="up" className="mx-auto mt-8 flex max-w-md justify-center sm:max-w-none">
           <Primary size="lg" />
         </div>
-        <p data-fx="up" className="mt-5 text-xs font-medium text-[#9ca3af]">
-          Lifetime updates · one-time payment · instant download · fair-use license
+        <p data-fx="up" className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs font-medium text-[#9ca3af]">
+          <span>Lifetime updates · one-time payment · instant download · fair-use license</span>
+          <span className="flex items-center gap-1 rounded-full border border-[#d1d5db] bg-white px-2 py-1 font-bold text-[#3f6f86] shadow-sm">
+            <span className="dot-pulse" />
+            <Countdown />
+            · <span className="text-[#2563eb]">launch pricing ends</span>
+          </span>
         </p>
 
         {/* Email capture below final CTA */}
         <div data-fx="up" className="mx-auto mt-12 max-w-lg">
           <div className="rounded-2xl border border-[#d1d5db] bg-white p-6 shadow-sm">
             <p className="font-display text-base font-bold text-[#2f5d73]">
-              Not ready to buy?
+              Start now — your Week 1 begins tonight
             </p>
             <p className="mt-1 text-sm text-[#4b5563]">
-              Get the free 5-point quick-win checklist — fix #1 tonight, watch for
-              Search Console movement this week.
+              You don&apos;t need more SEO content. You need a system.{" "}
+              <span className="font-semibold text-[#2f5d73]">Start your first week now.</span>
             </p>
             <div className="mt-4">
               <EmailSignup variant="inline" />
@@ -1490,10 +1563,10 @@ function StickyBuy() {
 
 function NinetyDayPath() {
   const phases = [
-    { w: "Week 1–2", t: "Baseline + quick wins", d: "Run the 29-point audit, fix indexation and speed. First signals can reach Search Console within days." },
-    { w: "Week 3–6", t: "Build the structure", d: "Topic map + keyword worksheet, then your first content cluster goes live." },
-    { w: "Week 7–10", t: "Compound the authority", d: "Second cluster, internal links, schema — impressions trend upward." },
-    { w: "Week 11–12", t: "Movement", d: "Query coverage expands and phrase-level rankings push toward page one." },
+    { w: "Week 1–2", t: "Baseline + quick wins", d: "Run the 29-point audit, fix indexation and speed.", sig: "Indexed pages tick up" },
+    { w: "Week 3–6", t: "Build the structure", d: "Topic map + keyword worksheet, then your first content cluster goes live.", sig: "Impressions start rising" },
+    { w: "Week 7–10", t: "Compound the authority", d: "Second cluster, internal links, schema.", sig: "Query coverage climbs week over week" },
+    { w: "Week 11–12", t: "Movement", d: "Consolidate winners, refresh, expand.", sig: "First phrases edge toward page one" },
   ];
   return (
     <section className="w-full bg-white">
@@ -1518,13 +1591,20 @@ function NinetyDayPath() {
                   routine, and measured ranking movement.
                 </p>
               </div>
+              <div className="rounded-2xl border border-dashed border-[#d1d5db] p-5">
+                <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">If you do nothing</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">
+                  Same tabs, same traffic curve, same &ldquo;I&apos;ll start next month.&rdquo;
+                  Another year of effort — <span className="font-semibold text-[#2f5d73]">the same results.</span>
+                </p>
+              </div>
             </div>
           </div>
 
           {/* the path */}
           <div data-fx="right">
             <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
-              <span className="dot-pulse" /> The 90-day path
+              <span className="dot-pulse" /> Follow it weekly → watch for these signals
             </p>
             <div className="space-y-3">
               {phases.map((p, i) => (
@@ -1536,6 +1616,10 @@ function NinetyDayPath() {
                     <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">{p.w}</p>
                     <p className="mt-0.5 font-display font-semibold text-[#2f5d73]">{p.t}</p>
                     <p className="mt-1 text-sm leading-relaxed text-[#4b5563]">{p.d}</p>
+                    <p className="mt-2 flex items-start gap-1.5 text-[13px] font-bold text-[#2563eb]">
+                      <IconCheck className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                      {p.sig}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -1545,6 +1629,17 @@ function NinetyDayPath() {
               consistently you execute.
             </p>
           </div>
+        </div>
+
+        {/* contextual CTA — right after the roadmap */}
+        <div data-fx="up" className="mt-10 flex flex-col items-center gap-3 text-center">
+          <BuyButton className="btn btn-primary px-8 py-4 text-[15px]">
+            Start your Week 1 today
+            <IconArrowRight className="arrow-dash h-4 w-4" />
+          </BuyButton>
+          <p className="text-xs font-semibold text-[#3f6f86]">
+            Risk-free for 7 days — every dollar back if it isn&apos;t for you.
+          </p>
         </div>
       </div>
     </section>

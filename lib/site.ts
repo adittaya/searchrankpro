@@ -24,3 +24,10 @@ export const PRODUCT = {
   tagline:
     "How Google actually ranks pages — the systems, the signals, and the 12-month strategy to earn your place.",
 };
+
+// ------------------------------------------------------------------
+// Launch-window deadline that drives the countdown chips near the CTAs.
+// Set this to the real moment the launch price ends (ISO 8601, UTC).
+// When it passes, the chips switch to "launch offer ended".
+// ------------------------------------------------------------------
+export const LAUNCH_PRICE_ENDS = "2026-10-31T23:59:59Z";
