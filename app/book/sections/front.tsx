@@ -64,7 +64,7 @@ export const SECTIONS_FRONT: BookSection[] = [
         <Stats
           items={[
             { value: "$59", label: "Playbook PDF+Word", sub: "the full 32-chapter reference" },
-            { value: "$29", label: "Execution System", sub: "3 databases · 26 tasks" },
+            { value: "$29", label: "Execution System", sub: "5 databases · 30 tasks" },
             { value: "$19", label: "Recovery Kit", sub: "14-symptom troubleshooter" },
             { value: "$29", label: "Niche Playbooks", sub: "10 playbooks + worked example" },
             { value: "$19", label: "Lifetime updates", sub: "free forever" },

@@ -299,7 +299,7 @@ function Hero() {
           {[
             [32, "chapters"],
             [100, "pages"],
-            [26, "roadmap tasks"],
+            [30, "roadmap tasks"],
             [29, "audit checks"],
             [14, "symptom fixes"],
             [10, "niche playbooks"],
@@ -727,7 +727,7 @@ function Included() {
       id="included"
       eyebrow="What's included"
       title="A full operating system, not just a book."
-      lead="One ZIP, about 550 KB. Everything downloads the moment you check out."
+      lead="One ZIP, about 3.5 MB. Everything downloads the moment you check out."
     >
       <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
         <div data-fx="left" className="card p-6 md:p-8">
@@ -750,12 +750,14 @@ function Included() {
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f5f7f9]">
               <IconContentArt className="h-5 w-5 text-[#3b82f6]" />
             </span>
-            The execution kit — 3 databases
+            The execution kit — 5 databases
           </h3>
           <ul className="mt-5 space-y-3.5">
-            <CheckItem>Roadmap: 26 tasks across 5 phases, 4 decision gates</CheckItem>
+            <CheckItem>Roadmap: 30 tasks across 5 phases, 4 decision gates</CheckItem>
             <CheckItem>Content tracker: topic-cluster pipeline, one row per article</CheckItem>
             <CheckItem>Audit: 29 pass/fail checks across 7 sections</CheckItem>
+            <CheckItem>Keyword-research worksheet + 90-day quickstart</CheckItem>
+            <CheckItem>Bonus: beginner SEO FAQ + outreach templates</CheckItem>
             <CheckItem>5-minute import · Notion, Sheets, Excel, Airtable, ClickUp</CheckItem>
           </ul>
         </div>
@@ -786,7 +788,7 @@ function System() {
       icon: <IconRoadmap className="h-6 w-6 text-[#3b82f6]" animated />,
       name: "Roadmap_Tasks — the 12-month engine",
       rows: ["Phase 1 · wk 5 — Build topic map", "Phase 1 · wk 8 — Publish cluster", "GATE CHECK — impressions rising"],
-      note: "26 sequenced tasks across 5 phases. Advance on exit criteria, not the calendar.",
+      note: "30 sequenced tasks across 5 phases. Advance on exit criteria, not the calendar.",
     },
     {
       icon: <IconContentArt className="h-6 w-6 text-[#3b82f6]" animated />,
@@ -800,6 +802,18 @@ function System() {
       rows: ["Indexation — 8 checks", "Performance & CWV — 6 checks", "Schema & content — 6 checks"],
       note: "29 pass/fail checks, each with how-to-check and the chapter to read if it fails.",
     },
+    {
+      icon: <IconPipeline className="h-6 w-6 text-[#3b82f6]" animated />,
+      name: "Keyword_Worksheet — demand map",
+      rows: ["Money queries + intent", "Volume / difficulty / gaps", "Map to clusters before you write"],
+      note: "Find the queries worth a page before you build it — one row per keyword, ranked by fit.",
+    },
+    {
+      icon: <IconBolt className="h-6 w-6 text-[#3b82f6]" animated />,
+      name: "90-Day Quickstart — first quarter",
+      rows: ["Wk 1 — baseline + setup", "Wk 8 — first cluster live", "Wk 13 — prove one ranking"],
+      note: "The 13-week sprint from the roadmap: exactly what to do for your first quarter of compounding.",
+    },
   ];
   return (
     <Section
@@ -807,7 +821,7 @@ function System() {
       tint
       eyebrow="The execution system"
       title="Reading alone doesn't rank you. This does."
-      lead="Import three spreadsheets and you have a working SEO operating system — in the software you already use."
+      lead="Import five spreadsheets and you have a working SEO operating system — in the software you already use."
     >
       <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
         {dbs.map((db) => (
@@ -1014,7 +1028,7 @@ function ValueRow({ item, cost }: { item: string; cost: number }) {
 function Pricing() {
   const valueRows: [string, number][] = [
     ["The Playbook — PDF + Word · 100 pages, 32 chapters", 59],
-    ["Execution System — 3 databases (Roadmap + Tracker + Audit)", 29],
+    ["Execution System — 5 databases (Roadmap + Tracker + Audit + Worksheet + Quickstart)", 29],
     ["14-symptom Recovery Troubleshooter (Appendix E)", 19],
     ["10 Niche Playbooks + worked example (Part VII)", 29],
     ["START_HERE + Import Guide (onboarding)", 19],
@@ -1081,7 +1095,7 @@ function Pricing() {
                   {CTA_LABEL}
                   <IconArrowRight className="arrow-dash h-4 w-4" />
                 </span>
-                <span className="text-xs font-semibold text-white/85">Instant download · 550 KB ZIP</span>
+                <span className="text-xs font-semibold text-white/85">Instant download · ~3.5 MB ZIP</span>
               </span>
             </BuyButton>
           </div>
@@ -1174,7 +1188,7 @@ function Faq() {
   const faqs = [
     {
       q: "What exactly do I get after purchase?",
-      a: "One ZIP (about 550 KB): playbook in PDF + Word (100 pages, 32 chapters, 7 parts + 6 appendices), three CSV databases (26-task roadmap, content tracker, 29-point audit), import guide, and START-HERE file. Instant download.",
+      a: "One ZIP (about 3.5 MB): playbook in PDF + Word (100 pages, 32 chapters, 7 parts + 6 appendices), five CSV databases (30-task roadmap, content tracker, 29-point audit, keyword-research worksheet, 90-day quickstart), bonus resources (beginner SEO FAQ + outreach templates), import guide, and START-HERE file. Instant download.",
     },
     {
       q: "Do I need any SEO or technical background?",

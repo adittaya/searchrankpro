@@ -188,21 +188,30 @@ Output goes to `out.pdf`. Copy to `public/` and `The_Google_Search_Ranking_Syste
 
 ## Product bundle
 
-The ZIP sold on getvik (`Google_Search_Ranking_System_Bundle.zip`) lives at `/home/adityahalder829/Google_Search_Ranking_System_Bundle.zip` and contains:
+The ZIP sold on getvik (the current build is `The_Google_Search_Ranking_System_2026.zip` in the repo
+root, ~3.5 MB) unpacks to the canonical `Google_Search_Ranking_System/` structure:
 
 ```
 Google_Search_Ranking_System/
   The Playbook/
     The_Google_Search_Ranking_Playbook.pdf   (100-page standard export)
     The_Google_Search_Ranking_Playbook.docx   (editable source)
-  LICENSE.txt
-  START_HERE.md
   Notion Execution System/
-    01_Roadmap_Tasks.csv      (26 tasks + 4 gates)
+    01_Roadmap_Tasks.csv      (30 tasks across 5 phases, exit-criteria gates)
     02_Content_Tracker.csv
     03_Technical_Audit_Checklist.csv   (29 checks)
+    04_Keyword_Research_Worksheet.csv
+    05_90_Day_Quickstart.csv           (13-week sprint)
     IMPORT_GUIDE.md
+  Bonus Resources/
+    Beginner_SEO_FAQ.md          (20 questions)
+    Outreach_Templates.md        (6 templates)
+  LICENSE.txt
+  START_HERE.md
 ```
+
+Keep every landing-page bundle claim synced to this inventory: 30-task roadmap, 29 audit checks,
+5 CSV databases, bonus resources folder, ~3.5 MB ZIP.
 
 ---
 

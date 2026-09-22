@@ -220,7 +220,7 @@ function SlideCompare() {
     "Build topical clusters",
     "Map search intent",
     "Run quarterly audits",
-    "Follow a 26-task roadmap",
+    "Follow a 30-task roadmap",
     "Fix 200+ ranking factors",
     "Earn authority through coverage",
   ];
@@ -280,7 +280,7 @@ function SlideSolution() {
             {[
               "Read the reference",
               "Import the databases",
-              "Execute the 26-task roadmap",
+              "Execute the 30-task roadmap",
               "Rank",
             ].map((t, i) => (
               <div key={t} className="flex items-center gap-3">
@@ -292,7 +292,7 @@ function SlideSolution() {
             ))}
           </div>
           <p data-reveal className="mt-7 text-sm text-white/50">
-            One ZIP. About 550 KB. Yours forever.
+            One ZIP. About 3.5 MB. Yours forever.
           </p>
         </div>
         <div data-reveal className="relative mx-auto w-full max-w-sm">
@@ -335,9 +335,9 @@ function SlideInside() {
           </div>
           <div data-reveal className="card p-6">
             <h3 className="font-display text-lg font-bold text-[#2f5d73]">Execution System</h3>
-            <p className="text-xs font-semibold text-[#3b82f6]">3 databases</p>
+            <p className="text-xs font-semibold text-[#3b82f6]">5 databases</p>
             <ul className="mt-4 space-y-2.5">
-              <li className="text-[14px] text-[#4b5563]">Roadmap: 26 tasks, 5 phases</li>
+              <li className="text-[14px] text-[#4b5563]">Roadmap: 30 tasks, 5 phases</li>
               <li className="text-[14px] text-[#4b5563]">Tracker: topical authority pipeline</li>
               <li className="text-[14px] text-[#4b5563]">Audit: 29 pass/fail checks</li>
               <li className="text-[14px] text-[#4b5563]">5-minute Notion import</li>
@@ -406,7 +406,7 @@ function SlideProof() {
 function SlidePricing() {
   const valueRows: [string, number][] = [
     ["The Playbook \u2014 PDF + Word \u00b7 100 pages", 59],
-    ["Execution System \u2014 3 databases", 29],
+    ["Execution System \u2014 5 databases", 29],
     ["14-symptom Recovery Troubleshooter", 19],
     ["10 Niche Playbooks + worked example", 29],
     ["START_HERE + Import Guide", 19],
@@ -477,7 +477,7 @@ function SlideClose() {
                 <IconArrowRight className="arrow-dash h-4 w-4" />
               </span>
               <span className="text-xs font-semibold text-white/85">
-                Instant download &middot; 550 KB ZIP
+                Instant download &middot; ~3.5 MB ZIP
               </span>
             </span>
           </BuyButton>

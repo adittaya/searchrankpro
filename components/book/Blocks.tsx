@@ -323,7 +323,7 @@ export function BookEndCard({ chapterNum, total, partName, pages = "56 pages" }:
         {chapterNum} / {total}
       </p>
       <p className="max-w-[48ch] text-[12.5px] leading-relaxed text-[#4b5563] print:hidden">
-        The full playbook includes <strong>32 chapters</strong>, <strong>6 appendices</strong>, and a <strong>26-task roadmap</strong> across seven parts.
+        The full playbook includes <strong>32 chapters</strong>, <strong>6 appendices</strong>, and a <strong>30-task roadmap</strong> across seven parts.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-[#3f6f86] print:hidden">
         <span className="rounded-full border border-[#d1d5db] bg-white px-3 py-1">{pages}</span>
