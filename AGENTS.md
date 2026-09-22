@@ -34,7 +34,12 @@ The build is a **full static export** (`output: "export"`). No server runtime �
 
 | File | Role |
 |---|---|
-| `app/page.tsx` | All landing sections as inline React functions: `Hero`, `Proof`, `Problem`, `Learn`, `How`, `Inside`, `Preview`, `Testimonials`, `MidCta`, `Included`, `System`, `Different`, `Compare`, `Pricing`, `Guarantee`, `Policy`, `Faq`, `FinalCta`, `StickyBuy`, `Footer`. |
+| `app/page.tsx` | All landing sections as inline React functions: `Hero`, `ProductDemo`, `Proof`, `Problem`, `Learn`, `How`, `Inside`, `Preview`, `Testimonials`, `Included`, `System`, `Different`, `Compare`, `Guarantee`, `Policy`, `Faq`, `Pricing`, `FinalCta`, `StickyBuy`, `Footer`. |
+
+**Funnel rule (do not regress):** product first, price last. The only place our price
+(`PRODUCT.launchPrice` / `PRODUCT.price`) may appear is the `Pricing` section — the last
+money section, right before `FinalCta`. Never put prices in buttons, the announcement bar,
+nav CTA, hero badges, the sticky buy bar, or the comparison table's "ours" column.
 | `app/layout.tsx` | Fonts (Playfair Display + Inter via next/font/google), metadata/SEO, OG image, GA4 script injection, JSON-LD structured data. |
 | `app/globals.css` | Theme tokens (Tailwind `@theme inline`), button styles (`.btn-primary`, `.btn-ghost`), card/chip/dot-pulse, cover glow, grid-faint, print CSS for book reader, motion settings. |
 | `components/BuyButton.tsx` | Single checkout button used everywhere — reads `CHECKOUT_URL`, fires GA4 `begin_checkout`. |

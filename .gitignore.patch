@@ -1,0 +1,4 @@
+*.log
+
+# raw demo source (optimized copies live in public/demo*)
+final_version_a.mp4

@@ -31,8 +31,10 @@ import {
   IconTechnical,
 } from "@/components/Icons";
 
-const CTA_LABEL = `Get the system — $${PRODUCT.launchPrice}`;
-const CTA_SUB = `$${PRODUCT.value} value · one-time · lifetime updates`;
+// Product-first funnel: price is only ever shown in the Pricing section (last
+// money section) — never on top-of-page buttons, badges, or the sticky bar.
+const CTA_LABEL = `Get the system`;
+const CTA_SUB = `PDF + Word playbook · 5 trackers · lifetime updates`;
 
 /* ---------- primitives ---------- */
 
@@ -139,8 +141,8 @@ function Announcement() {
   return (
     <div className="fixed top-0 z-[60] flex h-9 w-full items-center justify-center bg-[#2f5d73] px-4 text-center">
       <p className="truncate text-[12px] font-semibold tracking-wide text-white sm:text-[13px]">
-        Launch offer — <span className="text-[#93c5fd]">${PRODUCT.launchPrice} today</span>
-        <span className="text-white/60"> (reg. ${PRODUCT.price}) · lifetime updates included</span>
+        New for 2026 — <span className="text-[#93c5fd]">the complete ranking system</span>
+        <span className="text-white/60">: 100-page playbook + execution databases · watch the 60-sec demo ↓</span>
       </p>
     </div>
   );
@@ -181,7 +183,7 @@ function NavBar() {
 
         <div className="hidden md:block">
 <BuyButton className="btn btn-primary min-h-11 px-5 py-2.5 text-sm">
-            Start ranking — $${PRODUCT.launchPrice}
+            Start ranking
           </BuyButton>
         </div>
         <MobileMenu />
@@ -276,8 +278,8 @@ function Hero() {
               />
             </div>
             <div className="ico-float absolute -bottom-5 -left-3 rounded-2xl border border-[#d1d5db] bg-white/95 px-4 py-3 shadow-xl backdrop-blur sm:-left-8">
-              <p className="font-display text-lg font-bold text-[#2f5d73]">${PRODUCT.value}</p>
-              <p className="text-xs font-medium text-[#9ca3af]">value · yours for ${PRODUCT.price}</p>
+              <p className="font-display text-lg font-bold text-[#2f5d73]">Playbook + system</p>
+              <p className="text-xs font-medium text-[#9ca3af]">5 trackers · bonus kit · lifetime updates</p>
             </div>
             <div className="absolute -right-2 -top-4 rounded-2xl border border-[#d1d5db] bg-white/95 px-3.5 py-2.5 shadow-lg backdrop-blur sm:-right-6">
               <p className="flex items-center gap-1.5 text-xs font-bold text-[#2f5d73]">
@@ -946,7 +948,7 @@ function Compare() {
     ["Execution system (CSVs)", "Yes", "Usually tool pitches", "No"],
     ["AI-search / GEO (Ch. 23–25)", "Yes", "Some", "No"],
     ["Lifetime updates", "Yes", "N/A", "No"],
-    ["First-year cost", `one-time $${PRODUCT.launchPrice}`, "free + your time", "$300–$1,500"],
+    ["First-year cost", "one-time · less than a single audit", "free + your time", "$300–$1,500"],
   ];
 
   return (
@@ -1132,7 +1134,7 @@ function Guarantee() {
           </p>
           <div data-fx="up" className="mt-6 flex flex-col gap-3 sm:flex-row">
             <BuyButton className="btn btn-primary px-8 py-4 text-[15px]">
-              Get the system — ${PRODUCT.launchPrice}
+              Get the system
               <IconArrowRight className="arrow-dash h-4 w-4" />
             </BuyButton>
             <a href="#faq" className="btn btn-ghost px-8 py-4 text-sm">Read the FAQ</a>
@@ -1345,9 +1347,9 @@ function StickyBuy() {
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="truncate text-[13px] font-bold text-[#2f5d73]">
-            ${PRODUCT.launchPrice} <span className="font-semibold text-[#9ca3af] line-through">${PRODUCT.price}</span>
+            The complete system
           </p>
-          <p className="truncate text-[11px] font-medium text-[#9ca3af]">Lifetime · instant download</p>
+          <p className="truncate text-[11px] font-medium text-[#9ca3af]">Playbook + trackers · lifetime updates</p>
         </div>
         <BuyButton className="btn btn-primary min-h-12 shrink-0 px-6 py-3 text-sm">
           Get the system
@@ -1385,10 +1387,10 @@ export default function Page() {
         <Different />
         <ForWho />
         <Compare />
-        <Pricing />
         <Guarantee />
         <Policy />
         <Faq />
+        <Pricing />
         <FinalCta />
       </main>
       <Footer />
