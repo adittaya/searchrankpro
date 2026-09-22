@@ -8,6 +8,7 @@ import PreviewCarousel from "@/components/PreviewCarousel";
 import EmailSignup from "@/components/EmailSignup";
 import ProductDemo from "@/components/ProductDemo";
 import Countdown from "@/components/Countdown";
+import UrgencyTimer from "@/components/UrgencyTimer";
 import {
   IconArrowRight,
   IconAudit,
@@ -151,7 +152,8 @@ function Announcement() {
     <div className="fixed top-0 z-[60] flex h-9 w-full items-center justify-center bg-[#2f5d73] px-4 text-center">
       <p className="truncate text-[12px] font-semibold tracking-wide text-white sm:text-[13px]">
         New for 2026 — <span className="text-[#93c5fd]">the complete ranking system</span>
-        <span className="text-white/60">: 100-page playbook + execution databases · launch pricing ends soon</span>
+        <span className="text-white/60"> · your price lock:</span>{" "}
+        <UrgencyTimer className="text-[#93c5fd]" />
       </p>
     </div>
   );
@@ -1260,7 +1262,7 @@ function Pricing() {
             Launch price — returns to ${PRODUCT.price} when the window closes
           </p>
           <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white/85">
-            <span className="dot-pulse" /> launch holds for <Countdown className="text-[#93c5fd]" />
+            <span className="dot-pulse" /> your price lock: <UrgencyTimer className="text-[#93c5fd]" />
           </p>
 
           <div className="mt-6 space-y-3 text-sm">
