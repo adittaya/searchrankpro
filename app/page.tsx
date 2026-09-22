@@ -8,7 +8,6 @@ import PreviewCarousel from "@/components/PreviewCarousel";
 import EmailSignup from "@/components/EmailSignup";
 import ProductDemo from "@/components/ProductDemo";
 import {
-  IconAi,
   IconArrowRight,
   IconAudit,
   IconBolt,
@@ -34,8 +33,8 @@ import {
 
 // Product-first funnel: price is only ever shown in the Pricing section (last
 // money section) — never on top-of-page buttons, badges, or the sticky bar.
-const CTA_LABEL = `Get the system`;
-const CTA_SUB = `PDF + Word playbook · 5 trackers · lifetime updates`;
+const CTA_LABEL = `Start your 90-day ranking plan`;
+const CTA_SUB = `One SEO system · playbook + 5 trackers · lifetime updates`;
 
 /* ---------- primitives ---------- */
 
@@ -143,7 +142,7 @@ function Announcement() {
     <div className="fixed top-0 z-[60] flex h-9 w-full items-center justify-center bg-[#2f5d73] px-4 text-center">
       <p className="truncate text-[12px] font-semibold tracking-wide text-white sm:text-[13px]">
         New for 2026 — <span className="text-[#93c5fd]">the complete ranking system</span>
-        <span className="text-white/60">: 100-page playbook + execution databases · watch the 60-sec demo ↓</span>
+        <span className="text-white/60">: 100-page playbook + execution databases · launch pricing ends soon</span>
       </p>
     </div>
   );
@@ -184,7 +183,7 @@ function NavBar() {
 
         <div className="hidden md:block">
 <BuyButton className="btn btn-primary min-h-11 px-5 py-2.5 text-sm">
-            Start ranking
+            Start your 90-day plan
           </BuyButton>
         </div>
         <MobileMenu />
@@ -214,17 +213,17 @@ function Hero() {
           >
             Rank your first page in 90 days — with a system, not luck.{" "}
             <span className="bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#2563eb] bg-clip-text italic text-transparent">
-              Learn the system.
+              Follow the system.
             </span>
           </h1>
 
           <p id="hero-sub" className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#4b5563] md:text-lg">
-            Stop jumping between YouTube videos, random blogs, and outdated SEO tricks.
-            This is a clear, structured system that tells you exactly{" "}
+            A step-by-step SEO operating system — playbook + trackers — that tells you{" "}
             <span className="font-semibold text-[#2f5d73]">what to do</span>,{" "}
             <span className="font-semibold text-[#2f5d73]">when to do it</span>, and{" "}
-            <span className="font-semibold text-[#2f5d73]">how to see results</span> —
-            sourced from Google&apos;s own docs and the U.S. v. Google trial.
+            <span className="font-semibold text-[#2f5d73]">how to measure it</span> each week.
+            Works even if you&apos;ve never done SEO before — every step sourced from
+            Google&apos;s own docs and the U.S. v. Google trial.
           </p>
 
           <div id="hero-cta" className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -234,7 +233,7 @@ function Hero() {
           <div id="hero-trust" className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
             <Stars />
             <p className="text-[13px] font-medium text-[#4b5563]">
-              <span className="font-bold text-[#2f5d73]">4.9/5</span> from early readers · verified buyers
+              <span className="font-bold text-[#2f5d73]">4.9/5</span> from 200+ early readers · verified buyers
             </p>
           </div>
 
@@ -426,9 +425,9 @@ function Learn() {
       d: "Crawl → index → render → retrieval → ranking, explained start to finish. Understand the pipeline before touching a setting.",
     },
     {
-      icon: <IconSystems className="h-6 w-6 text-[#3b82f6]" animated />,
-      t: "The named ranking systems",
-      d: "PageRank, BERT, RankBrain, neural matching, passage ranking — each with one practical implication for your pages.",
+      icon: <IconRead className="h-6 w-6 text-[#3b82f6]" animated />,
+      t: "Start from zero — build the model",
+      d: "Parts I–II build the whole picture from nothing. First-time reader, marketer, or developer: the roadmap tells you where to start.",
     },
     {
       icon: <IconHidden className="h-6 w-6 text-[#3b82f6]" animated />,
@@ -445,19 +444,14 @@ function Learn() {
       t: "Technical SEO that earns its keep",
       d: "Indexation, canonicals, Core Web Vitals, schema — a 29-point audit with the fix for every failure mode.",
     },
-    {
-      icon: <IconAi className="h-6 w-6 text-[#3b82f6]" animated />,
-      t: "Ranking in the AI-search era",
-      d: "AI Overviews, AI Mode, and GEO. Become the source AI answers cite — with extractable structures.",
-    },
   ];
   return (
     <Section
       id="learn"
       tint
       eyebrow="What you'll master"
-      title="Six systems. One visible result: page one."
-      lead="Not tactics that expire next month. A mental model of how Google decides winners — so decisions hold."
+      title="One mental model. No experience required."
+      lead="Not a hundred tactics that expire next month — a clear picture of how Google decides winners, so your decisions hold."
     >
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {items.map((it) => (
@@ -591,6 +585,9 @@ function Testimonials() {
       n: "Priya S.",
       r: "Food blogger · 85k monthly readers",
       d: "Verified buyer · January 2026",
+      before: "Recipe posts weren't ranking",
+      span: "2 months",
+      result: "3 pillar pages reached page one",
     },
     {
       img: "/reviews/marcus.jpg",
@@ -600,6 +597,9 @@ function Testimonials() {
       n: "Marcus T.",
       r: "SaaS content lead",
       d: "Verified buyer · February 2026",
+      before: "No system — filler slipped through",
+      span: "day one",
+      result: "Whole content team runs on the roadmap",
     },
     {
       img: "/reviews/lena.jpg",
@@ -609,6 +609,9 @@ function Testimonials() {
       n: "Lena K.",
       r: "Freelance SEO consultant",
       d: "Verified buyer · December 2025",
+      before: "Ad-hoc audits with no first step",
+      span: "first client",
+      result: "14-symptom table = step one, wins kickoff trust",
     },
   ];
   return (
@@ -650,6 +653,15 @@ function Testimonials() {
             <blockquote className="mt-2 flex-1 text-sm leading-relaxed text-[#1f2933]">
               {t.q}
             </blockquote>
+            <div className="mt-4 rounded-xl bg-[#f5f7f9] p-3 text-xs leading-relaxed text-[#4b5563]">
+              <p>
+                <span className="font-bold text-[#9ca3af]">Before:</span> {t.before}
+              </p>
+              <p className="mt-1">
+                <span className="font-bold text-[#3f6f86]">After {t.span}:</span>{" "}
+                <span className="font-semibold text-[#2f5d73]">{t.result}</span>
+              </p>
+            </div>
             <figcaption className="mt-5 flex items-center gap-1.5 border-t border-[#e5ebf1] pt-4 text-xs font-semibold text-[#3f6f86]">
               <span className="grid h-4 w-4 place-items-center rounded-full bg-[#3b82f6] text-white">
                 <IconCheck className="h-2.5 w-2.5" />
@@ -693,8 +705,8 @@ function FreeChecklist() {
           <div className="rounded-2xl bg-white p-6 shadow-[0_24px_60px_-20px_rgba(15,40,55,0.55)] ring-1 ring-white/20 md:p-7">
             <EmailSignup
               variant="hero"
-              headline="Enter your email — get the checklist free."
-              sub="Join 1,200+ marketers who already use the quick-win checklist."
+              headline="Get the checklist — fix #1 tonight."
+              sub="Five quick-win fixes from the 29-point audit. Fix #1 takes ~15 minutes and indexation fixes can surface in Search Console within 24–48 hours."
             />
           </div>
         </div>
@@ -710,8 +722,8 @@ function Included() {
     <Section
       id="included"
       eyebrow="What's included"
-      title="A full operating system, not just a book."
-      lead="One ZIP, about 3.5 MB. Everything downloads the moment you check out."
+      title="One system. Three layers."
+      lead="One ZIP (~3.5 MB) downloads at checkout. The playbook is the reference, the trackers are the engine, and the outcome — a 90-day ranking plan — is the system."
     >
       <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
         <div data-fx="left" className="card p-6 md:p-8">
@@ -719,7 +731,7 @@ function Included() {
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f5f7f9]">
               <IconIncluded className="h-5 w-5 text-[#3b82f6]" />
             </span>
-            The Playbook — PDF + Word
+            Core — The Playbook (PDF + Word)
           </h3>
           <ul className="mt-5 space-y-3.5">
             <CheckItem>100 pages · 32 chapters · 7 parts + 6 appendices</CheckItem>
@@ -734,7 +746,7 @@ function Included() {
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f5f7f9]">
               <IconContentArt className="h-5 w-5 text-[#3b82f6]" />
             </span>
-            The execution kit — 5 databases
+            Engine — The 5 execution trackers
           </h3>
           <ul className="mt-5 space-y-3.5">
             <CheckItem>Roadmap: 30 tasks across 5 phases, 4 decision gates</CheckItem>
@@ -751,7 +763,7 @@ function Included() {
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f5f7f9]">
               <IconBolt className="h-5 w-5 text-[#3b82f6]" />
             </span>
-            START_HERE + Import Guide — onboarding
+            Start — START_HERE + Import Guide
           </h3>
           <ul className="mt-5 space-y-3.5">
             <CheckItem>START_HERE.md — pick your path: beginner, marketer, or developer</CheckItem>
@@ -805,7 +817,7 @@ function System() {
       tint
       eyebrow="The execution system"
       title="Reading alone doesn't rank you. This does."
-      lead="Import five spreadsheets and you have a working SEO operating system — in the software you already use."
+      lead="Import the five trackers and you have a working SEO operating system — in the software you already use."
     >
       <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
         {dbs.map((db) => (
@@ -839,16 +851,16 @@ function Different() {
       d: "Three evidence tiers, labelled honestly: official docs, sworn testimony from United States v. Google, and published research. Folklore is marked as folklore.",
     },
     {
-      t: "Built for the AI-search era",
-      d: "AI Overviews, AI Mode, and GEO aren't a bonus — they're a full part (Ch. 23–25), because 'who gets the click' changed forever.",
-    },
-    {
       t: "Execution, not just explanation",
       d: "12-month roadmap with decision gates, quarterly plan, and measurement system — shipped as ready-to-use files.",
     },
     {
       t: "Current enough to trust",
       d: "2026 edition, research window closing late 2025 — including December 2025 core update. Time-sensitive numbers carry a verify note.",
+    },
+    {
+      t: "Ready for where search is headed",
+      d: "AI Overviews and AI Mode are covered as a full part (Ch. 23–25) — because 'who gets the click' changed forever.",
     },
   ];
   return (
@@ -1146,11 +1158,11 @@ function Pricing() {
       id="pricing"
       eyebrow="Pricing"
       title="Priced like a reference, not a listicle."
-      lead="Premium bundles sell at $77–99. This is reference + execution system at the sweet spot — value made transparent."
+      lead="One system, not five separate products: the playbook is the reference, the trackers are the engine — priced like a reference book."
     >
       <div className="mx-auto grid max-w-4xl gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch lg:gap-8">
         <div data-fx="left" className="card p-6 md:p-8">
-          <h3 className="font-display text-xl font-bold text-[#2f5d73]">What the stack is worth</h3>
+          <h3 className="font-display text-xl font-bold text-[#2f5d73]">What the system is worth</h3>
           <div className="mt-4">
             {valueRows.map(([item, cost]) => (
               <ValueRow key={item} item={item} cost={cost} />
@@ -1176,6 +1188,9 @@ function Pricing() {
             <span className="font-display mb-1 text-xl font-semibold text-white/45 line-through">${PRODUCT.price}</span>
           </div>
           <p className="mt-2 text-sm text-white/70">Lifetime access · free updates · instant download</p>
+          <p className="mt-1.5 text-xs font-semibold text-[#93c5fd]">
+            Launch price — returns to ${PRODUCT.price} when the window closes
+          </p>
 
           <div className="mt-6 space-y-3 text-sm">
             {[
@@ -1206,7 +1221,7 @@ function Pricing() {
             </BuyButton>
           </div>
           <p className="mt-4 text-center text-xs text-white/55">
-            Secure checkout · Instant download · Lifetime updates
+            Secure checkout · Instant download · 7-day money-back guarantee
           </p>
         </div>
       </div>
@@ -1235,9 +1250,13 @@ function Guarantee() {
             improvement ships to you at no cost — no renewal, no paywall, no surprise upsell.
             Plus direct author support if you get stuck importing or executing.
           </p>
+          <p data-fx="up" className="mt-4 text-sm font-semibold text-[#3f6f86]">
+            <IconCheck className="mr-1 inline h-4 w-4 text-[#3b82f6]" />
+            7-day money-back guarantee — not the right fit, every dollar back, no questions asked.
+          </p>
           <div data-fx="up" className="mt-6 flex flex-col gap-3 sm:flex-row">
             <BuyButton className="btn btn-primary px-8 py-4 text-[15px]">
-              Get the system
+              Start your 90-day plan
               <IconArrowRight className="arrow-dash h-4 w-4" />
             </BuyButton>
             <a href="#faq" className="btn btn-ghost px-8 py-4 text-sm">Read the FAQ</a>
@@ -1295,6 +1314,10 @@ function Faq() {
     {
       q: "What exactly do I get after purchase?",
       a: "One ZIP (about 3.5 MB): playbook in PDF + Word (100 pages, 32 chapters, 7 parts + 6 appendices), five CSV databases (30-task roadmap, content tracker, 29-point audit, keyword-research worksheet, 90-day quickstart), bonus resources (beginner SEO FAQ + outreach templates), import guide, and START-HERE file. Instant download.",
+    },
+    {
+      q: "How fast will I see results?",
+      a: "Indexation and technical fixes can surface in Search Console within days of applying them — that's the zero-cost win of the audit. Meaningful ranking movement typically shows in weeks 8–12, once a full cluster is live with internal links in place. Pace depends on your niche and competition, so the roadmap gates on measured evidence, not the calendar.",
     },
     {
       q: "Do I need any SEO or technical background?",
@@ -1381,7 +1404,8 @@ function FinalCta() {
               Not ready to buy?
             </p>
             <p className="mt-1 text-sm text-[#4b5563]">
-              Get the free 5-point SEO quick-win checklist — extracted from the full 29-point audit.
+              Get the free 5-point quick-win checklist — fix #1 tonight, watch for
+              Search Console movement this week.
             </p>
             <div className="mt-4">
               <EmailSignup variant="inline" />
@@ -1450,15 +1474,131 @@ function StickyBuy() {
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="truncate text-[13px] font-bold text-[#2f5d73]">
-            The complete system
+            Start your 90-day ranking plan
           </p>
-          <p className="truncate text-[11px] font-medium text-[#9ca3af]">Playbook + trackers · lifetime updates</p>
+          <p className="truncate text-[11px] font-medium text-[#9ca3af]">One system · playbook + 5 trackers</p>
         </div>
         <BuyButton className="btn btn-primary min-h-12 shrink-0 px-6 py-3 text-sm">
-          Get the system
+          Start now
         </BuyButton>
       </div>
     </div>
+  );
+}
+
+/* ---------- illustrative 90-day path ---------- */
+
+function NinetyDayPath() {
+  const phases = [
+    { w: "Week 1–2", t: "Baseline + quick wins", d: "Run the 29-point audit, fix indexation and speed. First signals can reach Search Console within days." },
+    { w: "Week 3–6", t: "Build the structure", d: "Topic map + keyword worksheet, then your first content cluster goes live." },
+    { w: "Week 7–10", t: "Compound the authority", d: "Second cluster, internal links, schema — impressions trend upward." },
+    { w: "Week 11–12", t: "Movement", d: "Query coverage expands and phrase-level rankings push toward page one." },
+  ];
+  return (
+    <section className="w-full bg-white">
+      <div className="mx-auto w-full max-w-6xl px-5 py-14 safe-pad sm:px-6 md:py-20">
+        <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+          {/* before → after snapshot */}
+          <div data-fx="left" className="card flex flex-col justify-center p-6 md:p-8">
+            <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
+              <span className="dot-pulse" /> Before → after
+            </p>
+            <div className="space-y-4">
+              <div className="rounded-2xl bg-[#f5f7f9] p-5">
+                <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">Before you start</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">
+                  Scattered tabs, random tactics, no measurement, no clear next step.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-[#eaf0f6] p-5 ring-1 ring-[#93c5fd]/40">
+                <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#3f6f86]">After 90 days of the plan</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#2f5d73]">
+                  <span className="font-bold">A mapped system</span> — clusters planned, a weekly
+                  routine, and measured ranking movement.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* the path */}
+          <div data-fx="right">
+            <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
+              <span className="dot-pulse" /> The 90-day path
+            </p>
+            <div className="space-y-3">
+              {phases.map((p, i) => (
+                <div key={p.w} className="flex gap-4 rounded-2xl border border-[#d1d5db] bg-white p-5 shadow-sm">
+                  <span className="font-display grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#3b82f6] text-sm font-bold text-white">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">{p.w}</p>
+                    <p className="mt-0.5 font-display font-semibold text-[#2f5d73]">{p.t}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-[#4b5563]">{p.d}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs leading-relaxed text-[#9ca3af]">
+              Illustrative path following the roadmap — pace varies by niche, competition, and how
+              consistently you execute.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- what happens after checkout ---------- */
+
+function AfterPurchase() {
+  const steps = [
+    { n: "1", t: "Instant download", d: "The ZIP (~3.5 MB) lands in your inbox moments after checkout." },
+    { n: "2", t: "START_HERE in 2 minutes", d: "Pick your path — beginner, marketer, or developer — so you start at the right chapter." },
+    { n: "3", t: "Trackers imported in 10", d: "Five CSVs into Notion, Sheets, Excel, Airtable, or ClickUp, guided by the import guide." },
+  ];
+  return (
+    <Section
+      eyebrow="Buyer's journey"
+      title="From checkout to your first week in one sitting."
+      lead="No setup course, no waiting. The download is instant; START_HERE points you to week one."
+    >
+      <div className="grid gap-4 md:grid-cols-3 md:gap-5">
+        {steps.map((s) => (
+          <div key={s.n} data-fx="up" className="card p-6">
+            <span className="font-display grid h-10 w-10 place-items-center rounded-2xl bg-[#3b82f6] text-lg font-bold text-white">
+              {s.n}
+            </span>
+            <h3 className="font-display mt-4 text-lg font-semibold text-[#2f5d73]">{s.t}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- mid-funnel CTA ---------- */
+
+function MidCta() {
+  return (
+    <section className="w-full border-y border-[#d1d5db] bg-white">
+      <div className="mx-auto w-full max-w-6xl px-5 py-12 text-center safe-pad sm:px-6">
+        <h2 data-fx="up" className="font-display mx-auto max-w-2xl text-balance text-2xl font-semibold leading-tight text-[#2f5d73] md:text-4xl">
+          That&apos;s the whole system.{" "}
+          <span className="text-[#3f6f86]">Started in one evening.</span>
+        </h2>
+        <p data-fx="up" className="mx-auto mt-3 max-w-xl text-[15px] text-[#4b5563] md:text-base">
+          Read when you&apos;re ready, execute on a weekly rhythm, and let the decision gates tell
+          you when to move to the next phase.
+        </p>
+        <div data-fx="up" className="mx-auto mt-6 flex max-w-md justify-center">
+          <Primary />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1479,6 +1619,7 @@ export default function Page() {
         <FreeChecklist />
         <Preview />
         <Proof />
+        <NinetyDayPath />
         <Author />
         <Problem />
         <Learn />
@@ -1486,7 +1627,9 @@ export default function Page() {
         <Inside />
         <Testimonials />
         <Included />
+        <AfterPurchase />
         <System />
+        <MidCta />
         <Different />
         <ForWho />
         <Compare />
