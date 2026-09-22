@@ -33,7 +33,7 @@ function from(nowMs: number): Left {
   };
 }
 
-export default function Countdown({ className = "" }: { className?: string }) {
+export default function Countdown({ className = "", compact = false }: { className?: string; compact?: boolean }) {
   const offset = useClockOffset();
   const [mounted, setMounted] = useState(false);
   const [left, setLeft] = useState<Left>(null);
@@ -52,7 +52,7 @@ export default function Countdown({ className = "" }: { className?: string }) {
   if (!mounted) {
     return (
       <span className={`tabular-nums opacity-0 ${className}`} aria-hidden="true">
-        00d 00h 00m 00s
+        {compact ? "00d 00h" : "00d 00h 00m 00s"}
       </span>
     );
   }
@@ -63,7 +63,11 @@ export default function Countdown({ className = "" }: { className?: string }) {
 
   return (
     <span className={`tabular-nums ${className}`}>
-      {left.d}d {pad(left.h)}h {pad(left.m)}m {pad(left.s)}s
+      {compact
+        ? left.d > 0
+          ? `${left.d}d ${pad(left.h)}h`
+          : `${pad(left.h)}h ${pad(left.m)}m`
+        : `${left.d}d ${pad(left.h)}h ${pad(left.m)}m ${pad(left.s)}s`}
     </span>
   );
 }

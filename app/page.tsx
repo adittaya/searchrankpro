@@ -8,7 +8,6 @@ import PreviewCarousel from "@/components/PreviewCarousel";
 import EmailSignup from "@/components/EmailSignup";
 import ProductDemo from "@/components/ProductDemo";
 import Countdown from "@/components/Countdown";
-import UrgencyTimer from "@/components/UrgencyTimer";
 import {
   IconArrowRight,
   IconAudit,
@@ -107,7 +106,7 @@ function Section({
 }) {
   return (
     <section id={id} className={`relative w-full scroll-mt-28 ${tint ? "bg-[#f5f7f9]/60" : ""}`}>
-      <div className="mx-auto w-full max-w-6xl px-5 py-14 safe-pad sm:px-6 md:py-24">
+      <div className="mx-auto w-full max-w-6xl px-5 py-16 safe-pad sm:px-6 md:py-28">
         {eyebrow && (
           <p
             data-fx="up"
@@ -152,8 +151,8 @@ function Announcement() {
     <div className="fixed top-0 z-[60] flex h-9 w-full items-center justify-center bg-[#2f5d73] px-4 text-center">
       <p className="truncate text-[12px] font-semibold tracking-wide text-white sm:text-[13px]">
         New for 2026 — <span className="text-[#93c5fd]">the complete ranking system</span>
-        <span className="text-white/60"> · your price lock:</span>{" "}
-        <UrgencyTimer className="text-[#93c5fd]" />
+        <span className="text-white/60"> · launch pricing ends in</span>{" "}
+        <Countdown compact className="text-[#93c5fd]" />
       </p>
     </div>
   );
@@ -240,6 +239,11 @@ function Hero() {
             <span className="font-semibold text-[#2f5d73]">how to measure it</span> each week.
             Works even if you&apos;ve never done SEO before — every step sourced from
             Google&apos;s own docs and the U.S. v. Google trial.
+          </p>
+
+          <p id="hero-inevitability" className="mt-3 max-w-xl text-sm font-semibold leading-relaxed text-[#2f5d73] md:text-base">
+            Follow the system weekly and you&apos;ll see measurable ranking signals within weeks —{" "}
+            <span className="text-[#2563eb]">not guesses, signals.</span>
           </p>
 
           <div id="hero-cta" className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -666,7 +670,7 @@ function Testimonials() {
                   After · time taken: 2 months
                 </p>
                 <p className="mt-1.5 text-sm font-bold text-[#2f5d73]">
-                  3 pillar pages reached page one
+                  3 pillar pages reached page one (positions 6–9)
                 </p>
               </div>
             </div>
@@ -768,8 +772,8 @@ function FreeChecklist() {
             Get the free SEO quick-win checklist
           </h2>
           <p data-fx="up" className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/70 md:text-base">
-            Five things you can fix today that move the needle — no tools, no budget, no experience required.
-            Extracted from the full playbook&apos;s 29-point audit.
+            <span className="font-semibold text-white">Five things you can fix today that move the needle</span> — no
+            tools, no budget, no experience required. Extracted from the full playbook&apos;s 29-point audit.
           </p>
           <div data-fx="up" className="mt-5 flex flex-wrap gap-2">
             {["Indexation fixes", "Core Web Vitals", "Schema markup", "Content gaps", "Internal linking"].map((t) => (
@@ -1181,7 +1185,7 @@ function ComparePanel({ panel }: { panel: ComparePanelConfig }) {
 function Compare() {
   return (
     <section id="compare" className="w-full scroll-mt-28 bg-[#f5f7f9]/60">
-      <div className="mx-auto w-full max-w-6xl px-5 py-14 safe-pad sm:px-6 md:py-24">
+      <div className="mx-auto w-full max-w-6xl px-5 py-16 safe-pad sm:px-6 md:py-28">
         <p data-fx="up" className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
           <span className="dot-pulse" /> The comparison
         </p>
@@ -1255,6 +1259,9 @@ function Pricing() {
             Benchmarks: “The SEO Playbook” $39 · AI SEO guides $49–52 · 3-book bundles $77–99.
             Yours: reference + system in one.
           </p>
+          <p className="mt-3 text-xs font-bold leading-relaxed text-[#2f5d73]">
+            Less than a single SEO audit — and you use it for every site you own.
+          </p>
         </div>
 
         <div data-fx="right" className="relative flex flex-col rounded-[1.6rem] bg-[#2f5d73] p-7 shadow-[0_28px_70px_-24px_rgba(47, 93, 115, 0.55)] md:p-8">
@@ -1271,7 +1278,7 @@ function Pricing() {
             Launch price — returns to ${PRODUCT.price} when the window closes
           </p>
           <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white/85">
-            <span className="dot-pulse" /> your price lock: <UrgencyTimer className="text-[#93c5fd]" />
+            <span className="dot-pulse" /> ends in <Countdown compact className="text-[#93c5fd]" />
           </p>
 
           <div className="mt-6 space-y-3 text-sm">
@@ -1491,8 +1498,9 @@ function FinalCta() {
               Start now — your Week 1 begins tonight
             </p>
             <p className="mt-1 text-sm text-[#4b5563]">
-              You don&apos;t need more SEO content. You need a system.{" "}
-              <span className="font-semibold text-[#2f5d73]">Start your first week now.</span>
+              You don&apos;t need more SEO content.{" "}
+              <span className="font-semibold text-[#2f5d73]">You need a system you actually run.</span>{" "}
+              Start your first week tonight.
             </p>
             <div className="mt-4">
               <EmailSignup variant="inline" />
@@ -1609,7 +1617,7 @@ function NinetyDayPath() {
                 <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">If you do nothing</p>
                 <p className="mt-2 text-sm leading-relaxed text-[#4b5563]">
                   Same tabs, same traffic curve, same &ldquo;I&apos;ll start next month.&rdquo;
-                  Another year of effort — <span className="font-semibold text-[#2f5d73]">the same results.</span>
+                  Another year of effort — <span className="font-semibold text-[#2f5d73]">same traffic.</span>
                 </p>
               </div>
             </div>
@@ -1618,7 +1626,7 @@ function NinetyDayPath() {
           {/* the path */}
           <div data-fx="right">
             <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[#d1d5db] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
-              <span className="dot-pulse" /> Follow it weekly → watch for these signals
+              <span className="dot-pulse" /> This is what progress actually looks like
             </p>
             <div className="space-y-3">
               {phases.map((p, i) => (
@@ -1706,6 +1714,9 @@ function MidCta() {
         <div data-fx="up" className="mx-auto mt-6 flex max-w-md justify-center">
           <Primary />
         </div>
+        <p data-fx="up" className="mt-3 text-xs font-semibold text-[#3f6f86]">
+          Instant download — Week 1 begins the night you buy.
+        </p>
       </div>
     </section>
   );

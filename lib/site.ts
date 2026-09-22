@@ -31,13 +31,3 @@ export const PRODUCT = {
 // When it passes, the chips switch to "launch offer ended".
 // ------------------------------------------------------------------
 export const LAUNCH_PRICE_ENDS = "2026-10-31T23:59:59Z";
-
-// ------------------------------------------------------------------
-// Per-visitor urgency timer ("your price lock: 07:22").
-// Each new session picks a random window from URGENCY_WINDOWS_MIN and
-// counts it down (MM:SS). resetOnExpire starts a fresh window when the
-// timer hits 00:00. NOTE: this is a per-visitor window, unrelated to
-// LAUNCH_PRICE_ENDS — set to false to freeze at 00:00 instead.
-// ------------------------------------------------------------------
-export const URGENCY_WINDOWS_MIN = [5, 10];
-export const URGENCY_RESET_ON_EXPIRE = true;
