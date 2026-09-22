@@ -15,6 +15,7 @@ import {
   IconCheck,
   IconChevron,
   IconContent as IconContentArt,
+  IconCross,
   IconExecute,
   IconFreshness,
   IconHidden,
@@ -939,18 +940,174 @@ function ForWho() {
   );
 }
 
-/* ---------- compare: table on desktop, cards on mobile ---------- */
+/* ---------- compare: this system vs the alternatives ---------- */
+
+type CompareVerdict = { ok?: boolean; partial?: boolean; text: string };
+
+const COMPARE_ROWS: { label: string; system: string; blogs: CompareVerdict; audit: CompareVerdict }[] = [
+  {
+    label: "Court record + official docs",
+    system: "Fully sourced and cited",
+    blogs: { partial: true, text: "Mixed — much folklore" },
+    audit: { text: "Unverified" },
+  },
+  {
+    label: "12-month roadmap + gates",
+    system: "30 tasks, exit criteria",
+    blogs: { text: "Rarely, and piecemeal" },
+    audit: { text: "No" },
+  },
+  {
+    label: "Execution trackers",
+    system: "5 ready CSVs",
+    blogs: { partial: true, text: "Usually tool pitches" },
+    audit: { text: "A report, not a system" },
+  },
+  {
+    label: "AI-search / GEO",
+    system: "Chapters 23–25",
+    blogs: { partial: true, text: "Scattered posts" },
+    audit: { text: "No" },
+  },
+  {
+    label: "Stays current",
+    system: "Lifetime updates, free",
+    blogs: { text: "Stale within months" },
+    audit: { text: "One-shot, then outdated" },
+  },
+];
+
+type ComparePanelConfig = {
+  key: string;
+  name: string;
+  tagline: string;
+  icon: ReactNode;
+  rows: CompareVerdict[];
+  badge?: string;
+  cost: string;
+  costSub: string;
+  footer: string;
+  highlight?: boolean;
+  orderCls: string;
+  fx: string;
+};
+
+const COMPARE_PANELS: ComparePanelConfig[] = [
+  {
+    key: "blogs",
+    name: "Free blogs",
+    tagline: "Endless links, no follow-through",
+    icon: <IconContentArt className="h-5 w-5 text-[#3f6f86]" />,
+    rows: COMPARE_ROWS.map((r) => r.blogs),
+    cost: "Your time",
+    costSub: "Months of trial and error",
+    footer: "Read plenty — build nothing.",
+    orderCls: "order-1 md:order-1",
+    fx: "up",
+  },
+  {
+    key: "audit",
+    name: "One-off audit",
+    tagline: "A snapshot, not a system",
+    icon: <IconAudit className="h-5 w-5 text-[#3f6f86]" />,
+    rows: COMPARE_ROWS.map((r) => r.audit),
+    cost: "$300–$1,500",
+    costSub: "Per report — expires fast",
+    footer: "Good intel, no process.",
+    orderCls: "order-2 md:order-3",
+    fx: "up",
+  },
+  {
+    key: "system",
+    name: "This system",
+    tagline: "Reference + execution, one ZIP",
+    icon: <IconSystems className="h-5 w-5 text-white" />,
+    rows: COMPARE_ROWS.map((r) => ({ ok: true, text: r.system })),
+    badge: "2026 Edition",
+    cost: "One-time",
+    costSub: "Less than a single audit · lifetime updates",
+    footer: "Buy once, update forever.",
+    highlight: true,
+    orderCls: "order-3 md:order-2",
+    fx: "scale",
+  },
+];
+
+function CompareDot({ verdict }: { verdict: CompareVerdict }) {
+  if (verdict.ok) {
+    return (
+      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#3b82f6] text-white">
+        <IconCheck className="h-3 w-3" />
+      </span>
+    );
+  }
+  if (verdict.partial) {
+    return (
+      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#e5ebf1] text-[#4b5563]">
+        <span className="text-[11px] font-bold leading-none">–</span>
+      </span>
+    );
+  }
+  return (
+    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#e5ebf1] text-[#9ca3af]">
+      <IconCross className="h-3 w-3" />
+    </span>
+  );
+}
+
+function ComparePanel({ panel }: { panel: ComparePanelConfig }) {
+  const { highlight } = panel;
+  return (
+    <div
+      data-fx={panel.fx}
+      className={`relative flex flex-col rounded-[1.6rem] p-6 ${panel.orderCls} ${
+        highlight
+          ? "bg-white shadow-[0_28px_70px_-28px_rgba(47,93,115,0.55)] ring-2 ring-[#3b82f6]"
+          : "bg-white/70 ring-1 ring-[#d1d5db]"
+      }`}
+    >
+      {panel.badge && (
+        <span className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-[#60a5fa] to-[#3b82f6] px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow">
+          {panel.badge}
+        </span>
+      )}
+
+      <div className="flex items-center gap-3">
+        <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl ${highlight ? "bg-[#3b82f6]" : "bg-[#eaf0f6]"}`}>
+          {panel.icon}
+        </span>
+        <div className="min-w-0">
+          <p className={`font-display text-lg font-bold ${highlight ? "text-[#2f5d73]" : "text-[#4b5563]"}`}>{panel.name}</p>
+          <p className="text-xs font-medium text-[#9ca3af]">{panel.tagline}</p>
+        </div>
+      </div>
+
+      <ul className="mt-6 space-y-3 border-t border-[#e5ebf1] pt-5">
+        {panel.rows.map((row, i) => (
+          <li key={i} className="flex items-start gap-2.5">
+            <CompareDot verdict={row} />
+            <span>
+              <span className={`block text-sm font-semibold leading-snug ${highlight ? "text-[#2f5d73]" : "text-[#4b5563]"}`}>
+                {COMPARE_ROWS[i].label}
+              </span>
+              <span className={`block text-xs font-medium ${highlight ? "text-[#3f6f86]" : "text-[#9ca3af]"}`}>{row.text}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <div className={`mt-6 rounded-2xl p-4 ${highlight ? "bg-[#eaf0f6]" : "bg-[#f5f7f9]"}`}>
+        <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9ca3af]">First-year cost</p>
+        <p className={`mt-1 font-display text-lg font-bold ${highlight ? "text-[#2f5d73]" : "text-[#4b5563]"}`}>{panel.cost}</p>
+        <p className={`mt-0.5 text-xs font-medium ${highlight ? "text-[#3f6f86]" : "text-[#9ca3af]"}`}>{panel.costSub}</p>
+      </div>
+
+      <p className={`mt-3 text-center text-xs font-semibold ${highlight ? "text-[#3f6f86]" : "text-[#9ca3af]"}`}>{panel.footer}</p>
+    </div>
+  );
+}
 
 function Compare() {
-  const rows: [string, string, string, string][] = [
-    ["Sourced from court record + docs", "Yes", "Mixed — much is folklore", "No"],
-    ["12-month roadmap + gates", "Yes", "Rarely", "No"],
-    ["Execution system (CSVs)", "Yes", "Usually tool pitches", "No"],
-    ["AI-search / GEO (Ch. 23–25)", "Yes", "Some", "No"],
-    ["Lifetime updates", "Yes", "N/A", "No"],
-    ["First-year cost", "one-time · less than a single audit", "free + your time", "$300–$1,500"],
-  ];
-
   return (
     <section id="compare" className="w-full scroll-mt-28 bg-[#f5f7f9]/60">
       <div className="mx-auto w-full max-w-6xl px-5 py-14 safe-pad sm:px-6 md:py-24">
@@ -958,59 +1115,25 @@ function Compare() {
           <span className="dot-pulse" /> The comparison
         </p>
         <h2 data-fx="up" className="font-display max-w-3xl text-balance text-[28px] font-semibold leading-[1.12] text-[#2f5d73] sm:text-4xl md:text-5xl">
-          The system vs. the alternatives you use now.
+          The system vs. the alternatives you reach for.
         </h2>
+        <p data-fx="up" className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#4b5563] md:text-lg">
+          Free blogs scatter the steps across a thousand tabs. An audit hands you a report — then
+          you&apos;re on your own. This is one sourced system you actually run.
+        </p>
 
-        {/* desktop table */}
-        <div data-fx="up" className="mt-10 hidden overflow-hidden rounded-3xl border border-[#d1d5db] bg-white shadow-sm md:block">
-          <table className="w-full border-collapse text-left text-sm">
-            <caption className="sr-only">Bundle compared to free blogs and one-off audits</caption>
-            <thead>
-              <tr className="bg-[#f8fafc] text-xs uppercase tracking-wider text-[#9ca3af]">
-                <th className="px-5 py-4 font-bold">What you get</th>
-                <th className="bg-[#3b82f6] px-5 py-4">
-                  <span className="font-display flex items-center gap-2 text-sm font-bold normal-case tracking-normal text-white">
-                    <IconCheck className="h-4 w-4" /> This bundle
-                  </span>
-                </th>
-                <th className="px-5 py-4 font-bold">Free blogs</th>
-                <th className="px-5 py-4 font-bold">One-off audit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map(([label, ours, free, audit], i) => (
-                <tr key={label} className={`border-t border-[#e5ebf1] ${i % 2 ? "bg-[#ffffff]" : "bg-white"}`}>
-                  <td className="px-5 py-4 font-medium text-[#1f2933]">{label}</td>
-                  <td className="bg-[#f5f7f9] px-5 py-4 font-bold text-[#3f6f86]">{ours}</td>
-                  <td className="px-5 py-4 text-[#4b5563]">{free}</td>
-                  <td className="px-5 py-4 text-[#4b5563]">{audit}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-10 grid gap-5 md:grid-cols-3 md:items-stretch md:gap-6">
+          {COMPARE_PANELS.map((panel) => (
+            <ComparePanel key={panel.key} panel={panel} />
+          ))}
         </div>
 
-        {/* mobile cards — no horizontal scroll glitch */}
-        <div className="mt-8 space-y-3 md:hidden">
-          {rows.map(([label, ours, free, audit]) => (
-            <div key={label} data-fx="up" className="card p-5">
-              <p className="text-sm font-bold text-[#2f5d73]">{label}</p>
-              <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
-                <div className="rounded-xl bg-[#3b82f6] px-2 py-2.5 font-bold text-white">
-                  <p className="opacity-80">Bundle</p>
-                  <p className="mt-0.5">{ours}</p>
-                </div>
-                <div className="rounded-xl bg-[#f8fafc] px-2 py-2.5 text-[#4b5563] ring-1 ring-[#e5ebf1]">
-                  <p className="font-bold">Blogs</p>
-                  <p className="mt-0.5">{free}</p>
-                </div>
-                <div className="rounded-xl bg-[#f8fafc] px-2 py-2.5 text-[#4b5563] ring-1 ring-[#e5ebf1]">
-                  <p className="font-bold">Audit</p>
-                  <p className="mt-0.5">{audit}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div data-fx="up" className="mx-auto mt-8 max-w-3xl rounded-2xl border border-[#d1d5db] bg-white p-5 text-center shadow-sm md:p-6">
+          <p className="text-sm leading-relaxed text-[#4b5563] md:text-[15px]">
+            <span className="font-bold text-[#2f5d73]">The free path costs months.</span> The audit
+            costs $300–$1,500 for a report you then have to execute yourself.{" "}
+            <span className="font-bold text-[#2f5d73]">This system costs once — and updates forever.</span>
+          </p>
         </div>
       </div>
     </section>
