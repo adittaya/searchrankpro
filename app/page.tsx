@@ -594,18 +594,6 @@ function Preview() {
 function Testimonials() {
   const quotes = [
     {
-      img: "/reviews/priya.jpg",
-      alt: "Photo of Priya S.",
-      headline: "The NavBoost chapter alone changed how we write",
-      q: "I finally understand why our recipes weren't ranking. The click-satisfaction chapter changed how I write intros and structure posts — three of my pillar pages moved onto page one within two months.",
-      n: "Priya S.",
-      r: "Food blogger · 85k monthly readers",
-      d: "Verified buyer · January 2026",
-      before: "Recipe posts weren't ranking",
-      span: "2 months",
-      result: "3 pillar pages reached page one",
-    },
-    {
       img: "/reviews/marcus.jpg",
       alt: "Photo of Marcus T.",
       headline: "The CSV system paid for itself on day one",
@@ -665,9 +653,8 @@ function Testimonials() {
                 <p className="truncate text-xs text-[#9ca3af]">Food blogger · 85k monthly readers</p>
               </div>
             </div>
-            <div className="mt-3 flex flex-wrap items-center gap-3">
+            <div className="mt-3">
               <Stars />
-              <p className="text-xs font-semibold text-[#3f6f86]">Verified buyer · January 2026</p>
             </div>
             <div className="mt-5 space-y-3">
               <div className="rounded-xl bg-white p-4">
@@ -719,7 +706,7 @@ function Testimonials() {
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3 md:gap-5">
+      <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2 md:gap-5">
         {quotes.map((t) => (
           <figure key={t.n} data-fx="up" className="card flex h-full flex-col p-6">
             <div className="flex items-center gap-3">
